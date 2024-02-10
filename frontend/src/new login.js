@@ -67,6 +67,7 @@ const LoginComponent = () => {
           <p className="error">{errors.email}</p>
         )}
         <Form.Control
+          type="password"
           value={values.password}
           id="password"
           onBlur={handleBlur}
@@ -174,10 +175,11 @@ function RegisterComponent() {
         <button type="submit" className="button">
           Register
         </button>
+
         {isSuccess && (
           <Alert variant="success">
             <Alert.Heading>Success</Alert.Heading>
-            <p>Account successfully registered.</p>
+            <p>Account created successfully!</p>
           </Alert>
         )}
       </Form>
