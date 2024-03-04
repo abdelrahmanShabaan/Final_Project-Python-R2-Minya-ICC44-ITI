@@ -1,0 +1,18 @@
+.header {
+    background: #1d2b3c !important;
+    background: linear-gradient(180deg, #0B1623 0%, #27394f 100%) !important;
+}
+
+.header .header-cnt-top {
+    border-bottom: 1px solid #38506d !important;
+}
+
+@media screen and (max-width: 992px) {
+    .header .header-cnt-top {
+        flex-direction: column !important;
+    }
+
+    .header .header-cnt-top .header-cnt-top-l {
+        margin-bottom: 4px !important;
+    }
+}

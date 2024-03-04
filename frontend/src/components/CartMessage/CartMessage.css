@@ -1,0 +1,22 @@
+.cart-message {
+    padding: 2rem !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    border-radius: 3px !important;
+}
+
+.cart-message .cart-message-icon {
+    margin-bottom: 1.7rem !important;
+}
+
+.cart-message .cart-message-icon img {
+    width: 45px !important;
+    height: 45px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
