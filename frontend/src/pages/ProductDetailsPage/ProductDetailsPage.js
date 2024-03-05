@@ -244,14 +244,15 @@ const ProductDetailsPage = () => {
                 </div>
 
                 <div className="btns">
-                  <button type="button" className="your-store-add-to-cart-btn">
+                  <button
+                    type="button"
+                    className="your-store-add-to-cart-btn"
+                    onClick={() => {
+                      addToCartHandler(product);
+                    }}
+                  >
                     <i className="fas fa-shopping-cart"></i>
-                    <span
-                      className="your-store-add-to-cart-text"
-                      onClick={() => {
-                        addToCartHandler(product);
-                      }}
-                    >
+                    <span className="your-store-add-to-cart-text">
                       Add to Cart
                     </span>
                   </button>
