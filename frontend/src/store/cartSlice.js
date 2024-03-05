@@ -28,8 +28,8 @@ const fetchFromLocalStorage = () => {
         let initialCart = sessionStorage.getItem('login');
         if (initialCart) {
             // copySessionToLocalStorage();
-            initialCart = JSON.parse(initialCart);
-            localStorage.setItem('cart', JSON.stringify(initialCart));
+            // initialCart = JSON.parse(initialCart);
+            // localStorage.setItem('cart', JSON.stringify(initialCart));
             return initialCart;
         } else {
             return [];

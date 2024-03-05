@@ -262,7 +262,7 @@ const ProductDetailsPage = () => {
                   <button type="button" className="your-store-buy-now-btn mx-3">
                     <span className="your-store-buy-now-text">Buy Now</span>
                   </button>
-                  {sessionLogin && sessionLogin.length > 0 &&
+                  {sessionStorage.getItem("login") !== null &&
                     <button type="button" className="your-popup-btn" onClick={togglePopup}>
                     Add Rating and Review
                   </button>}

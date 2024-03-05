@@ -6,7 +6,7 @@ import Popup from "../../components/Popup/PopupEdit";
 
 export default function Rev(props) {
   const [reviews, setReviews] = useState([]);
-  const [revs, setRevs] = useState("");
+  // const [revs, setRevs] = useState("");
   const [sessionLogin, setSessionLogin] = useState([]);
   const [editingReviewId, setEditingReviewId] = useState(null);
   const [editedReviewText, setEditedReviewText] = useState("");
@@ -15,25 +15,25 @@ export default function Rev(props) {
   const [showPopup, setShowPopup] = useState(false);
   const [reviewToEdit, setReviewToEdit] = useState(null);
 
-  const onChangeH = (e) => {
-    setRevs(e.target.value);
-  };
+  // const onChangeH = (e) => {
+  //   setRevs(e.target.value);
+  // };
 
-  const createRev = async () => {
-    try {
-      await axios.post("https://retoolapi.dev/4XjVdq/data", {
-        rate: 5,
-        fName: sessionLogin[0].fullname,
-        reviews: revs,
-        name: sessionLogin[0].name,
-      });
+  // const createRev = async () => {
+  //   try {
+  //     await axios.post("https://retoolapi.dev/4XjVdq/data", {
+  //       rate: 5,
+  //       fName: sessionLogin[0].fullname,
+  //       reviews: revs,
+  //       name: sessionLogin[0].name,
+  //     });
 
-      loadData();
-      console.log("Post successful");
-    } catch (error) {
-      console.error("Error posting review:", error);
-    }
-  };
+  //     loadData();
+  //     console.log("Post successful");
+  //   } catch (error) {
+  //     console.error("Error posting review:", error);
+  //   }
+  // };
 
   const loadData = async () => {
     try {
@@ -144,9 +144,8 @@ export default function Rev(props) {
               )}
             </div>
           </div>
-          {sessionLogin &&
-            sessionLogin.length > 0 &&
-            sessionLogin[0].name === rev.name && (
+          {sessionStorage.getItem("login") !== null &&
+            sessionLogin.name === rev.name && (
               <div className="rev-btns-container">
                 <button
                   onClick={() => deleteRev(rev.id)}
@@ -156,9 +155,8 @@ export default function Rev(props) {
                 </button>
               </div>
             )}
-          {sessionLogin &&
-            sessionLogin.length > 0 &&
-            sessionLogin[0].name === rev.name && (
+          {sessionStorage.getItem("login") !== null &&
+            sessionLogin.name === rev.name && (
               <>
                 {editingReviewId === rev.id ? (
                   <button
