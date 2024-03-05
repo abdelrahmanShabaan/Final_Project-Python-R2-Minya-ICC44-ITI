@@ -10,12 +10,14 @@ import {
   toggleCartQty,
   clearCart,
   getCartTotal,
+  getCartItemsCount,
 } from "../../store/cartSlice";
 
 const CartPage = () => {
   const dispatch = useDispatch();
   const carts = useSelector(getAllCarts);
-  const { itemsCount, totalAmount } = useSelector((state) => state.cart);
+  const { totalAmount } = useSelector((state) => state.cart);
+  const itemsCounts = useSelector(getCartItemsCount);
 
   if (carts.length === 0) {
     return (
@@ -138,7 +140,7 @@ const CartPage = () => {
             <div className="cart-cfoot-r flex flex-column justify-end">
               <div className="total-txt flex align-center justify-end">
                 <div className="font-manrope fw-5">
-                  Total ({itemsCount}) items:{" "}
+                  Total ({itemsCounts}) items:{" "}
                 </div>
                 <span className="text-orange fs-22 mx-2 fw-6">
                   {formatPrice(totalAmount)}

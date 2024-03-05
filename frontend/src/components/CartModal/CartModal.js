@@ -2,13 +2,6 @@ import React from "react";
 import "./CartModal.css";
 import { shopping_cart } from "../../utils/images";
 import { formatPrice } from "../../utils/helpers";
-import {
-  getAllCarts,
-  removeFromCart,
-  toggleCartQty,
-  clearCart,
-  getCartTotal,
-} from "../../store/cartSlice";
 
 const CartModal = ({ carts }) => {
   return (
@@ -30,11 +23,12 @@ const CartModal = ({ carts }) => {
                 <div className="cart-modal-item-title fs-13 font-manrope text-capitalize">
                   {cart?.title}
                 </div>
-                {/* <div className="cart-modal-item-quantity">
+                <div className="cart-modal-item-quantity fs-13 font-manrope">
                   {cart?.quantity}
-                </div> */}
+                </div>
                 <div className="cart-modal-item-price text-orange fs-14 fw-6">
-                  {formatPrice(cart?.discountedPrice)}
+                  {/* {formatPrice(cart?.discountedPrice)} */}
+                  {formatPrice(cart?.totalPrice)}
                 </div>
               </div>
             );
