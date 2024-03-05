@@ -16,13 +16,14 @@
 }
 
 .rev-text-container {
-    margin-top: 10px !important;
+    margin: 10px !important;
     display: flex !important;
     justify-content: space-between !important;
 }
 
 .rev-btns-container {
-    margin-top: 10px !important;
+    margin: 10px !important;
+    display: inline
 }
 
 .rev-form input {
@@ -68,4 +69,8 @@
     border-radius: 5px !important;
     cursor: pointer !important;
     margin: auto;
+}
+
+.your-store-rating{
+    margin: 10px !important;
 }

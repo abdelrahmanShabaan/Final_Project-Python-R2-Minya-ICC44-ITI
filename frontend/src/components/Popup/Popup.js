@@ -1,5 +1,5 @@
 // import React from 'react';
-// import './Popup.css'; 
+// import './Popup.css';
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 // import Form from "react-bootstrap/Form";
@@ -8,7 +8,7 @@
 
 // function Popup({ isOpen, onClose }) {
 //   const handleClose = () => {
-//     onClose(); 
+//     onClose();
 //   };
 //   const [reviews, setReviews] = useState([]);
 //   const [revs, setRevs] = useState("");
@@ -158,14 +158,14 @@
 
 // ----------------------------------------
 // import React, { useState } from 'react';
-// import './Popup.css'; 
+// import './Popup.css';
 // import { useEffect } from "react";
 // import axios from "axios";
 // import BtnsCo from "../reviews/Btns";
 
 // function Popup({ isOpen, onClose }) {
 //   const handleClose = () => {
-//     onClose(); 
+//     onClose();
 //   };
 
 //   const [reviews, setReviews] = useState([]);
@@ -310,14 +310,14 @@
 // -------------------------- Working -------------------------------------------------------------
 
 // import React, { useState } from 'react';
-// import './Popup.css'; 
+// import './Popup.css';
 // import { useEffect } from "react";
 // import axios from "axios";
 // import BtnsCo from "../reviews/Btns";
 
 // function Popup({ isOpen, onClose }) {
 //   const handleClose = () => {
-//     onClose(); 
+//     onClose();
 //   };
 
 //   const [reviews, setReviews] = useState([]);
@@ -459,14 +459,19 @@
 
 // export default Popup;
 
+// ----------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------
 
 import React, { useState, useEffect } from 'react';
-import './Popup.css'; 
+import './Popup.css';
 import axios from "axios";
 
 function Popup({ isOpen, onClose }) {
   const handleClose = () => {
-    onClose(); 
+    onClose();
   };
 
   const [reviews, setReviews] = useState([]);
@@ -566,8 +571,6 @@ function Popup({ isOpen, onClose }) {
               <button onClick={createRev} className="add-review-btn">
                 Save
               </button>
-
-
 
           </div>
         </div>

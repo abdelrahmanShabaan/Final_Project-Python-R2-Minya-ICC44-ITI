@@ -189,7 +189,6 @@
 .your-store-rating,
 .your-store-brand,
 .your-store-category {
-    display: flex !important;
     align-items: center !important;
     margin-right: 10px !important;
 }
@@ -209,7 +208,6 @@
 }
 
 .your-store-rating {
-    display: flex !important;
     align-items: center !important;
     margin-right: 10px !important;
 }

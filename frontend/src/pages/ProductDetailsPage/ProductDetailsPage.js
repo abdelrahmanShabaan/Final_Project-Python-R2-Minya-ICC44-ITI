@@ -102,8 +102,6 @@ const ProductDetailsPage = () => {
     setShowPopup(false); // Set showPopup to false when the close button is clicked
   };
 
-  /** Add function rate with abdelrahman  */
-
   function renderStars(rating) {
     const maxStars = 5;
     const roundedRating = Math.round(rating * 2) / 2; // Round to nearest half star
@@ -268,11 +266,12 @@ const ProductDetailsPage = () => {
                     <button type="button" className="your-popup-btn" onClick={togglePopup}>
                     Add Rating and Review
                   </button>}
-                  <Rev />
                 </div>
               </div>
             </div>
           </div>
+                  <Rev />
+
         </div>
       </div>
 
