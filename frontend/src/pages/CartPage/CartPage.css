@@ -104,3 +104,8 @@
   padding: 0.8rem 2.8rem !important;
   margin-top: 0.7rem !important;
 }
+
+.cart-modal-item-img {
+  width: 60px !important;
+  height: 60px !important;
+}

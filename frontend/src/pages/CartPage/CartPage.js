@@ -44,9 +44,15 @@ const CartPage = () => {
               <div className="cart-cth">
                 <span className="cart-ctxt">No.</span>
               </div>
+
+              <div className="cart-cth">
+                <span className="cart-ctxt">Image</span>
+              </div>
+
               <div className="cart-cth">
                 <span className="cart-ctxt">Product</span>
               </div>
+
               <div className="cart-cth">
                 <span className="cart-ctxt">Unit Price</span>
               </div>
@@ -55,9 +61,6 @@ const CartPage = () => {
               </div>
               <div className="cart-cth">
                 <span className="cart-ctxt">Total Price</span>
-              </div>
-              <div className="cart-cth">
-                <span className="cart-ctxt">Actions</span>
               </div>
             </div>
           </div>
@@ -69,6 +72,15 @@ const CartPage = () => {
                   <div className="cart-ctd">
                     <span className="cart-ctxt">{idx + 1}</span>
                   </div>
+
+                  <div className="cart-ctd ">
+                    <img
+                      src={cart?.thumbnail}
+                      alt=""
+                      className="cart-modal-item-img"
+                    />
+                  </div>
+
                   <div className="cart-ctd">
                     <span className="cart-ctxt">{cart?.title}</span>
                   </div>
@@ -82,9 +94,15 @@ const CartPage = () => {
                       <button
                         type="button"
                         className="qty-decrease flex align-center justify-center"
-                        onClick={() =>
-                          dispatch(toggleCartQty({ id: cart?.id, type: "DEC" }))
-                        }
+                        onClick={() => {
+                          if (cart.quantity > 1) {
+                            dispatch(
+                              toggleCartQty({ id: cart?.id, type: "DEC" })
+                            );
+                          } else {
+                            dispatch(removeFromCart(cart?.id));
+                          }
+                        }}
                       >
                         <i className="fas fa-minus"></i>
                       </button>
@@ -109,16 +127,6 @@ const CartPage = () => {
                     <span className="cart-ctxt text-orange fw-5">
                       {formatPrice(cart?.totalPrice)}
                     </span>
-                  </div>
-
-                  <div className="cart-ctd">
-                    <button
-                      type="button"
-                      className="delete-btn text-dark"
-                      onClick={() => dispatch(removeFromCart(cart?.id))}
-                    >
-                      Delete
-                    </button>
                   </div>
                 </div>
               );

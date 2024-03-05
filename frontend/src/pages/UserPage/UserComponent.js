@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./stylex.css";
+import "./UserComponent.css";
 import { Link, useNavigate } from "react-router-dom";
 import RegisterComponent from "./RegisterComponent";
 import LoginComponent from "./LoginComponent";
