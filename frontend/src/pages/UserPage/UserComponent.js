@@ -7,7 +7,7 @@ import LoginComponent from "./LoginComponent";
 const UserComponent = () => {
   const [type, setType] = useState("signIn");
   const navigate = useNavigate();
-  const handleOnClick = text => {
+  const handleOnClick = (text) => {
     if (text !== type) {
       setType(text);
       return;
@@ -16,10 +16,10 @@ const UserComponent = () => {
   useEffect(() => {
     if (sessionStorage.getItem("login") != null) {
       navigate("/");
-    }else{
+    } else {
       if (localStorage.getItem("Account Storage") != null) {
         setType("signIn");
-      }else{
+      } else {
         setType("signUp");
       }
     }
@@ -36,7 +36,7 @@ const UserComponent = () => {
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
               <p>
-              To keep connected with us, please login with your personal info
+                To keep connected with us, please login with your personal info
               </p>
               <button
                 className="ghost button"
@@ -62,6 +62,6 @@ const UserComponent = () => {
       </div>
     </div>
   );
-}
+};
 
 export default UserComponent;

@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import "./ProductPage.css";
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllCategories } from '../../store/categorySlice';
+import { useSelector, useDispatch } from "react-redux";
+import { getAllCategories } from "../../store/categorySlice";
 import ProductList from "../../components/ProductList/ProductList";
-import { fetchAsyncProducts, getAllProducts, getAllProductsStatus } from '../../store/productSlice';
+import {
+  fetchAsyncProducts,
+  getAllProducts,
+  getAllProductsStatus,
+} from "../../store/productSlice";
 import Loader from "../../components/Loader/Loader";
-import { STATUS } from '../../utils/status';
+import { STATUS } from "../../utils/status";
 
 const ProductPage = () => {
   const dispatch = useDispatch();
@@ -17,17 +21,20 @@ const ProductPage = () => {
 
   const products = useSelector(getAllProducts);
   const productStatus = useSelector(getAllProductsStatus);
-  const [selectedCategory, setSelectedCategory] = useState('0'); // Changed to string '0'
+  const [selectedCategory, setSelectedCategory] = useState("0"); // Changed to string '0'
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
   const getProductsByCategory = () => {
-    if (selectedCategory === '0') { // Changed comparison to string '0'
+    if (selectedCategory === "0") {
+      // Changed comparison to string '0'
       return products;
     } else {
-      return products.filter(product => product.category === selectedCategory);
+      return products.filter(
+        (product) => product.category === selectedCategory
+      );
     }
   };
 
@@ -44,39 +51,54 @@ const ProductPage = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex(prevIndex => (prevIndex + 1) % carouselImages.length);
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % carouselImages.length
+      );
     }, 3000);
     return () => clearInterval(interval);
   }, [carouselImages]);
 
   return (
     <main>
-      <div className='main-content bg-whitesmoke'>
-        <div className='container'>
-          <div className='categories py-5'>
-            <div className='slider-wrapper' style={{ width: '100%', overflow: 'hidden' }}>
-              <img src={carouselImages[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} style={{ width: '100%', height: 'auto' }} />
+      <div className="main-content bg-whitesmoke">
+        <div className="container">
+          <div className="categories py-5">
+            <div
+              className="slider-wrapper"
+              style={{ width: "100%", overflow: "hidden" }}
+            >
+              <img
+                src={carouselImages[currentImageIndex]}
+                alt={`Image ${currentImageIndex + 1}`}
+                style={{ width: "100%", height: "auto" }}
+              />
             </div>
-            <div className='categories-item'>
-              <h3 style={{ color: 'black'}}>Select a category:</h3>
+            <div className="categories-item">
+              <h3 style={{ color: "black" }}>Select a category:</h3>
               <select value={selectedCategory} onChange={handleCategoryChange}>
-                <option value='0'>All</option>
+                <option value="0">All</option>
                 {categories.map((category, index) => (
-                  <option value={category} key={index}>{category}</option>
+                  <option value={category} key={index}>
+                    {category}
+                  </option>
                 ))}
               </select>
             </div>
-            <div className='categories-item'>
-              <div className='title-md'>
-                <h3 style={{ color: 'black' }}>Filtered Products</h3>
+            <div className="categories-item">
+              <div className="title-md">
+                <h3 style={{ color: "black" }}>Filtered Products</h3>
               </div>
-              {productStatus === STATUS.LOADING ? <Loader /> : <ProductList products={getProductsByCategory()} />}
+              {productStatus === STATUS.LOADING ? (
+                <Loader />
+              ) : (
+                <ProductList products={getProductsByCategory()} />
+              )}
             </div>
           </div>
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
 export default ProductPage;

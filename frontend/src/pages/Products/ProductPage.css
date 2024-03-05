@@ -1,63 +1,63 @@
 .slider-wrapper {
-    margin-top: 0.5px !important;
+  margin-top: 0.5px !important;
 }
 
 .main-content {
-    min-height: 100vh !important;
+  min-height: 100vh !important;
 }
 
 .categories .categories-item {
-    margin-bottom: 4.8rem !important;
+  margin-bottom: 4.8rem !important;
 }
 
 .categories .categories-item .title-md {
-    margin-bottom: 2.8rem !important;
+  margin-bottom: 2.8rem !important;
 }
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
-    .slider-wrapper {
-        margin: 8px 0 0 !important; /* Adjusted top margin */
-    }
+  .slider-wrapper {
+    margin: 8px 0 0 !important; /* Adjusted top margin */
+  }
 
-    .categories .categories-item {
-        margin-bottom: 3rem !important;
-    }
+  .categories .categories-item {
+    margin-bottom: 3rem !important;
+  }
 
-    .categories .categories-item .title-md {
-        margin-bottom: 2rem !important;
-    }
+  .categories .categories-item .title-md {
+    margin-bottom: 2rem !important;
+  }
 }
 
 @media screen and (max-width: 576px) {
-    .slider-wrapper {
-        margin: 4px 0 0 !important; /* Adjusted top margin */
-    }
+  .slider-wrapper {
+    margin: 4px 0 0 !important; /* Adjusted top margin */
+  }
 
-    .categories .categories-item {
-        margin-bottom: 2rem !important;
-    }
+  .categories .categories-item {
+    margin-bottom: 2rem !important;
+  }
 
-    .categories .categories-item .title-md {
-        margin-bottom: 1.5rem !important;
-    }
+  .categories .categories-item .title-md {
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 .categories-item {
-    text-align: center !important;
+  text-align: center !important;
 }
 
 .categories-item select {
-    width: 30% !important;
-    padding: 0.5rem !important;
-    margin-top: 0.5px !important;
-    text-align: center !important; /* Center align options */
+  width: 30% !important;
+  padding: 0.5rem !important;
+  margin-top: 0.5px !important;
+  text-align: center !important; /* Center align options */
 }
 
 .categories-item h3 {
-    font-family: sans-serif !important; /* Specify your desired font family */
-    font-size: 2.5rem !important; /* Adjust the font size as needed */
-    font-weight: bold !important; /* Adjust the font weight as needed */
-    color: white !important; /* Adjust the font color as needed */
-    /* margin-bottom: 2rem; Adjust the margin bottom as needed */
+  font-family: sans-serif !important; /* Specify your desired font family */
+  font-size: 2.5rem !important; /* Adjust the font size as needed */
+  font-weight: bold !important; /* Adjust the font weight as needed */
+  color: white !important; /* Adjust the font color as needed */
+  /* margin-bottom: 2rem; Adjust the margin bottom as needed */
 }

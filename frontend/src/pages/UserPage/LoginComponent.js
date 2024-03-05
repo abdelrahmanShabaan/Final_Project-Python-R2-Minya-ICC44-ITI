@@ -152,9 +152,7 @@
 
 // export default LoginComponent;
 
-
 // ----------------------------------------------------------------------------------
-
 
 import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
@@ -202,7 +200,10 @@ const LoginComponent = () => {
           );
           if (response.data.length > 0) {
             const user = response.data[0];
-            sessionStorage.setItem("login", JSON.stringify(user));
+            sessionStorage.setItem(
+              "login",
+              JSON.stringify({ name: user.name, email: user.email })
+            );
             setIsError(false);
             redirectBasedOnRole(user.role);
           } else {

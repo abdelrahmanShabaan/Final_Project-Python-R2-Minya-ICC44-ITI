@@ -1,4 +1,6 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,7 +14,7 @@ html {
 body {
   font-size: 1.6rem !important;
   line-height: 1.6 !important;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #000 !important;
 }
 ul {
@@ -22,7 +24,12 @@ a {
   text-decoration: none !important;
   color: unset !important;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-transform: capitalize !important;
 }
 img {
@@ -42,7 +49,9 @@ button {
   font-family: inherit;
   font-size: 1.8rem;
 }
-input, textarea, select {
+input,
+textarea,
+select {
   outline: 0 !important;
   border: none !important;
   resize: none !important;
@@ -176,10 +185,10 @@ input, textarea, select {
   background-color: #929292 !important;
 }
 .font-poppins {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
 }
 .font-manrope {
-  font-family: 'Manrope', sans-serif !important;
+  font-family: "Manrope", sans-serif !important;
 }
 /* font weights */
 .fw-1 {
@@ -438,18 +447,17 @@ input, textarea, select {
   font-size: 8% !important;
 }
 
-
-.slick-arrow{
-  background:#000 !important;
+.slick-arrow {
+  background: #000 !important;
   width: 20px !important;
   height: 20px !important;
   border-radius: 20px;
 }
 
-.slick-prev{
+.slick-prev {
   transform: translate(-50%, -50%) !important;
 }
 
-.slick-next{
+.slick-next {
   transform: translate(50%, -50%) !important;
 }

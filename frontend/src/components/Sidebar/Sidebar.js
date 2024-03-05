@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { getSidebarStatus, setSidebarOff } from '../../store/sidebarSlice';
-import { fetchAsyncCategories, getAllCategories } from '../../store/categorySlice';
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getSidebarStatus, setSidebarOff } from "../../store/sidebarSlice";
+import {
+  fetchAsyncCategories,
+  getAllCategories,
+} from "../../store/categorySlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -31,16 +34,23 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className={`sidebar ${isSidebarOn ? 'hide-sidebar' : ""}`}>
-      <button type="button" className='sidebar-hide-btn' onClick={() => dispatch(setSidebarOff())}>
-        <i className='fas fa-times'></i>
+    <aside className={`sidebar ${isSidebarOn ? "hide-sidebar" : ""}`}>
+      <button
+        type="button"
+        className="sidebar-hide-btn"
+        onClick={() => dispatch(setSidebarOff())}
+      >
+        <i className="fas fa-times"></i>
       </button>
-      <div className='sidebar-cnt'>
-      <button onClick={applyFilters}>Apply Filters</button>
+      <div className="sidebar-cnt">
+        <button onClick={applyFilters}>Apply Filters</button>
         {/* Color Filter */}
         <div>
           <label>Color:</label>
-          <select value={selectedColor} onChange={(e) => setSelectedColor(e.target.value)}>
+          <select
+            value={selectedColor}
+            onChange={(e) => setSelectedColor(e.target.value)}
+          >
             <option value="">All Colors</option>
             <option value="red">Red</option>
             <option value="blue">Blue</option>
@@ -53,7 +63,10 @@ const Sidebar = () => {
         {/* Price Range Filter */}
         <div>
           <label>Price Range:</label>
-          <select value={selectedPriceRange} onChange={(e) => setSelectedPriceRange(e.target.value)}>
+          <select
+            value={selectedPriceRange}
+            onChange={(e) => setSelectedPriceRange(e.target.value)}
+          >
             <option value="">All Prices</option>
             <option value="0-50">$0 - $50</option>
             <option value="50-100">$50 - $100</option>
@@ -66,7 +79,10 @@ const Sidebar = () => {
         {/* Brand Filter */}
         <div>
           <label>Brand:</label>
-          <select value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
+          <select
+            value={selectedBrand}
+            onChange={(e) => setSelectedBrand(e.target.value)}
+          >
             <option value="">All Brands</option>
             <option value="Nike">Nike</option>
             <option value="Adidas">Adidas</option>
@@ -79,7 +95,10 @@ const Sidebar = () => {
         {/* Rating Filter */}
         <div>
           <label>Rating:</label>
-          <select value={selectedRating} onChange={(e) => setSelectedRating(e.target.value)}>
+          <select
+            value={selectedRating}
+            onChange={(e) => setSelectedRating(e.target.value)}
+          >
             <option value="">All Ratings</option>
             <option value="1">1 Star</option>
             <option value="2">2 Stars</option>
@@ -92,27 +111,46 @@ const Sidebar = () => {
         {/* Special Offers */}
         <div>
           <label>Special Offers:</label>
-          <input type="checkbox" checked={specialOffers} onChange={() => setSpecialOffers(!specialOffers)} />
+          <input
+            type="checkbox"
+            checked={specialOffers}
+            onChange={() => setSpecialOffers(!specialOffers)}
+          />
         </div>
 
         {/* Discounts */}
         <div>
           <label>Discounts:</label>
-          <input type="checkbox" checked={discounts} onChange={() => setDiscounts(!discounts)} />
+          <input
+            type="checkbox"
+            checked={discounts}
+            onChange={() => setDiscounts(!discounts)}
+          />
         </div>
 
         {/* Free Shipping */}
         <div>
           <label>Free Shipping:</label>
-          <input type="checkbox" checked={freeShipping} onChange={() => setFreeShipping(!freeShipping)} />
+          <input
+            type="checkbox"
+            checked={freeShipping}
+            onChange={() => setFreeShipping(!freeShipping)}
+          />
         </div>
 
         {/* Category List */}
-        <div className='cat-title fs-17 text-uppercase fw-6 ls-1h'>All Categories</div>
-        <ul className='cat-list'>
+        <div className="cat-title fs-17 text-uppercase fw-6 ls-1h">
+          All Categories
+        </div>
+        <ul className="cat-list">
           {categories.map((category, idx) => (
             <li key={idx} onClick={() => dispatch(setSidebarOff())}>
-              <Link to={`category/${category}`} className='cat-list-link text-capitalize'>{category.replace("-", " ")}</Link>
+              <Link
+                to={`category/${category}`}
+                className="cat-list-link text-capitalize"
+              >
+                {category.replace("-", " ")}
+              </Link>
             </li>
           ))}
         </ul>

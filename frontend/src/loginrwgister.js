@@ -38,11 +38,11 @@ const LoginComponent = () => {
       },
     });
 
-    useEffect(() => {
-      if (sessionStorage.getItem("login")!=null) {
-        navigate("/");
-      }
-    }, [navigate]);
+  useEffect(() => {
+    if (sessionStorage.getItem("login") != null) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     let showUserPanel = () => {
@@ -244,10 +244,9 @@ function RegisterComponent() {
   );
 }
 
-
 const UserComponent = () => {
   const [type, setType] = useState("signIn");
-  const handleOnClick = text => {
+  const handleOnClick = (text) => {
     if (text !== type) {
       setType(text);
       return;
@@ -265,7 +264,7 @@ const UserComponent = () => {
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
               <p>
-              To keep connected with us, please login with your personal info
+                To keep connected with us, please login with your personal info
               </p>
               <button
                 className="ghost button"
@@ -291,6 +290,6 @@ const UserComponent = () => {
       </div>
     </div>
   );
-}
+};
 
 export default UserComponent;

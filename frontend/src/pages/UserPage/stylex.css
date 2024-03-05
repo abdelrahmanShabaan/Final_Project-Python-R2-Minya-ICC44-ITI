@@ -30,7 +30,6 @@
   font-family: "Montserrat", sans-serif;
 }
 
-
 .a {
   color: #333 !important;
   font-size: 14px !important;
@@ -40,8 +39,8 @@
 
 .containerx .button {
   border-radius: 8px !important;
-  border: 1px solid #0B1623 !important;
-  background-color: #0B1623 !important;
+  border: 1px solid #0b1623 !important;
+  background-color: #0b1623 !important;
   color: #ffffff !important;
   font-size: 12px !important;
   font-weight: bold !important;
@@ -171,8 +170,8 @@
 }
 
 .overlay {
-  background: #0B1623 !important;
-  background: linear-gradient(to right, #0B1623, #27394f) !important;
+  background: #0b1623 !important;
+  background: linear-gradient(to right, #0b1623, #27394f) !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: 0 0 !important;

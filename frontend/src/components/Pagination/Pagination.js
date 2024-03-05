@@ -107,7 +107,11 @@ const Pagination = ({ handlePageNumClick, totalPages, currentPage }) => {
         aria-label="Page navigation example"
       >
         <ul className="pagination">
-          <li className={`pagination-item ${currentPageBtnsGroup === 1 && "disabled"}`}>
+          <li
+            className={`pagination-item ${
+              currentPageBtnsGroup === 1 && "disabled"
+            }`}
+          >
             <button
               className="pagination-btn"
               onClick={handlePrevGroup}
@@ -131,7 +135,11 @@ const Pagination = ({ handlePageNumClick, totalPages, currentPage }) => {
             </li>
           ))}
 
-          <li className={`pagination-item ${currentPageBtnsGroup * pageBtnsPerPage >= totalPages && "disabled"}`}>
+          <li
+            className={`pagination-item ${
+              currentPageBtnsGroup * pageBtnsPerPage >= totalPages && "disabled"
+            }`}
+          >
             <button
               className="pagination-btn"
               onClick={handleNextGroup}

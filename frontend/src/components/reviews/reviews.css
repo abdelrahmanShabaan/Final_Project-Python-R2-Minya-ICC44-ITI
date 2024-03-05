@@ -1,76 +1,76 @@
 .rev-card-container {
-    border: 1px solid #ccc !important;
-    border-radius: 5px !important;
-    padding: 20px !important;
-    margin-top: 20px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
+  padding: 20px !important;
+  margin-top: 20px !important;
 }
 
 .rev-list .rev-item {
-    margin-top: 20px !important;
-    border-top: 1px solid #ccc !important;
-    padding-top: 10px !important;
+  margin-top: 20px !important;
+  border-top: 1px solid #ccc !important;
+  padding-top: 10px !important;
 }
 
 .rev-list .rev-username {
-    font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 .rev-text-container {
-    margin: 10px !important;
-    display: flex !important;
-    justify-content: space-between !important;
+  margin: 10px !important;
+  display: flex !important;
+  justify-content: space-between !important;
 }
 
 .rev-btns-container {
-    margin: 10px !important;
-    display: inline
+  margin: 10px !important;
+  display: inline;
 }
 
 .rev-form input {
-    width: calc(100% - 100px) !important;
-    padding: 10px !important;
-    border: 1px solid #ccc !important;
-    border-radius: 5px !important;
+  width: calc(100% - 100px) !important;
+  padding: 10px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
 }
 
 .add-review-btn {
-    padding: 10px 20px !important;
-    background-color: #FF9900 !important;
-    color: #fff !important;
-    border: none !important;
-    border-radius: 5px !important;
-    margin-left: 10px !important;
-    cursor: pointer !important;
+  padding: 10px 20px !important;
+  background-color: #ff9900 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 5px !important;
+  margin-left: 10px !important;
+  cursor: pointer !important;
 }
 
 .delete-review-btn {
-    background-color: #dc3545 !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 5px 10px !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
+  background-color: #dc3545 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
 }
 
 .edit-review-btn {
-    background-color: navy !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 5px 10px !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
+  background-color: navy !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
 }
 
 .edit-save-btn {
-    background-color: goldenrod !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 5px 10px !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
-    margin: auto;
+  background-color: goldenrod !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  margin: auto;
 }
 
-.your-store-rating{
-    margin: 10px !important;
+.your-store-rating {
+  margin: 10px !important;
 }

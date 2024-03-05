@@ -126,10 +126,7 @@ function RegisterComponent() {
             <i id="id-btn-register-phone" className="fa-solid fa-phone"></i>
           </a>
           <a href="#" className="icon a">
-            <i
-              id="id-btn-register-google"
-              className="fa-brands fa-google"
-            ></i>
+            <i id="id-btn-register-google" className="fa-brands fa-google"></i>
           </a>
         </div>
         <span>or use your email for registration</span>
@@ -143,9 +140,7 @@ function RegisterComponent() {
           placeholder="Please, enter your name"
           className={errors.name && touched.name ? "input-error" : ""}
         />
-        {errors.name && touched.name && (
-          <p className="error">{errors.name}</p>
-        )}
+        {errors.name && touched.name && <p className="error">{errors.name}</p>}
         <input
           type="email"
           className="input"
@@ -208,7 +203,9 @@ const UserComponent = () => {
           <div className="overlay">
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
-              <p>To keep connected with us, please login with your personal info</p>
+              <p>
+                To keep connected with us, please login with your personal info
+              </p>
               <button
                 className="ghost button"
                 id="signIn"

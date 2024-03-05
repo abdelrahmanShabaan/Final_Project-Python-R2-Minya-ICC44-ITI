@@ -465,8 +465,8 @@
 // ----------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 
-import React, { useState, useEffect } from 'react';
-import './Popup.css';
+import React, { useState, useEffect } from "react";
+import "./Popup.css";
 import axios from "axios";
 
 function Popup({ isOpen, onClose }) {
@@ -528,7 +528,7 @@ function Popup({ isOpen, onClose }) {
       stars.push(
         <span
           key={i}
-          className={`star ${i <= rating ? 'filled' : ''}`}
+          className={`star ${i <= rating ? "filled" : ""}`}
           onMouseOver={() => handleRating(i)}
         >
           &#9733;
@@ -539,7 +539,7 @@ function Popup({ isOpen, onClose }) {
   };
 
   return (
-    <div className={`popup-container ${isOpen ? 'open' : ''}`}>
+    <div className={`popup-container ${isOpen ? "open" : ""}`}>
       <div className="overlay" onClick={handleClose}></div>
       <div className="popup">
         <div className="popup-content">
@@ -568,10 +568,9 @@ function Popup({ isOpen, onClose }) {
               <p>Your rating is: {rating}</p>
               <div className="stars-container">{renderStars()}</div>
             </div>
-              <button onClick={createRev} className="add-review-btn">
-                Save
-              </button>
-
+            <button onClick={createRev} className="add-review-btn">
+              Save
+            </button>
           </div>
         </div>
       </div>

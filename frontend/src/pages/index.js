@@ -6,4 +6,12 @@ import Search from "./SearchPage/SearchPage";
 import UserComponent from "./UserPage/UserComponent";
 import Wishlist from "./Wishlist/Wishlist";
 
-export {Home, CategoryProduct, ProductSingle, Cart, Search, UserComponent,Wishlist};
+export {
+  Home,
+  CategoryProduct,
+  ProductSingle,
+  Cart,
+  Search,
+  UserComponent,
+  Wishlist,
+};

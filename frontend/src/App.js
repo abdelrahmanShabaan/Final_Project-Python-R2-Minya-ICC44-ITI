@@ -34,7 +34,6 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/search/:searchTerm" element={<Search />} />
             <Route path="/ProductPage" element={<ProductPage />} />
-
           </Routes>
 
           <Footer />

@@ -20,7 +20,6 @@ import CartMessage from "../../components/CartMessage/CartMessage";
 import Rev from "../../components/reviews/reviews";
 import Popup from "../../components/Popup/Popup"; // Import the Popup component
 
-
 const ProductDetailsPage = () => {
   // param of id
   const { id } = useParams();
@@ -172,12 +171,9 @@ const ProductDetailsPage = () => {
                 </div>
 
                 <div className="your-store-product-info flex align-center flex-wrap fs-14">
-                    <span
-                      className="text-orange fw-5"
-                      style={{ color: "black" }}
-                    >
-                      Rating:
-                    </span>
+                  <span className="text-orange fw-5" style={{ color: "black" }}>
+                    Rating:
+                  </span>
                   <div className="your-store-rating">
                     {renderStars(product?.rating)}
                   </div>
@@ -262,16 +258,20 @@ const ProductDetailsPage = () => {
                   <button type="button" className="your-store-buy-now-btn mx-3">
                     <span className="your-store-buy-now-text">Buy Now</span>
                   </button>
-                  {sessionStorage.getItem("login") !== null &&
-                    <button type="button" className="your-popup-btn" onClick={togglePopup}>
-                    Add Rating and Review
-                  </button>}
+                  {sessionStorage.getItem("login") !== null && (
+                    <button
+                      type="button"
+                      className="your-popup-btn"
+                      onClick={togglePopup}
+                    >
+                      Add Rating and Review
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-                  <Rev />
-
+          <Rev />
         </div>
       </div>
 
