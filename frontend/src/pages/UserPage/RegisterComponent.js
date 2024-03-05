@@ -1,7 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useState } from "react";
-import Alert from "react-bootstrap/Alert";
 import * as yup from "yup";
 import axios from "axios";
 
@@ -32,8 +31,6 @@ const ValidSchema = yup.object().shape({
 });
 
 function RegisterComponent() {
-  let accounts = JSON.parse(localStorage.getItem("Account Storage") || "[]");
-  const [isSucess, setIsSucess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [type, setType] = useState("signUp");
 
@@ -48,23 +45,6 @@ function RegisterComponent() {
       },
       validationSchema: ValidSchema,
 
-      //   onSubmit: (values, { resetForm }) => {
-      //     if(!values.email || !values.name || !values.password || !values.role){
-      //       setIsError(true);
-      //       return;
-      //     }
-      //     if (isValidEmail(values.email)) {
-      //       const user = {...values, id:Date.now}
-      //       accounts.push(user);
-      //       localStorage.setItem("Account Storage", JSON.stringify(accounts));
-      //       resetForm();
-      //       // setIsSucess(true)
-      //     } else {
-      //       setIsSucess(true);
-      //     }
-      //   },
-      // });
-
       onSubmit: async (values, { resetForm }) => {
         if (!values.email || !values.name || !values.password || !values.role) {
           setIsError(true);
@@ -78,7 +58,6 @@ function RegisterComponent() {
             values
           );
           console.log("User registered:", response.data);
-          setIsSucess(true);
           setType("signIn");
           resetForm();
         } catch (error) {
@@ -87,11 +66,6 @@ function RegisterComponent() {
         }
       },
     });
-
-  const isValidEmail = (email) => {
-    const found = accounts.find((item) => item.email === email);
-    return !found;
-  };
 
   return (
     <>
@@ -165,28 +139,10 @@ function RegisterComponent() {
           {errors.role && touched.role && (
             <p className="error">{errors.role}</p>
           )}
-          {/* {isSucess && <p className="error">Account Already Registered.</p>} */}
           {isError && <p className="error">Please, fill all data.</p>}
           <button type="submit" className="button">
             Register
           </button>
-
-          {/* {isSucess && (
-            <>
-              <div class="fluid pt-3">
-                <div className="fluid">
-                  <Alert
-                    variant="danger"
-                    style={{ width: "200px", height: "100px" }}
-                    className="fluid"
-                  >
-                    <Alert.Heading>Not so fast!</Alert.Heading>
-                    <p>Account Already Registered</p>
-                  </Alert>
-                </div>
-              </div>
-            </>
-          )} */}
         </form>
       </div>
     </>

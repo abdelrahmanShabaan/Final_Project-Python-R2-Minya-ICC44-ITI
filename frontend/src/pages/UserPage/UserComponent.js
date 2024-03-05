@@ -16,12 +16,6 @@ const UserComponent = () => {
   useEffect(() => {
     if (sessionStorage.getItem("login") != null) {
       navigate("/");
-    } else {
-      if (localStorage.getItem("Account Storage") != null) {
-        setType("signIn");
-      } else {
-        setType("signUp");
-      }
     }
   }, [navigate]);
   const containerxClass =

@@ -7,7 +7,7 @@ const CartModal = ({ carts }) => {
   return (
     <div className="cart-modal">
       <h5 className="cart-modal-title fw-5 fs-15 font-manrope text-center">
-        Recenlty Added Products
+        Recently Added Products
       </h5>
       {carts?.length > 0 ? (
         <div className="cart-modal-list grid">
@@ -24,7 +24,7 @@ const CartModal = ({ carts }) => {
                   {cart?.title}
                 </div>
                 <div className="cart-modal-item-price text-orange fs-14 fw-6">
-                  {formatPrice(cart?.discountedPrice)}
+                  {formatPrice(cart?.totalPrice)}
                 </div>
               </div>
             );

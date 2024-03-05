@@ -38,7 +38,6 @@ const Navbar = () => {
 
   const handleLogout = () => {
     sessionStorage.clear();
-    localStorage.removeItem("cart");
     navigate("/");
   };
 

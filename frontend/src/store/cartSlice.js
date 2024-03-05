@@ -155,7 +155,9 @@ export const {
   removeFromCart,
 } = cartSlice.actions;
 export const getAllCarts = (state) => state.cart.carts;
-export const getCartItemsCount = (state) => state.cart.itemsCount;
+// export const getCartItemsCount = (state) => state.cart.itemsCount;
+export const getCartItemsCount = (state) =>
+  state.cart.carts.reduce((totalCount, item) => totalCount + item.quantity, 0);
 export const getCartMessageStatus = (state) => state.cart.isCartMessageOn;
 
 export default cartSlice.reducer;
