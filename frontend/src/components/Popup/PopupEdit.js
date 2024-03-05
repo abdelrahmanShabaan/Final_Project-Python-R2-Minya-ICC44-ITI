@@ -5,8 +5,6 @@ import axios from "axios";
 function Popup({ isOpen, onClose, reviewToEdit }) {
   const [revs, setRevs] = useState("");
   const [rating, setRating] = useState(0);
-  const [reviews, setReviews] = useState([]);
-  const [sessionLogin, setSessionLogin] = useState([]);
 
   useEffect(() => {
     if (reviewToEdit) {
@@ -23,8 +21,6 @@ function Popup({ isOpen, onClose, reviewToEdit }) {
   };
 
   const handleSave = async () => {
-    if (reviewToEdit) {
-      // Editing existing review
       try {
         await axios.patch(
           `https://retoolapi.dev/4XjVdq/data/${reviewToEdit.id}`,
@@ -38,30 +34,12 @@ function Popup({ isOpen, onClose, reviewToEdit }) {
       } catch (error) {
         console.error("Error editing review:", error);
       }
-    } else {
-      // Creating new review
-      try {
-        await axios.post("https://retoolapi.dev/4XjVdq/data", {
-          rate: rating,
-          reviews: revs,
-          // Assuming sessionLogin is available
-          fName: sessionLogin[0].fullname,
-          name: sessionLogin[0].name,
-        });
-        console.log("Post successful");
-        handleClose();
-      } catch (error) {
-        console.error("Error posting review:", error);
-      }
-    }
   };
 
-  // Function to handle rating selection
   const handleRating = (value) => {
     setRating(value);
   };
 
-  // Function to render stars based on rating
   const renderStars = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
