@@ -1,9 +1,10 @@
 .slider-wrapper {
-  margin-top: 0.5px !important;
+  margin-top: 0.5px;
+
 }
 
 .main-content {
-  min-height: 100vh !important;
+  min-height: 100vh;
 }
 
 .categories .categories-item {
@@ -11,53 +12,51 @@
 }
 
 .categories .categories-item .title-md {
-  margin-bottom: 2.8rem !important;
+  margin-bottom: 2.8rem;
 }
 
 /* Responsive styles */
 @media screen and (max-width: 768px) {
   .slider-wrapper {
-    margin: 8px 0 0 !important; /* Adjusted top margin */
+      margin: 8px 0 0; /* Adjusted top margin */
   }
 
   .categories .categories-item {
-    margin-bottom: 3rem !important;
+      margin-bottom: 3rem !important;
   }
 
   .categories .categories-item .title-md {
-    margin-bottom: 2rem !important;
+      margin-bottom: 2rem;
   }
 }
 
 @media screen and (max-width: 576px) {
   .slider-wrapper {
-    margin: 4px 0 0 !important; /* Adjusted top margin */
+      margin: 4px 0 0; /* Adjusted top margin */
   }
 
   .categories .categories-item {
-    margin-bottom: 2rem !important;
+      margin-bottom: 2rem !important;
   }
 
   .categories .categories-item .title-md {
-    margin-bottom: 1.5rem !important;
+      margin-bottom: 1.5rem;
   }
 }
-
 .categories-item {
-  text-align: center !important;
+  text-align: center;
 }
 
 .categories-item select {
-  width: 30% !important;
-  padding: 0.5rem !important;
-  margin-top: 0.5px !important;
-  text-align: center !important; /* Center align options */
+  width: 30%;
+  padding: 0.5rem;
+  margin-top: 0.5px;
+  text-align: center; /* Center align options */
 }
-
 .categories-item h3 {
-  font-family: sans-serif !important; /* Specify your desired font family */
-  font-size: 2.5rem !important; /* Adjust the font size as needed */
-  font-weight: bold !important; /* Adjust the font weight as needed */
-  color: white !important; /* Adjust the font color as needed */
+  font-family: sans-serif; /* Specify your desired font family */
+  font-size: 2.5rem; /* Adjust the font size as needed */
+  font-weight: bold; /* Adjust the font weight as needed */
+  color: black; /* Adjust the font color as needed */
   /* margin-bottom: 2rem; Adjust the margin bottom as needed */
 }

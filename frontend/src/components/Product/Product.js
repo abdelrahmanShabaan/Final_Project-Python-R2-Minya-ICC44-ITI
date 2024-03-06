@@ -1,15 +1,12 @@
-import React from "react";
+import React from 'react';
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { formatPrice } from "../../utils/helpers";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addToFavorites,
-  removeFromFavorites,
-} from "../../store/actions/ToggleFav";
+import { Link } from 'react-router-dom';
+import {formatPrice} from "../../utils/helpers";
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFavorites, removeFromFavorites } from '../../store/actions/ToggleFav';
 import "./Product.css";
 
-const Product = ({ product }) => {
+const Product = ({product}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
@@ -27,31 +24,37 @@ const Product = ({ product }) => {
       dispatch(addToFavorites(product));
     }
   };
+  
 
-  /**Function rating added ramy with abdelrahman */
-  /** Add function rate ------------- abdelrahman & ramy ------------------- */
+  
 
-  function renderStars(rating) {
-    const maxStars = 5;
-    const roundedRating = Math.round(rating * 2) / 2; // Round to nearest half star
+    /**Function rating added ramy with abdelrahman */
+        /** Add function rate ------------- abdelrahman & ramy ------------------- */
 
-    const stars = [];
+        function renderStars(rating) {
+          const maxStars = 5;
+          const roundedRating = Math.round(rating * 2) / 2; // Round to nearest half star
+        
+          const stars = [];
+        
+          for (let i = 1; i <= maxStars; i++) {
+            if (i <= roundedRating) {
+              stars.push(<span key={i}>&#9733;</span>); // Unicode star character
+            } else {
+              stars.push(<span key={i}>&#9734;</span>); // Unicode empty star character
+            }
+          }
+        
+          return stars;
+        }
 
-    for (let i = 1; i <= maxStars; i++) {
-      if (i <= roundedRating) {
-        stars.push(<span key={i}>&#9733;</span>); // Unicode star character
-      } else {
-        stars.push(<span key={i}>&#9734;</span>); // Unicode empty star character
-      }
-    }
 
-    return stars;
-  }
+
 
   return (
-    <Link to={`/product/${product?.id}`} key={product?.id}>
-      <div className="product-item bg-white">
-        <div className="category">{product?.category}</div>
+    <Link to = {`/product/${product?.id}`} key = {product?.id}>
+      <div className='product-item bg-white'>
+        <div className='category'>{product?.category}</div>
         <button
           className="star-button standard__badge badge "
           onClick={handleToggleFavorites}
@@ -71,49 +74,45 @@ const Product = ({ product }) => {
           )}
         </button>
 
-        <div className="product-item-img img-fluid">
-          <img
-            className="img-cover img-fluid"
-            src={product?.images[0]}
-            alt={product.title}
-          />
+        <div className='product-item-img img-fluid'>
+          <img className='img-cover img-fluid' src = {product?.images[0]} alt = {product.title} />
         </div>
 
-        <div className="product-item-info fs-14">
-          <div className="brand" style={{ height: "40px", fontWeight: "bold" }}>
+        <div className='product-item-info fs-14'>
+
+          <div className='brand' style={{height : '40px', fontWeight: 'bold'}} >
             {/* <span>Brand: </span> */}
-            <span className="fw-8">{product?.brand}</span>
+            <span className='fw-8'>{product?.brand}</span>
           </div>
 
-          <div className="title py-2" style={{ height: "55px" }}>
+          <div className='title py-2' style={{height : '55px'}}>
             {product?.title}
           </div>
 
-          {/* --------------------- abdelrahman & ramy ---------------------- */}
-          <div
-            className="your-store-rating"
-            style={{ justifyContent: "center" }}
-          >
-            <span
-              className="text-orange fw-5"
-              style={{ color: "black" }}
-            ></span>
-            {renderStars(product?.rating)}
-          </div>
 
-          <div className="price flex align-center justify-center">
-            <span className="old-price">{formatPrice(product?.price)}</span>
-            <span className="new-price">
+          {/* --------------------- abdelrahman & ramy ---------------------- */}
+              <div className='your-store-rating' style={{  justifyContent: 'center' }}>
+                      <span className='text-orange fw-5' style={{color: 'black'}}></span>
+                      {renderStars(product?.rating)}
+              </div>
+              
+
+        
+          <div className='price flex align-center justify-center'>
+            <span className='old-price'>
+              {formatPrice(product?.price)}
+            </span>
+            <span className='new-price'>
               {formatPrice(product?.discountedPrice)}
             </span>
-            <span className="discount fw-6">
+            <span className='discount fw-6'>
               ({product?.discountPercentage}%)
             </span>
           </div>
         </div>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

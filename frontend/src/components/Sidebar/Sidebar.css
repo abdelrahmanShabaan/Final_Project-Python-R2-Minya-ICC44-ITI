@@ -1,58 +1,58 @@
 .sidebar {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 300px !important;
-  height: 100% !important;
-  background-color: #fff !important;
-  box-shadow: rgba(0, 0, 0, 0.1) 1.95px 1.95px 7px !important;
-  padding: 2rem !important;
-  transform: translateX(-100%) !important;
-  z-index: 1000 !important;
-  transition: all 300ms ease-in-out !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 1.95px 1.95px 7px;
+  padding: 2rem;
+  transform: translateX(-100%);
+  z-index: 1000;
+  transition: all 300ms ease-in-out;
 }
 .sidebar .cat-title {
-  padding-bottom: 1rem !important;
+  padding-bottom: 1rem;
 }
 .sidebar .sidebar-hide-btn {
-  position: absolute !important;
-  right: 2rem !important;
-  transition: all 300ms ease-in-out !important;
+  position: absolute;
+  right: 2rem;
+  transition: all 300ms ease-in-out;
 }
 .sidebar .sidebar-hide-btn:hover {
-  color: #1d2b3c !important;
+  color: #1d2b3c;
 }
 .sidebar .cat-list {
-  overflow-y: scroll !important;
-  height: calc(100vh - 60px) !important;
+  overflow-y: scroll;
+  height: calc(100vh - 60px);
 }
 .sidebar .cat-list li {
-  padding: 0.8rem 0 !important;
-  margin-right: 1.2rem !important;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1) !important;
+  padding: 0.8rem 0;
+  margin-right: 1.2rem;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
 }
 .sidebar .cat-list li .cat-list-link {
-  font-size: 14px !important;
-  font-family: "Manrope", sans-serif !important;
-  letter-spacing: 0.3px !important;
-  transition: all 300ms ease-in-out !important;
+  font-size: 14px;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0.3px;
+  transition: all 300ms ease-in-out;
 }
 .sidebar .cat-list li .cat-list-link:hover {
-  color: #1d2b3c !important;
-  margin-left: 10px !important;
+  color: #1d2b3c;
+  margin-left: 10px;
 }
 .sidebar .cat-list::-webkit-scrollbar {
-  width: 5px !important;
+  width: 5px;
 }
 .sidebar .cat-list::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1) !important;
-  border-radius: 10px !important;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 .sidebar .cat-list::-webkit-scrollbar-thumb {
-  border-radius: 10px !important;
-  background-color: #1d2b3c !important;
-  outline: 1px solid #a16bed !important;
+  border-radius: 10px;
+  background-color: #1d2b3c;
+  outline: 1px solid #a16bed;
 }
 .hide-sidebar {
-  transform: translateX(0) !important;
+  transform: translateX(0);
 }
