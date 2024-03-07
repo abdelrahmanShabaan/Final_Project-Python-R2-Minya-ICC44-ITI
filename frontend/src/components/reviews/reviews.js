@@ -93,10 +93,13 @@ export default function Rev(props) {
 
   return (
     <div className="rev-card-container">
+      <div className="your-store-title fs-20 fw-5">
+        Product Ratings & Reviews
+      </div>
       {currentReviews.map((rev) => (
         <div className="rev-item" key={rev.id}>
           <div className="d-flex gap-1">
-            <div>
+            <div className="reviews">
               <p className="m-0 your-store-rating">
                 {rev.name} {renderStars(rev.rate)}
               </p>

@@ -191,10 +191,9 @@ const ProductDetailsPage = () => {
               <div className="product-details font-manrope">
                 <div className="your-store-title fs-20 fw-5">
                   {product?.title}
-                </div>
 
                   <button
-                    className="badge"
+                    className="badges"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     onClick={handleToggleFavorites}
@@ -221,6 +220,7 @@ const ProductDetailsPage = () => {
                       />
                     )}
                   </button>
+                </div>
                   
                 <div>
                   <p className="your-store-para fw-3 fs-15">
