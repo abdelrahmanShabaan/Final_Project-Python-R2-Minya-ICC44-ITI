@@ -68,7 +68,7 @@ const ProductPage = () => {
             </div>
             <div className='categories-item'>
               <div className='title-md'>
-                <h3 style={{ color: 'black' }}>Filtered Products</h3>
+                <h3 style={{ color: 'white' }}>Filtered Products</h3>
               </div>
               {productStatus === STATUS.LOADING ? <Loader /> : <ProductList products={getProductsByCategory()} />}
             </div>

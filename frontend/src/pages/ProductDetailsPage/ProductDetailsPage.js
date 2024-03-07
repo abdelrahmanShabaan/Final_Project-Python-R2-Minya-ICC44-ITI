@@ -18,7 +18,11 @@ import {
 } from "../../store/cartSlice";
 import CartMessage from "../../components/CartMessage/CartMessage";
 import Rev from "../../components/reviews/reviews";
-import Popup from "../../components/Popup/Popup"; // Import the Popup component
+import Popup from "../../components/Popup/Popup";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../store/actions/ToggleFav";
 
 const ProductDetailsPage = () => {
   // param of id
@@ -30,6 +34,7 @@ const ProductDetailsPage = () => {
   // useSelector
   const product = useSelector(getProductSingle);
   const productSingleStatus = useSelector(getSingleProductStatus);
+  const favorites = useSelector((state) => state.favorites);
 
   // use state
   const [quantity, setQuantity] = useState(1);
@@ -37,6 +42,29 @@ const ProductDetailsPage = () => {
   const cartMessageStatus = useSelector(getCartMessageStatus);
   const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
   const [sessionLogin, setSessionLogin] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const isMovieInFavorites = () => {
+    return favorites.some((favMovie) => favMovie.id === product?.id);
+  };
+
+  const handleToggleFavorites = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isMovieInFavorites()) {
+      dispatch(removeFromFavorites(product?.id));
+    } else {
+      dispatch(addToFavorites(product));
+    }
+  };
 
   // getting single product
   useEffect(() => {
@@ -164,6 +192,36 @@ const ProductDetailsPage = () => {
                 <div className="your-store-title fs-20 fw-5">
                   {product?.title}
                 </div>
+
+                  <button
+                    className="badge"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={handleToggleFavorites}
+                  >
+                    {isMovieInFavorites() ? (
+                      <img
+                        src={
+                          isHovered
+                            ? "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/2048px-Empty_Star.svg.png"
+                            : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/754px-Star_full.svg.png"
+                        }
+                        alt="Filled Star"
+                        height={24}
+                      />
+                    ) : (
+                      <img
+                        src={
+                          isHovered
+                            ? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/754px-Star_full.svg.png"
+                            : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/2048px-Empty_Star.svg.png"
+                        }
+                        alt="Empty Star"
+                        height={24}
+                      />
+                    )}
+                  </button>
+                  
                 <div>
                   <p className="your-store-para fw-3 fs-15">
                     {product?.description}

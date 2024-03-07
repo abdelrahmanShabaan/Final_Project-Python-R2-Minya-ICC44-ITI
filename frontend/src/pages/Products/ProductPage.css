@@ -13,12 +13,12 @@
 
 .categories .categories-item .title-md {
   margin-bottom: 2.8rem;
+  background-color: #1d2b3c;
 }
 
-/* Responsive styles */
 @media screen and (max-width: 768px) {
   .slider-wrapper {
-      margin: 8px 0 0; /* Adjusted top margin */
+      margin: 8px 0 0;
   }
 
   .categories .categories-item {
@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 576px) {
   .slider-wrapper {
-      margin: 4px 0 0; /* Adjusted top margin */
+      margin: 4px 0 0;
   }
 
   .categories .categories-item {
@@ -51,12 +51,10 @@
   width: 30%;
   padding: 0.5rem;
   margin-top: 0.5px;
-  text-align: center; /* Center align options */
+  text-align: center;
 }
 .categories-item h3 {
-  font-family: sans-serif; /* Specify your desired font family */
-  font-size: 2.5rem; /* Adjust the font size as needed */
-  font-weight: bold; /* Adjust the font weight as needed */
-  color: black; /* Adjust the font color as needed */
-  /* margin-bottom: 2rem; Adjust the margin bottom as needed */
+  font-family: sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
 }

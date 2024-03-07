@@ -389,3 +389,7 @@
 .your-popup-btn:hover {
   background-color: #3e526b !important;
 }
+
+.badge:hover {
+  transform: scale(1.1);
+}

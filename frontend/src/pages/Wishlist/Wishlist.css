@@ -1,0 +1,10 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 65px;
+}
+
+.product-item {
+  flex: 0 0 calc(50% - 20px); /* Adjust as needed */
+  margin: 10px; /* Increase the margin to increase spacing between products */
+}

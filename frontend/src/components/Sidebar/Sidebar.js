@@ -28,6 +28,17 @@ const Sidebar = () => {
   const applyFilters = () => {
     // Logic to apply filters to product listing
     // Dispatch action or update state accordingly
+    const filters = {
+      color: selectedColor,
+      priceRange: selectedPriceRange,
+      brand: selectedBrand,
+      size: selectedSize,
+      rating: selectedRating,
+      specialOffers,
+      discounts,
+      freeShipping
+    };
+    console.log("Applied Filters:", filters);
   };
 
   return (
