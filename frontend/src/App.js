@@ -16,6 +16,14 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
 import store from "./store/store";
 import { Provider } from "react-redux";
+import SuccessPage from "./pages/CartPage/SuccessPage";
+import CancelPage from "./pages/CartPage/CancelPage";
+import CheckoutPage from "./pages/CartPage/CheckoutPage";
+import SellerOrderPage from "./pages/SellerOrderPage/SellerOrderPage";
+// import ShowBuyerProducts from "./pages/BuyersPage/Show Buyer Product/ShowBuyerProducts";
+// import HomePanelBuyers from "./pages/BuyersPage/Home Panel/HomePanelBuyers";
+// import AddBuyerProduct from "./pages/BuyersPage/Add Buyer Products/AddBuyerProduct";
+// import EditBuyerProducts from "./pages/BuyersPage/Edit Buyer Products/EditBuyerProducts";
 
 function App() {
   return (
@@ -30,10 +38,18 @@ function App() {
             <Route path="/product/:id" element={<ProductSingle />} />
             <Route path="/category/:category" element={<CategoryProduct />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/userx" element={<UserComponent />} />
+            <Route path="/user" element={<UserComponent />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/search/:searchTerm" element={<Search />} />
             <Route path="/ProductPage" element={<ProductPage />} />
+            <Route exact path="/success" component={SuccessPage} />
+            <Route exact path="/cancel" component={CancelPage} />
+            <Route path="/CheckoutPage" element={<CheckoutPage />} />
+            <Route path="/SellerOrderPage" element={<SellerOrderPage />} />
+            {/* <Route path="/HomePanelBuyers" element={<HomePanelBuyers />} />
+            <Route path="/ShowBuyerProducts" element={<ShowBuyerProducts />} />
+            <Route path="/AddBuyerProduct" element={<AddBuyerProduct />} />
+            <Route path="/EditBuyerProducts/:id" element={<EditBuyerProducts />} /> */}
           </Routes>
 
           <Footer />

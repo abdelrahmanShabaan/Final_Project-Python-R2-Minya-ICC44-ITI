@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +9,6 @@ import {
 import "./Product.css";
 
 const Product = ({ product }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const [isHovered, setIsHovered] = useState(false);
