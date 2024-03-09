@@ -9,3 +9,4 @@ export const removeFromFavorites = (id) => ({
 });
 
 export const getFavorites = (state) => state.favorites;
+export const getFavoritesCount = (state) => state.favorites.favoritesCount;

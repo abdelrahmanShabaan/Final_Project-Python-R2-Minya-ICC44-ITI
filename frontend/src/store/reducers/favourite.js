@@ -24,4 +24,9 @@ const favoritesReducer = (state = initialState, action) => {
       return state;
   }
 };
+export const getFavoritesCount = (state) => state.favorites.favoritesCount;
+
+
 export default favoritesReducer;
+
+

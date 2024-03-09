@@ -10,12 +10,15 @@ import {
   getCartTotal,
 } from "../../store/cartSlice";
 import CartModal from "../CartModal/CartModal";
+import { getFavoritesCount } from "../../store/actions/ToggleFav";
+
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
   const carts = useSelector(getAllCarts);
   const itemsCount = useSelector(getCartItemsCount);
+  const favoritesCount = useSelector(getFavoritesCount);
   const [searchTerm, setSearchTerm] = useState("");
   const [isSidebarVisible, setSidebarVisible] = useState(false);
   const navigate = useNavigate();
@@ -119,14 +122,16 @@ const Navbar = () => {
         <div className="navbar-cart flex align-center">
           <Link to="/cart" className="cart-btn">
             <i className="fa-solid fa-cart-shopping"></i>
-            <div className="cart-items-value">{itemsCount}</div>
+            {itemsCount > 0 && (
+              <div className="cart-items-value">{itemsCount}</div>
+            )}
             <CartModal carts={carts} />
           </Link>
         </div>
 
         {isUserLoggedIn && (
           <div className="navbar-cart flex align-center">
-            <Link to="/userx" className="cart-btn">
+            <Link to="/user" className="cart-btn">
               <i className="fa-solid fa-user"></i>
             </Link>
           </div>
@@ -135,15 +140,21 @@ const Navbar = () => {
         {!isUserLoggedIn && (
           <div className="navbar-cart flex align-center">
             <a href="#" onClick={handleLogout}>
-              {" "}
-              <i class="fa-solid fa-right-from-bracket"></i>{" "}
+              <i class="fa-solid fa-right-from-bracket"></i>
             </a>
           </div>
         )}
 
-        <div className="navbar-cart flex align-center">
+        {/* <div className="navbar-cart flex align-center">
           <Link to="/wishlist" className="cart-btn">
             <i class="fa-solid fa-hand-holding-heart"></i>
+          </Link> */}
+          <div className="navbar-cart flex align-center">
+          <Link to="/wishlist" className="cart-btn">
+            <i className="fa-solid fa-hand-holding-heart"></i>
+            {favoritesCount > 0 && (
+              <div className="cart-items-value">{favoritesCount}</div>
+            )}
           </Link>
         </div>
       </div>

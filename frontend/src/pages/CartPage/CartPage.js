@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { shopping_cart } from "../../utils/images";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
+import { useNavigate } from 'react-router-dom';
 import {
   getAllCarts,
   removeFromCart,
@@ -16,8 +17,19 @@ import {
 const CartPage = () => {
   const dispatch = useDispatch();
   const carts = useSelector(getAllCarts);
-  const { totalAmount } = useSelector((state) => state.cart);
+  const { itemsCount, totalAmount } = useSelector((state) => state.cart);
   const itemsCounts = useSelector(getCartItemsCount);
+  const navigate = useNavigate();
+  const handleCheckout = () => {
+    const queryParams = {
+      itemsCount,
+      totalAmount,
+      carts: encodeURIComponent(JSON.stringify(carts)),
+    };
+
+    const queryString = new URLSearchParams(queryParams).toString();
+    navigate(`/CheckoutPage?${queryString}`);
+  };
 
   if (carts.length === 0) {
     return (
@@ -158,6 +170,7 @@ const CartPage = () => {
               <button
                 type="button"
                 className="checkout-btn text-white bg-orange fs-16"
+                onClick={handleCheckout}
               >
                 Check Out
               </button>
