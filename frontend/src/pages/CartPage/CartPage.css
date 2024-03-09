@@ -1,0 +1,111 @@
+.empty-cart {
+  min-height: 60vh !important;
+}
+.empty-cart img {
+  width: 120px !important;
+  margin-bottom: 1rem !important;
+}
+.empty-cart .shopping-btn {
+  padding: 0.65rem 2.8rem !important;
+  margin-top: 1.6rem !important;
+  border: 1px solid #1d2b3c !important;
+  transition: all 300ms ease-in-out !important;
+}
+.empty-cart .shopping-btn:hover {
+  background-color: transparent !important;
+  color: #1d2b3c !important;
+}
+.cart {
+  overflow-x: scroll !important;
+  padding-top: 2rem !important;
+  min-height: 85vh !important;
+}
+.cart::-webkit-scrollbar {
+  height: 5px !important;
+}
+.cart::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 10px !important;
+}
+.cart::-webkit-scrollbar-thumb {
+  border-radius: 10px !important;
+  background-color: #ff774d !important;
+  outline: 1px solid #a16bed !important;
+}
+.cart .container {
+  padding: 0 !important;
+}
+.cart .cart-ctable {
+  min-width: 1000px !important;
+}
+.cart .cart-ctable .cart-ctr {
+  grid-template-columns: 1fr 4fr 2fr 2fr 2fr 2fr !important;
+  min-height: 40px !important;
+  border-bottom: 1px solid #f5f5f5 !important;
+  display: grid !important;
+  align-items: center !important;
+}
+.cart .cart-ctable .cart-chead {
+  margin-bottom: 2rem !important;
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
+  box-shadow: rgba(60, 64, 67, 0.01) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.01) 0px 1px 3px 1px !important;
+  border-radius: 3px !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+.cart .cart-ctable .cart-cbody {
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
+  box-shadow: rgba(60, 64, 67, 0.01) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.01) 0px 1px 3px 1px !important;
+  border-radius: 3px !important;
+  font-size: 14.5px !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+.cart .cart-ctable .delete-btn {
+  font-size: 14px !important;
+  transition: all 300ms ease-in-out !important;
+}
+.cart .cart-ctable .delete-btn:hover {
+  color: #dc3545 !important;
+}
+.cart .cart-ctable .qty-change .qty-decrease,
+.cart .cart-ctable .qty-change .qty-increase {
+  font-size: 13px !important;
+  width: 28px !important;
+  height: 28px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+.cart .cart-ctable .qty-change .qty-value {
+  width: 36px !important;
+  height: 28px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+.cart .cart-ctable .cart-cfoot {
+  margin-top: 2rem !important;
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
+}
+.cart .cart-ctable .cart-cfoot .total-txt {
+  margin-right: -1rem !important;
+}
+.cart .cart-ctable .cart-cfoot .clear-cart-btn {
+  border: 1px solid #dc3545 !important;
+  padding: 0.7rem 1rem !important;
+  transition: all 300ms ease-in-out !important;
+}
+.cart .cart-ctable .cart-cfoot .clear-cart-btn:hover {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+.cart .cart-ctable .cart-cfoot .checkout-btn {
+  padding: 0.8rem 2.8rem !important;
+  margin-top: 0.7rem !important;
+}
+
+.cart-modal-item-img {
+  width: 60px !important;
+  height: 60px !important;
+}

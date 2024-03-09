@@ -1,0 +1,34 @@
+.sort_dropdown__container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.sort_dropdown__container ul {
+  width: 100% !important;
+  max-width: 200px !important;
+  min-width: 200px !important;
+  padding: 0.5rem;
+}
+
+.sort_dropdown__container ul li {
+  margin: 0.25rem 0 0.25rem 0.25rem;
+  padding: 0.2rem;
+}
+
+li[role="button"]:hover {
+  background: #e2e2e2 !important;
+}
+
+.sort__dropdown li {
+  margin: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .sort_dropdown__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
