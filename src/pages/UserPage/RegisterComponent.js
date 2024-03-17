@@ -54,7 +54,7 @@ function RegisterComponent() {
 
         try {
           const response = await axios.post(
-            "https://retoolapi.dev/dvbrl0/users",
+            "http://127.0.0.1:8000/user/",
             values
           );
           console.log("User registered:", response.data);
