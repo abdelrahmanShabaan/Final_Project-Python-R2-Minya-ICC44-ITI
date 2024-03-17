@@ -1,0 +1,22 @@
+
+
+{
+  "id": 9,
+  "title": "Infinix INBOOK",
+  "description": "Infinix Inbook X1 Ci3 10th 8GB...",
+  "price": 1099,
+  "discountPercentage": 11.83,
+  "rating": 4.54,
+  "stock": 96,
+  "brand": "Infinix",
+  "category": "laptops",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+  "images": [
+    "https://cdn.dummyjson.com/product-images/9/1.jpg",
+    "https://cdn.dummyjson.com/product-images/9/2.png",
+    "https://cdn.dummyjson.com/product-images/9/3.png",
+    "https://cdn.dummyjson.com/product-images/9/4.jpg",
+    "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+  ]
+}
+

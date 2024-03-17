@@ -40,7 +40,7 @@ const LoginComponent = () => {
       onSubmit: async (values) => {
         try {
           const response = await axios.get(
-            `https://retoolapi.dev/dvbrl0/users?email=${values.email}&password=${values.password}`
+            `http://127.0.0.1:8000/user/?email=${values.email}&password=${values.password}`
           );
           if (response.data.length > 0) {
             const user = response.data[0];

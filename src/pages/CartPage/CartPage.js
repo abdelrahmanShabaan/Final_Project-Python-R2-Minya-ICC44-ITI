@@ -74,6 +74,9 @@ const CartPage = () => {
               <div className="cart-cth">
                 <span className="cart-ctxt">Total Price</span>
               </div>
+              <div className='cart-cth'>
+                <span className='cart-ctxt'>Actions</span>
+              </div>
             </div>
           </div>
 
@@ -139,6 +142,11 @@ const CartPage = () => {
                     <span className="cart-ctxt text-orange fw-5">
                       {formatPrice(cart?.totalPrice)}
                     </span>
+                  </div>
+
+                  
+                  <div className='cart-ctd'>
+                    <button type = "button" className='delete-btn text-dark' onClick={() => dispatch(removeFromCart(cart?.id))}>Delete</button>
                   </div>
                 </div>
               );
