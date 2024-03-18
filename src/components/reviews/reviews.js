@@ -16,7 +16,7 @@ export default function Rev(props) {
 
   const loadData = async () => {
     try {
-      const res = await axios.get("https://retoolapi.dev/4XjVdq/data");
+      const res = await axios.get("http://127.0.0.1:8000/review/");
       setReviews(res.data);
     } catch (error) {
       console.error("Error loading data:", error);
@@ -52,7 +52,7 @@ export default function Rev(props) {
 
   const deleteRev = async (id) => {
     try {
-      await axios.delete(`https://retoolapi.dev/4XjVdq/data/${id}`);
+      await axios.delete(`http://127.0.0.1:8000/review/${id}/`);
 
       loadData();
       console.log("Delete successful");
@@ -63,7 +63,7 @@ export default function Rev(props) {
 
   const editRev = async (id) => {
     try {
-      await axios.patch(`https://retoolapi.dev/4XjVdq/data/${id}`, {
+      await axios.patch(`http://127.0.0.1:8000/review/${id}/`, {
         reviews: editedReviewText,
       });
 
