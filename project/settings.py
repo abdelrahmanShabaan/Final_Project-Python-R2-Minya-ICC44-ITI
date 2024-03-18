@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'reviews',
+    # 'products',
     # New Commit
     'corsheaders',
 ]
