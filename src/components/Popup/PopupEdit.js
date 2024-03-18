@@ -23,7 +23,7 @@ function Popup({ isOpen, onClose, reviewToEdit }) {
   const handleSave = async () => {
       try {
         await axios.patch(
-          `https://retoolapi.dev/4XjVdq/data/${reviewToEdit.id}`,
+          `http://127.0.0.1:8000/review/${reviewToEdit.id}/`,
           {
             reviews: revs,
             rate: rating,

@@ -18,7 +18,7 @@ function Popup({ isOpen, onClose }) {
 
   const createRev = async () => {
     try {
-      await axios.post("https://retoolapi.dev/4XjVdq/data", {
+      await axios.post("http://127.0.0.1:8000/review/", {
         rate: rating,
         reviews: revs,
         name: sessionLogin.name,
@@ -34,7 +34,7 @@ function Popup({ isOpen, onClose }) {
 
   const loadData = async () => {
     try {
-      const res = await axios.get("https://retoolapi.dev/4XjVdq/data");
+      const res = await axios.get("http://127.0.0.1:8000/review/");
       setReviews(res.data);
     } catch (error) {
       console.error("Error loading data:", error);
