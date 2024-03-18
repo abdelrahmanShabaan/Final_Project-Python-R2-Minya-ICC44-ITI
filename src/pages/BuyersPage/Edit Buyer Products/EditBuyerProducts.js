@@ -1,14 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import SlideBarBuyer from "../Home Panel/SlideBarBuyer";
+import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
 
 function EditBuyerProducts() {
   const { id } = useParams();
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    brand: "",
+    price: "",
+    inventory: "",
+  });
   const [errors, setErrors] = useState({});
-  const [product, setProduct] = useState({});
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State to control success message visibility
   const navigate = useNavigate();
 
   const validateFormData = (data) => {
@@ -30,41 +35,35 @@ function EditBuyerProducts() {
       errors.category = "Category is required";
     }
 
-    if (!data.sellerid || isNaN(data.sellerid)) {
-      errors.sellerid = "Seller ID must be a valid number";
-    }
-
     if (!data.inventory || data.inventory.trim() === "") {
       errors.inventory = "Inventory is required";
-    }
-
-    if (!data.productid || isNaN(data.productid)) {
-      errors.productid = "Product ID must be a valid number";
-    }
-
-    if (!data.customerid || isNaN(data.customerid)) {
-      errors.customerid = "Customer ID must be a valid number";
     }
 
     return errors;
   };
 
-  const handleEditProduct = () => {
+  const handleEditProduct = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
     const validationErrors = validateFormData(formData);
 
     if (Object.keys(validationErrors).length === 0) {
-      axios
-        .put(`https://api-generator.retool.com/Vn5ZGU/data/${id}`, formData)
-        .then((response) => {
-          setProduct(response.data);
-          navigate("/HomePanelBuyers");
-        })
-        .catch((error) => {
-          console.error("Error updating product:", error);
-          setErrors({
-            server: "Error updating product. Please try again later.",
-          });
+      try {
+        await axios.put(
+          `https://api-generator.retool.com/u9XTxw/data/${id}`,
+          formData
+        );
+        setShowSuccessMessage(true); // Show success message
+        setTimeout(() => {
+          setShowSuccessMessage(false); // Hide success message after 3 seconds
+          navigate("/Dashboard");
+        }, 3000);
+      } catch (error) {
+        console.error("Error updating product:", error);
+        setErrors({
+          server: "Error updating product. Please try again later.",
         });
+      }
     } else {
       setErrors(validationErrors);
     }
@@ -74,9 +73,8 @@ function EditBuyerProducts() {
     const getProduct = async () => {
       try {
         const response = await axios.get(
-          `https://api-generator.retool.com/Vn5ZGU/data/${id}`
+          `https://api-generator.retool.com/u9XTxw/data/${id}`
         );
-        setProduct(response.data);
         setFormData(response.data); // Set formData to populate input fields
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -105,18 +103,13 @@ function EditBuyerProducts() {
           OpenSidebar={OpenSidebar}
         />
 
-        <form className="formclss">
-          <label>
-            ID:
-            <input type="text" name="id" value={product.id} readOnly />
-          </label>
-          <br />
+        <form className="formclss" onSubmit={handleEditProduct}>
           <label>
             Name:
             <input
               type="text"
               name="name"
-              placeholder={product.name}
+              value={formData.name}
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
@@ -128,7 +121,6 @@ function EditBuyerProducts() {
             Brand:
             <input
               type="text"
-              placeholder="brand"
               name="brand"
               value={formData.brand}
               onChange={(e) =>
@@ -143,7 +135,7 @@ function EditBuyerProducts() {
             <input
               type="text"
               name="price"
-              placeholder={product.price}
+              value={formData.price}
               onChange={(e) =>
                 setFormData({ ...formData, price: e.target.value })
               }
@@ -152,37 +144,11 @@ function EditBuyerProducts() {
           </label>
           <br />
           <label>
-            Category:
-            <input
-              type="text"
-              name="category"
-              placeholder={product.category}
-              onChange={(e) =>
-                setFormData({ ...formData, category: e.target.value })
-              }
-            />
-            {displayError("category")}
-          </label>
-          <br />
-          <label>
-            Seller ID:
-            <input
-              type="number"
-              name="sellerid"
-              placeholder={product.sellerid}
-              onChange={(e) =>
-                setFormData({ ...formData, sellerid: e.target.value })
-              }
-            />
-            {displayError("sellerid")}
-          </label>
-          <br />
-          <label>
             Inventory:
             <input
               type="text"
               name="inventory"
-              placeholder={product.inventory}
+              value={formData.inventory}
               onChange={(e) =>
                 setFormData({ ...formData, inventory: e.target.value })
               }
@@ -190,41 +156,18 @@ function EditBuyerProducts() {
             {displayError("inventory")}
           </label>
           <br />
-          <label>
-            Product ID:
-            <input
-              type="number"
-              name="productid"
-              placeholder={product.productid}
-              onChange={(e) =>
-                setFormData({ ...formData, productid: e.target.value })
-              }
-            />
-            {displayError("productid")}
-          </label>
-          <br />
-          <label>
-            Customer ID:
-            <input
-              type="number"
-              name="customerid"
-              placeholder={product.customerid}
-              onChange={(e) =>
-                setFormData({ ...formData, customerid: e.target.value })
-              }
-            />
-            {displayError("customerid")}
-          </label>
-          <br />
-          <button
-            type="button"
-            className="add-product-button"
-            onClick={handleEditProduct}
-          >
-            Update Product
+          <button type="submit" className="add-product-button">
+            Edit Product
           </button>
         </form>
       </div>
+      {showSuccessMessage && (
+        <div className="popuppp">
+          <div className="popuppp-content">
+            <p>Product edited successfully!</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }

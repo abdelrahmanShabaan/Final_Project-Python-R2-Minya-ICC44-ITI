@@ -71,7 +71,7 @@ const LoginComponent = () => {
     if (role === "customer") {
       navigate("/");
     } else if (role === "seller") {
-      navigate("/dashboard");
+      navigate("/Dashboard");
     }
   };
 
