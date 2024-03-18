@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaCreditCard, FaRegEnvelope, FaHome, FaUser } from 'react-icons/fa';
+import axios from 'axios';
 import "./CheckoutPage.css"
 
 const CheckoutPage = () => {
@@ -30,6 +31,12 @@ const CheckoutPage = () => {
       setCarts(JSON.parse(decodeURIComponent(cartsString)));
     }
   }, [location.search]);
+
+  useEffect(() => {
+    // Retrieve name from sessionStorage
+    const name = sessionStorage.getItem('login');
+    setFormData(prevData => ({ ...prevData, name }));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,14 +69,24 @@ const CheckoutPage = () => {
     setFormErrors(errors);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = Object.values(formErrors).every(error => error === '');
     if (isValid) {
-      // Here you would handle the submission of the form, e.g., send the data to your backend for processing
-      console.log('Form submitted:', formData);
-      // After successful submission, navigate to the confirmation page
-      navigate('/confirmation');
+      try {
+        const orders = carts.map(cart => ({
+          price: cart.totalPrice,
+          stock: cart.quantity,
+          status: 'pending',
+          quantity: cart.quantity,
+          id: cart.id
+        }));
+        await axios.post('https://retoolapi.dev/v5dw0Z/orders', orders);
+        // After successful submission, navigate to the confirmation page
+        navigate('/confirmation');
+      } catch (error) {
+        console.error('Error submitting order:', error);
+      }
     } else {
       console.log('Form has errors. Please fix them before submitting.');
     }

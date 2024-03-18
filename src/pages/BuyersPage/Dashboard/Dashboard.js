@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useAuth } from '../context/AuthContext'
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
@@ -21,7 +22,9 @@ import {
 import SlideBarBuyer from "./SlideBarBuyer";
 import "./dashboard.css";
 
+
 const Dashboard = () => {
+  const { isLoggedIn, loginContext, logoutContext, roleContext, setRoleCustomer, setRoleSeller } = useAuth();
   const data = [
     {
       name: "Page A",

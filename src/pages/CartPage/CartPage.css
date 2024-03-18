@@ -39,7 +39,7 @@
   min-width: 1000px !important;
 }
 .cart .cart-ctable .cart-ctr {
-  grid-template-columns: 1fr 4fr 2fr 2fr 2fr 2fr !important;
+  grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 2fr !important;
   min-height: 40px !important;
   border-bottom: 1px solid #f5f5f5 !important;
   display: grid !important;
