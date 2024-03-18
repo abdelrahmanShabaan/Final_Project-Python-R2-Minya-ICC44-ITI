@@ -1,153 +1,141 @@
+/* Sidebar */
 .icon {
-vertical-align: middle;
-line-height: 1px;
-font-size: 20px;
-color: white;
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 20px;
+  color: white;
 }
+
 .icon_header {
-vertical-align: middle;
-line-height: 1px;
-font-size: 26px;
-color: white;
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 26px;
+  color: white;
 }
-.icon, .icon_header {
-margin-right: 5px;
+
+.icon,
+.icon_header {
+  margin-right: 5px;
 }
 
 .close_icon {
-color: red;
-margin-left: 30px;
-margin-top: 10px;
-cursor: pointer;
+  color: red;
+  margin-left: 30px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .grid-containerwa {
-display: grid;
-grid-template-columns: 260px 1fr 1fr 1fr;
-grid-template-rows: 0.2fr 3fr;
-background-color: #1d2634;
-
-grid-template-areas:
-  'sidebar header header header'
-  'sidebar main main main';
-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  background-color: #1d2634;
+  grid-template-areas: 'sidebar header header header' 'sidebar main main main';
+  height: 100vh;
 }
-/* Sidebar  */
+
 #sidebar {
-grid-area: sidebar;
-height: 100%;
-background-color: #263043;
-overflow-y: auto;
-transition: all 0.5s;
--webkit-transition: all 0.5s;
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #263043;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
 }
 
 .sidebar-title {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 15px 30px 0px 30px;
-margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 0px 30px;
+  margin-bottom: 30px;
 }
 
 .sidebar-title > span {
-display: none;
+  display: none;
 }
 
 .sidebar-brand {
-margin-top: 15px;
-font-size: 20px;
-font-weight: 700;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .sidebar-list {
-padding: 0;
-list-style-type: none;
+  padding: 0;
+  list-style-type: none;
 }
 
 .sidebar-list-item {
-padding: 20px 20px 20px 20px;
-font-size: 18px;
+  padding: 20px 20px 20px 20px;
+  font-size: 18px;
 }
 
 .sidebar-list-item:hover {
-background-color: rgba(255, 255, 255, 0.2);
-cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .sidebar-list-item > a {
-text-decoration: none;
-color: #9e9ea4;
+  text-decoration: none;
+  color: #9e9ea4;
 }
 
 .sidebar-responsive {
-display: inline !important;
-position: absolute;
-/*
-we want the z-index of the sidebar higher so that
-the charts are not showing over the sidebar 
-on small screens
-*/
-z-index: 12 !important;
+  display: inline !important;
+  position: absolute;
+  z-index: 12 !important;
 }
-
-/* End Sidebar  */
-
-
 
 /* Medium <= 992px */
-
 @media screen and (max-width: 992px) {
-.grid-container {
-grid-template-columns: 1fr;
-grid-template-rows: 0.2fr 3fr;
-grid-template-areas:
-'header'
-'main';
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas: 'header' 'main';
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
 }
 
-#sidebar {
-display: none;
-}
-
-.menu-icon {
-display: inline;
-}
-
-.sidebar-title > span {
-display: inline;
-}
-}
 /* Small <= 768px */
-
 @media screen and (max-width: 768px) {
-.main-cards {
-grid-template-columns: 1fr;
-gap: 10px;
-margin-bottom: 0;
-}
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
 
-.charts {
-grid-template-columns: 1fr;
-margin-top: 30px;
-}
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
 }
 
 /* Extra Small <= 576px */
-
 @media screen and (max-width: 576px) {
-.hedaer-left {
-display: none;
+  .hedaer-left {
+    display: none;
+  }
 }
-}
 
-
-
-
-/* products table view */
+/* Products table view */
 .product-list-container-buyer {
   margin: 20px;
-  grid-area: main; /* Add this to make the product list take the available space in the grid layout */
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-list-container-buyer h1 {
@@ -159,20 +147,17 @@ display: none;
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
-  table-layout: fixed; /* Add this line to fix the table width */
+  table-layout: fixed;
 }
 
-
-
-
-.product-list-container-buyer th, .product-list-container-buyer td {
+.product-list-container-buyer th,
+.product-list-container-buyer td {
   border: 2px solid #ddd;
   padding: 8px;
   text-align: center;
   background-color: white;
   color: black;
   font-size: 18px;
-
 }
 
 .product-list-container-buyer th {
@@ -190,12 +175,17 @@ display: none;
 /* Define primary button style */
 .primarys-btn {
   margin: 3px;
-  background-color: #007bff;
-  color: #FFFFFF;
-  border: 1px solid #007bff;
+  background-color: #031221;
+  color: #ffffff;
+  border: 1px solid #031221;
   padding: 5px 10px;
-  border-radius: 2px;
+  border-radius: 5px;
   cursor: pointer;
+}
+.primarys-btn:hover {
+  background-color: #ececec;
+  border-color: #ececec;
+  color: #000;
 }
 
 /* Define danger button style */
@@ -206,5 +196,40 @@ display: none;
   border: 1px solid #dc3545;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 5px;
+}
+.dangerssq-btn:hover {
+  background-color: #ececec;
+  border-color: #ececec;
+  color: #000;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #031221;
+  color: #fff;
+}
+
+.pagination button:hover {
+  background-color: rgb(159, 172, 186);
+  color: #fff;
+}
+
+/* Additional border-radius for table */
+.product-list-container-buyer .table-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
 }

@@ -20,10 +20,10 @@ import SuccessPage from "./pages/CartPage/SuccessPage";
 import CancelPage from "./pages/CartPage/CancelPage";
 import CheckoutPage from "./pages/CartPage/CheckoutPage";
 import SellerOrderPage from "./pages/SellerOrderPage/SellerOrderPage";
-// import ShowBuyerProducts from "./pages/BuyersPage/Show Buyer Product/ShowBuyerProducts";
-// import HomePanelBuyers from "./pages/BuyersPage/Home Panel/HomePanelBuyers";
-// import AddBuyerProduct from "./pages/BuyersPage/Add Buyer Products/AddBuyerProduct";
-// import EditBuyerProducts from "./pages/BuyersPage/Edit Buyer Products/EditBuyerProducts";
+import ShowBuyerProducts from "./pages/BuyersPage/Show Buyer Product/ShowBuyerProducts";
+import Dashboard from "./pages/BuyersPage/Dashboard/Dashboard";
+import AddBuyerProduct from "./pages/BuyersPage/Add Buyer Products/AddBuyerProduct";
+import EditBuyerProducts from "./pages/BuyersPage/Edit Buyer Products/EditBuyerProducts";
 
 function App() {
   return (
@@ -46,10 +46,13 @@ function App() {
             <Route exact path="/cancel" component={CancelPage} />
             <Route path="/CheckoutPage" element={<CheckoutPage />} />
             <Route path="/SellerOrderPage" element={<SellerOrderPage />} />
-            {/* <Route path="/HomePanelBuyers" element={<HomePanelBuyers />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/ShowBuyerProducts" element={<ShowBuyerProducts />} />
             <Route path="/AddBuyerProduct" element={<AddBuyerProduct />} />
-            <Route path="/EditBuyerProducts/:id" element={<EditBuyerProducts />} /> */}
+            <Route
+              path="/EditBuyerProducts/:id"
+              element={<EditBuyerProducts />}
+            />
           </Routes>
 
           <Footer />
