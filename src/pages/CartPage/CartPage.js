@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { shopping_cart } from "../../utils/images";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import {
   getAllCarts,
   removeFromCart,
@@ -74,8 +74,8 @@ const CartPage = () => {
               <div className="cart-cth">
                 <span className="cart-ctxt">Total Price</span>
               </div>
-              <div className='cart-cth'>
-                <span className='cart-ctxt'>Actions</span>
+              <div className="cart-cth">
+                <span className="cart-ctxt">Actions</span>
               </div>
             </div>
           </div>
@@ -144,9 +144,14 @@ const CartPage = () => {
                     </span>
                   </div>
 
-                  
-                  <div className='cart-ctd'>
-                    <button type = "button" className='delete-btn text-dark' onClick={() => dispatch(removeFromCart(cart?.id))}>Delete</button>
+                  <div className="cart-ctd">
+                    <button
+                      type="button"
+                      className="delete-btn text-dark"
+                      onClick={() => dispatch(removeFromCart(cart?.id))}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               );
