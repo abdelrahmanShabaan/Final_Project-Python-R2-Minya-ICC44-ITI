@@ -143,7 +143,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# New Commit
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Media files

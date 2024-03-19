@@ -49,8 +49,8 @@ export const fetchAsyncProducts = createAsyncThunk(
   "products/fetch",
   async (limit) => {
     try {
-    const response = await axios.get(`${BASE_URL}products/?limit=${limit}`);
-    return response.data; 
+      const response = await axios.get(`${BASE_URL}products/?limit=${limit}`);
+      return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
       throw error;
@@ -61,13 +61,14 @@ export const fetchAsyncProducts = createAsyncThunk(
 // getting the single product data also
 export const fetchAsyncProductSingle = createAsyncThunk(
   "product-single/fetch",
-  async (id) => {
+  async (id, { rejectWithValue }) => {
     try {
       const response = await axios.get(`${BASE_URL}products/${id}`);
-      return response.data; // Adjust if your API response structure is different
+      console.log("Product fetched successfully", response.data);
+      return response.data;
     } catch (error) {
-      console.error("Error fetching single product:", error);
-      throw error;
+      console.error("Error fetching product:", error);
+      return rejectWithValue(error.response.data);
     }
   }
 );
