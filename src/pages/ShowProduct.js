@@ -3,12 +3,12 @@ import axios from "axios";
 import "./productStyle.css";
 
 function ShowProduct() {
-  const [product, setProduct] = useState({});
+  const [products, setProducts] = useState({});
 
   useEffect(() => {
     axios
-      .get(`https://dummyjson.com/products/2`)
-      .then((res) => setProduct(res.data))
+      .get(`http://127.0.0.1:8000/products/5`)
+      .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -17,27 +17,29 @@ function ShowProduct() {
       <div className="containerw">
         <h1 className="text-center text-dark">Product Details</h1>
         <div className="cards container">
-          {Object.keys(product).length > 0 ? (
+          {Object.keys(products).length > 0 ? (
             <>
-              <img src={product.thumbnail} alt={product.title} />
+              <img src={products.thumbnail} alt={products.title} />
               <div className="cards-body">
-                <h5 className="cards-title">{product.title}</h5>
-                <h5 className="cards-title">{product.description}</h5>
-                <p className="cards-title">Price: ${product.price}</p>
+                <h5 className="cards-title">{products.title}</h5>
+                <h5 className="cards-title">{products.description}</h5>
+                <p className="cards-title">Price: ${products.price}</p>
                 <p className="cards-title">
-                  Discount Percentage: {product.discountPercentage} %
+                  Discount Percentage: {products.discountPercentage} %
                 </p>
-                <p className="cards-title">Brand: {product.brand}</p>
-                <p className="cards-title">Category: {product.category}</p>
+                <p className="cards-title">Brand: {products.brand}</p>
+                <p className="cards-title">Category: {products.category}</p>
                 <div className="thumbnail-container">
-                  {product.images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`Thumbnail ${index}`}
-                      className="thumbnail"
-                    />
-                  ))}
+                  {products.images &&
+                    products.images.length > 0 &&
+                    products.images.map((imgObj, index) => (
+                      <img
+                        key={index}
+                        src={imgObj.image} // Corrected this part
+                        alt={`${products.title} Thumbnail ${index + 1}`}
+                        className="img-cover img-fluid"
+                      />
+                    ))}
                 </div>
               </div>
             </>

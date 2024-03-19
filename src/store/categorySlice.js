@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BASE_URL } from "../utils/apiURL";
 import { STATUS } from "../utils/status";
+import axios from "axios";
 
 const initialState = {
   categories: [],
@@ -43,24 +44,34 @@ const categorySlice = createSlice({
   },
 });
 
+// Async thunk for fetching categories
 export const fetchAsyncCategories = createAsyncThunk(
   "categories/fetch",
   async () => {
-    const response = await fetch(`${BASE_URL}products/categories`);
-    const data = await response.json();
-    return data;
+    try {
+      const response = await axios.get(`${BASE_URL}categories/`); // Ensure the endpoint is correct
+      return response.data; // With Axios, you directly use response.data
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      throw error;
+    }
   }
 );
 
+// Async thunk for fetching products of a specific category
 export const fetchAsyncProductsOfCategory = createAsyncThunk(
   "category-products/fetch",
   async (category) => {
-    const response = await fetch(`${BASE_URL}products/category/${category}`);
-    const data = await response.json();
-    return data.products;
+    try {
+      const response = await axios.get(`${BASE_URL}category/${category}/`); // Adjust the endpoint as needed
+      console.log("Fetched products of category:", response.data); // Log to see what data is returned
+      return response.data.products; // Adjust if the API response structure is different
+    } catch (error) {
+      console.error("Error fetching category products:", error);
+      throw error;
+    }
   }
 );
-
 export const getAllCategories = (state) => state.category.categories;
 export const getAllProductsByCategory = (state) =>
   state.category.categoryProducts;
