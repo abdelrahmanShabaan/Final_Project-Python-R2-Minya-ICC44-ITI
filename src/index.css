@@ -2,6 +2,22 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+
+:root{
+  --body_background: white;
+  --body_color: black;
+  --primary_color: #1d2b3c;
+  --gradient_header: linear-gradient(180deg, #0b1623 0%, #27394f 100%) !important;
+  --link_color: navy;
+}
+
+[data-theme="dark"]{
+  ---body_background: #212529;
+  --body_color: white;
+  --primary_color: #e2d4c3;
+  --link_color: cyan;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
