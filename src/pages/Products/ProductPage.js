@@ -1,3 +1,5 @@
+// ProductPage.js
+
 import React, { useEffect, useState } from 'react';
 import "./ProductPage.css";
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,21 +12,20 @@ import { STATUS } from '../../utils/status';
 const ProductPage = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
+  const products = useSelector(getAllProducts);
+  const productStatus = useSelector(getAllProductsStatus);
+  const [selectedCategory, setSelectedCategory] = useState('0');
 
   useEffect(() => {
     dispatch(fetchAsyncProducts(1000));
   }, [dispatch]);
-
-  const products = useSelector(getAllProducts);
-  const productStatus = useSelector(getAllProductsStatus);
-  const [selectedCategory, setSelectedCategory] = useState('0'); // Changed to string '0'
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
   const getProductsByCategory = () => {
-    if (selectedCategory === '0') { // Changed comparison to string '0'
+    if (selectedCategory === '0') {
       return products;
     } else {
       return products.filter(product => product.category === selectedCategory);
@@ -54,6 +55,18 @@ const ProductPage = () => {
       <div className='main-content bg-whitesmoke'>
         <div className='container'>
           <div className='categories py-5'>
+            {/* Sidebar */}
+            <aside className="sidebar">
+              <div className='cat-title fs-17 text-uppercase fw-6 ls-1h'>All Categories</div>
+              <ul className='cat-list'>
+                {categories.map((category, idx) => (
+                  <li key={idx}>
+                    <a href={`category/${category}`} className='cat-list-link text-capitalize'>{category.replace("-", " ")}</a>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+
             <div className='slider-wrapper' style={{ width: '100%', overflow: 'hidden' }}>
               <img src={carouselImages[currentImageIndex]} alt={`Image ${currentImageIndex + 1}`} style={{ width: '100%', height: 'auto' }} />
             </div>

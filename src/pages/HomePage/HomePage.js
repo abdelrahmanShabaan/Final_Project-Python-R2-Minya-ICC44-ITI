@@ -8,7 +8,7 @@ import { fetchAsyncProducts, getAllProducts, getAllProductsStatus } from '../../
 import Loader from "../../components/Loader/Loader";
 import { STATUS } from '../../utils/status';
 import AboutUsSection from '../../components/About-us';
-// import ProductForm from '../Buyer/ProductForm';
+// import ProductForm from '../../Buyer/ProductForm';
 
 
 const HomePage = () => {
