@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Categories',
     'rest_framework',
     'corsheaders',
+    'order'
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,19 @@ DATABASES = {
 #         'PORT': '5432',
 #     }
 # }
+# <<<<<<< seller-ratio
+# =======
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'easytrade',
+#         'USER': 'ramymedhat',
+#         'PASSWORD': '1234',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+# >>>>>>> main
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
