@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BASE_URL } from "../utils/apiURL";
 import { STATUS } from "../utils/status";
+import axios from "axios";
 
 const initialState = {
   products: [],
@@ -47,19 +48,31 @@ const productSlice = createSlice({
 export const fetchAsyncProducts = createAsyncThunk(
   "products/fetch",
   async (limit) => {
-    const response = await fetch(`${BASE_URL}products?limit=${limit}`);
-    const data = await response.json();
-    return data.products;
+    try {
+      const response = await axios.get(`${BASE_URL}products/?limit=${limit}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+    }
   }
 );
 
 // getting the single product data also
 export const fetchAsyncProductSingle = createAsyncThunk(
   "product-single/fetch",
-  async (id) => {
-    const response = await fetch(`${BASE_URL}products/${id}`);
-    const data = await response.json();
-    return data;
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${BASE_URL}products/${id}/`);
+      console.log("Product fetched successfully", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching product:", error);
+      // Handle the error here
+      return rejectWithValue(
+        error.response?.data || "Error fetching product details"
+      );
+    }
   }
 );
 

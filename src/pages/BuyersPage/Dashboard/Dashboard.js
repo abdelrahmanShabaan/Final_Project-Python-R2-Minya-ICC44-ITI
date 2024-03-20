@@ -22,9 +22,15 @@ import {
 import SlideBarBuyer from "./SlideBarBuyer";
 import "./dashboard.css";
 
-
 const Dashboard = () => {
-  const { isLoggedIn, loginContext, logoutContext, roleContext, setRoleCustomer, setRoleSeller } = useAuth();
+  const {
+    isLoggedIn,
+    loginContext,
+    logoutContext,
+    roleContext,
+    setRoleCustomer,
+    setRoleSeller,
+  } = useAuth();
   const data = [
     {
       name: "Page A",

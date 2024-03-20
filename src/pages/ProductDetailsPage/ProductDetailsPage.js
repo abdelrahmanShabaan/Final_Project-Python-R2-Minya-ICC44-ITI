@@ -69,13 +69,17 @@ const ProductDetailsPage = () => {
   // getting single product
   useEffect(() => {
     dispatch(fetchAsyncProductSingle(id));
+  }, [id, dispatch]);
 
+  // Handle cart message
+  useEffect(() => {
     if (cartMessageStatus) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         dispatch(setCartMessageOff());
       }, 2000);
+      return () => clearTimeout(timer);
     }
-  }, [cartMessageStatus]);
+  }, [cartMessageStatus, dispatch]);
 
   useEffect(() => {
     let sessionLogin = JSON.parse(sessionStorage.getItem("login") || "[]");
@@ -154,22 +158,17 @@ const ProductDetailsPage = () => {
             <div className="product-single-l">
               <div className="product-img ">
                 <div className="product-img-zoom img-fluid">
-                  <img
-                    src={
-                      product
-                        ? product.images
-                          ? product.images[selectedImage]
-                          : ""
-                        : ""
-                    }
-                    alt=""
-                    className="img-cover"
-                  />
+                  {product.images && product.images.length > 0 && (
+                    <img
+                      src={product.images[selectedImage]?.image}
+                      alt=""
+                      className="img-cover"
+                    />
+                  )}
                 </div>
 
                 <div className="product-img-thumbs flex align-center my-2 img-fluid">
-                  {product &&
-                    product.images &&
+                  {product.images &&
                     product.images.map((image, index) => (
                       <div
                         className="thumb-item img-fluid"
@@ -177,7 +176,7 @@ const ProductDetailsPage = () => {
                         onClick={() => handleThumbnailClick(index)}
                       >
                         <img
-                          src={image}
+                          src={image.image}
                           alt=""
                           className="img-cover img-fluid"
                         />
@@ -221,7 +220,7 @@ const ProductDetailsPage = () => {
                     )}
                   </button>
                 </div>
-                  
+
                 <div>
                   <p className="your-store-para fw-3 fs-15">
                     {product?.description}

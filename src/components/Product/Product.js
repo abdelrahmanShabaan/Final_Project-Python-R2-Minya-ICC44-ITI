@@ -94,8 +94,8 @@ const Product = ({ product }) => {
             <img
               src={
                 isHovered
-                ? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/754px-Star_full.svg.png"
-                : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/2048px-Empty_Star.svg.png"
+                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/754px-Star_full.svg.png"
+                  : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/2048px-Empty_Star.svg.png"
               }
               alt="Empty Star"
               height={24}
@@ -106,7 +106,7 @@ const Product = ({ product }) => {
         <div className="product-item-img img-fluid">
           <img
             className="img-cover img-fluid"
-            src={product?.images[0]}
+            src={product?.images[0]?.image}
             alt={product.title}
           />
         </div>
