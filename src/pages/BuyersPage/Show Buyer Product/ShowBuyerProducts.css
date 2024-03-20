@@ -1,235 +1,235 @@
 /* Sidebar */
 .icon {
-  vertical-align: middle;
-  line-height: 1px;
-  font-size: 20px;
-  color: white;
+vertical-align: middle;
+line-height: 1px;
+font-size: 20px;
+color: white;
 }
 
 .icon_header {
-  vertical-align: middle;
-  line-height: 1px;
-  font-size: 26px;
-  color: white;
+vertical-align: middle;
+line-height: 1px;
+font-size: 26px;
+color: white;
 }
 
 .icon,
 .icon_header {
-  margin-right: 5px;
+margin-right: 5px;
 }
 
 .close_icon {
-  color: red;
-  margin-left: 30px;
-  margin-top: 10px;
-  cursor: pointer;
+color: red;
+margin-left: 30px;
+margin-top: 10px;
+cursor: pointer;
 }
 
 .grid-containerwa {
-  display: grid;
-  grid-template-columns: 260px 1fr 1fr 1fr;
-  grid-template-rows: 0.2fr 3fr;
-  background-color: #1d2634;
-  grid-template-areas: 'sidebar header header header' 'sidebar main main main';
-  height: 100vh;
+display: grid;
+grid-template-columns: 260px 1fr 1fr 1fr;
+grid-template-rows: 0.2fr 3fr;
+background-color: #1d2634;
+grid-template-areas: 'sidebar header header header' 'sidebar main main main';
+height: 100vh;
 }
 
 #sidebar {
-  grid-area: sidebar;
-  height: 100%;
-  background-color: #263043;
-  overflow-y: auto;
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
+grid-area: sidebar;
+height: 100%;
+background-color: #263043;
+overflow-y: auto;
+transition: all 0.5s;
+-webkit-transition: all 0.5s;
 }
 
 .sidebar-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px 0px 30px;
-  margin-bottom: 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 30px 0px 30px;
+margin-bottom: 30px;
 }
 
 .sidebar-title > span {
-  display: none;
+display: none;
 }
 
 .sidebar-brand {
-  margin-top: 15px;
-  font-size: 20px;
-  font-weight: 700;
+margin-top: 15px;
+font-size: 20px;
+font-weight: 700;
 }
 
 .sidebar-list {
-  padding: 0;
-  list-style-type: none;
+padding: 0;
+list-style-type: none;
 }
 
 .sidebar-list-item {
-  padding: 20px 20px 20px 20px;
-  font-size: 18px;
+padding: 20px 20px 20px 20px;
+font-size: 18px;
 }
 
 .sidebar-list-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
+background-color: rgba(255, 255, 255, 0.2);
+cursor: pointer;
 }
 
 .sidebar-list-item > a {
-  text-decoration: none;
-  color: #9e9ea4;
+text-decoration: none;
+color: #9e9ea4;
 }
 
 .sidebar-responsive {
-  display: inline !important;
-  position: absolute;
-  z-index: 12 !important;
+display: inline !important;
+position: absolute;
+z-index: 12 !important;
 }
 
 /* Medium <= 992px */
 @media screen and (max-width: 992px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.2fr 3fr;
-    grid-template-areas: 'header' 'main';
-  }
+.grid-container {
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas: 'header' 'main';
+}
 
-  #sidebar {
-    display: none;
-  }
+#sidebar {
+  display: none;
+}
 
-  .menu-icon {
-    display: inline;
-  }
+.menu-icon {
+  display: inline;
+}
 
-  .sidebar-title > span {
-    display: inline;
-  }
+.sidebar-title > span {
+  display: inline;
+}
 }
 
 /* Small <= 768px */
 @media screen and (max-width: 768px) {
-  .main-cards {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 0;
-  }
+.main-cards {
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-bottom: 0;
+}
 
-  .charts {
-    grid-template-columns: 1fr;
-    margin-top: 30px;
-  }
+.charts {
+  grid-template-columns: 1fr;
+  margin-top: 30px;
+}
 }
 
 /* Extra Small <= 576px */
 @media screen and (max-width: 576px) {
-  .hedaer-left {
-    display: none;
-  }
+.hedaer-left {
+  display: none;
+}
 }
 
 /* Products table view */
 .product-list-container-buyer {
-  margin: 20px;
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+margin: 20px;
+grid-area: main;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 .product-list-container-buyer h1 {
-  color: white;
-  text-align: center;
+color: white;
+text-align: center;
 }
 
 .product-list-container-buyer table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  table-layout: fixed;
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+table-layout: fixed;
 }
 
 .product-list-container-buyer th,
 .product-list-container-buyer td {
-  border: 2px solid #ddd;
-  padding: 8px;
-  text-align: center;
-  background-color: white;
-  color: black;
-  font-size: 18px;
+border: 2px solid #ddd;
+padding: 8px;
+text-align: center;
+background-color: white;
+color: black;
+font-size: 18px;
 }
 
 .product-list-container-buyer th {
-  background-color: #f2f2f2;
+background-color: #f2f2f2;
 }
 
 .product-list-container-buyer tr:nth-child(even) {
-  background-color: #f9f9f9;
+background-color: #f9f9f9;
 }
 
 .product-list-container-buyer tr:hover {
-  background-color: #ddd;
+background-color: #ddd;
 }
 
 /* Define primary button style */
 .primarys-btn {
-  margin: 3px;
-  background-color: #031221;
-  color: #ffffff;
-  border: 1px solid #031221;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+margin: 3px;
+background-color: #031221;
+color: #ffffff;
+border: 1px solid #031221;
+padding: 5px 10px;
+border-radius: 5px;
+cursor: pointer;
 }
 .primarys-btn:hover {
-  background-color: #ececec;
-  border-color: #ececec;
-  color: #000;
+background-color: #ececec;
+border-color: #ececec;
+color: #000;
 }
 
 /* Define danger button style */
 .dangerssq-btn {
-  margin: 3px;
-  background-color: #dc3545;
-  color: #fff;
-  border: 1px solid #dc3545;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
+margin: 3px;
+background-color: #dc3545;
+color: #fff;
+border: 1px solid #dc3545;
+padding: 5px 10px;
+cursor: pointer;
+border-radius: 5px;
 }
 .dangerssq-btn:hover {
-  background-color: #ececec;
-  border-color: #ececec;
-  color: #000;
+background-color: #ececec;
+border-color: #ececec;
+color: #000;
 }
 
 /* Pagination */
 .pagination {
-  display: flex;
-  gap: 5px;
-  margin-top: 20px;
+display: flex;
+gap: 5px;
+margin-top: 20px;
 }
 
 .pagination button {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  cursor: pointer;
+padding: 5px 10px;
+border: 1px solid #ccc;
+background-color: #fff;
+cursor: pointer;
 }
 
 .pagination button.active {
-  background-color: #031221;
-  color: #fff;
+background-color: #031221;
+color: #fff;
 }
 
 .pagination button:hover {
-  background-color: rgb(159, 172, 186);
-  color: #fff;
+background-color: rgb(159, 172, 186);
+color: #fff;
 }
 
 /* Additional border-radius for table */
 .product-list-container-buyer .table-wrapper {
-  border-radius: 10px;
-  overflow: hidden;
+border-radius: 10px;
+overflow: hidden;
 }

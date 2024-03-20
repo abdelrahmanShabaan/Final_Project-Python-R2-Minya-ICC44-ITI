@@ -42,54 +42,53 @@ background-color: #0056b3;
 
 
 .formclss {
-    width: 90%;
-    grid-area: main; /* Add this to make the product list take the available space in the grid layout */
-    margin: 20px;
-    height: fit-content;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
-    display: left;
-    margin-bottom: 8px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    background-color: #07950c;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
+width: 90%;
+grid-area: main; /* Add this to make the product list take the available space in the grid layout */
+margin: 20px;
+height: fit-content;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .popuppp {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 9999;
-  }
-  
-  .popuppp-content {
-    text-align: center;
-  }
-  
+label {
+display: left;
+margin-bottom: 8px;
+}
+
+input {
+width: 100%;
+padding: 8px;
+margin-bottom: 10px;
+box-sizing: border-box;
+}
+
+button {
+background-color: #07950c;
+color: #fff;
+padding: 10px 15px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+button:hover {
+background-color: #45a049;
+}
+
+.popuppp {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(0, 0, 0, 0.8);
+color: white;
+padding: 20px;
+border-radius: 5px;
+z-index: 9999;
+}
+
+.popuppp-content {
+text-align: center;
+}

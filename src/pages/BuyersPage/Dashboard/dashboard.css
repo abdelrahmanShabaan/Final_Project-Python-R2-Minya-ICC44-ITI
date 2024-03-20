@@ -34,8 +34,8 @@ grid-template-rows: 0.2fr 3fr;
 background-color: #1d2634;
 
 grid-template-areas:
-    'sidebar header header header'
-    'sidebar main main main';
+'sidebar header header header'
+'sidebar main main main';
 height: 100vh;
 }
 /* Sidebar  */
@@ -216,34 +216,34 @@ display: none;
 /* products table view */
 
 .product-list-container {
-    margin: 20px;
-    background-color: #142130;
-  }
-  
-  .product-list-container h1 {
-    color: #1f1855;
-  }
-  
-  .product-list-container table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  .product-list-container th, .product-list-container td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  
-  .product-list-container th {
-    background-color: #f2f2f2;
-  }
-  
-  .product-list-container tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .product-list-container tr:hover {
-    background-color: #ddd;
-  }
+margin: 20px;
+background-color: #142130;
+}
+
+.product-list-container h1 {
+color: #1f1855;
+}
+
+.product-list-container table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+}
+
+.product-list-container th, .product-list-container td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: center;
+}
+
+.product-list-container th {
+background-color: #f2f2f2;
+}
+
+.product-list-container tr:nth-child(even) {
+background-color: #f9f9f9;
+}
+
+.product-list-container tr:hover {
+background-color: #ddd;
+}

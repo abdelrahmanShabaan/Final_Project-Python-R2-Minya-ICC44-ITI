@@ -2,85 +2,85 @@
 
 /* Grid container styling */
 .grid-container {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  grid-template-rows: 90vh;
-  /* grid-template-areas: 'sidebar main'; */
+display: grid;
+grid-template-columns: 260px 1fr;
+grid-template-rows: 90vh;
+/* grid-template-areas: 'sidebar main'; */
 }
 
 /* Form container styling */
 .formclss {
-  width: 80%; /* Adjusted width */
-  margin: 20px auto;
-  padding: 15px; /* Adjusted padding */
-  border: 1px solid #b6b5b5;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #d8d8d8;
+width: 80%; /* Adjusted width */
+margin: 20px auto;
+padding: 15px; /* Adjusted padding */
+border: 1px solid #b6b5b5;
+border-radius: 5px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+background-color: #d8d8d8;
 }
 
 /* Label styling */
 .labels {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 16px;
-  font-weight: bold;
+display: block;
+margin-bottom: 8px;
+font-size: 16px;
+font-weight: bold;
 }
 
 /* Input field styling */
 .formclss input[type='text'] {
-  width: calc(100% - 16px);
-  padding: 8px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s;
+width: calc(100% - 16px);
+padding: 8px;
+margin-bottom: 15px;
+box-sizing: border-box;
+border: 1px solid #ccc;
+border-radius: 5px;
+outline: none;
+transition: border-color 0.3s;
 }
 
 .formclss input[type='text']:focus {
-  border-color: #1d2634;
+border-color: #1d2634;
 }
 
 /* Error message styling */
 .error-message {
-  color: #dc3545;
-  font-size: 14px;
-  margin-top: 5px;
+color: #dc3545;
+font-size: 14px;
+margin-top: 5px;
 }
 
 /* Button styling */
 .add-product-button {
-  width: 100%;
-  background-color: #1d2634;
-  color: #fff;
-  padding: 12px 0;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+width: 100%;
+background-color: #1d2634;
+color: #fff;
+padding: 12px 0;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
 }
 
 .add-product-button:hover {
-  background-color: #6793c2;
+background-color: #6793c2;
 }
 .product-list-header {
-  text-align: center;
+text-align: center;
 }
 
 .popuppp {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 20px;
-  border-radius: 5px;
-  z-index: 9999;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(0, 0, 0, 0.8);
+color: white;
+padding: 20px;
+border-radius: 5px;
+z-index: 9999;
 }
 
 .popuppp-content {
-  text-align: center;
+text-align: center;
 }

@@ -13,7 +13,8 @@ function ShowBuyerProducts() {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "https://api-generator.retool.com/u9XTxw/data"
+          // "https://api-generator.retool.com/u9XTxw/data"
+          "http://127.0.0.1:8000/products/"
         );
         setProducts(response.data);
       } catch (error) {
@@ -46,7 +47,8 @@ function ShowBuyerProducts() {
     if (confirmDelete) {
       try {
         await axios.delete(
-          `https://api-generator.retool.com/u9XTxw/data/${id}`
+          // `https://api-generator.retool.com/u9XTxw/data/${id}`
+          `http://127.0.0.1:8000/products/${id}/`
         );
         loadData();
         console.log("Delete successful");
@@ -59,7 +61,8 @@ function ShowBuyerProducts() {
   const loadData = async () => {
     try {
       const res = await axios.get(
-        "https://api-generator.retool.com/u9XTxw/data"
+        // "https://api-generator.retool.com/u9XTxw/data"
+        "http://127.0.0.1:8000/products/"
       );
       setProducts(res.data);
     } catch (error) {
@@ -83,17 +86,19 @@ function ShowBuyerProducts() {
                   <th>Name</th>
                   <th>Brand</th>
                   <th>Price</th>
-                  <th>Inventory</th>
+                  <th>Category</th>
+                  <th>stock</th>
                   <th>Active</th>
                 </tr>
               </thead>
               <tbody>
                 {currentProducts.map((product) => (
                   <tr key={product.id}>
-                    <td>{product.name}</td>
+                    <td>{product.title}</td>
                     <td>{product.brand}</td>
                     <td>{product.price}</td>
-                    <td>{product.inventory}</td>
+                    <td>{product.category}</td>
+                    <td>{product.stock}</td>
                     <td>
                       <button
                         className="primarys-btn"
