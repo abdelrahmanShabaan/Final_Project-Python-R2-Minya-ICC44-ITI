@@ -12,24 +12,25 @@ const CheckoutPage = () => {
     name: '',
     address: '',
     email: '',
-    cardNumber: '',
-    expDate: '',
-    cvv: ''
+    card_number: '',
+    exp_date: '',
+    cvv: '',
+    total_items: 0,
+    total_amount: 0
   });
 
-  const [itemsCount, setItemsCount] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
   const [carts, setCarts] = useState([]);
   const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    setItemsCount(parseInt(searchParams.get('itemsCount')) || 0);
-    setTotalAmount(parseFloat(searchParams.get('totalAmount')) || 0);
+    const itemsCount = parseInt(searchParams.get('itemsCount')) || 0;
+    const totalAmount = parseFloat(searchParams.get('totalAmount')) || 0;
     const cartsString = searchParams.get('carts');
     if (cartsString) {
       setCarts(JSON.parse(decodeURIComponent(cartsString)));
     }
+    setFormData(prevData => ({ ...prevData, total_items: itemsCount, total_amount: totalAmount }));
   }, [location.search]);
 
   useEffect(() => {
@@ -54,11 +55,11 @@ const CheckoutPage = () => {
       case 'email':
         errors.email = !/\S+@\S+\.\S+/.test(value) ? 'Email address is invalid' : '';
         break;
-      case 'cardNumber':
-        errors.cardNumber = value.length !== 16 ? 'Card number must be 16 digits long' : '';
+      case 'card_number':
+        errors.card_number = value.length !== 16 ? 'Card number must be 16 digits long' : '';
         break;
-      case 'expDate':
-        errors.expDate = value.length !== 5 ? 'Expiration date must be in MM/YY format' : '';
+      case 'exp_date':
+        errors.exp_date = value.length !== 5 ? 'Expiration date must be in MM/YY format' : '';
         break;
       case 'cvv':
         errors.cvv = value.length !== 3 ? 'CVV must be 3 digits long' : '';
@@ -74,29 +75,38 @@ const CheckoutPage = () => {
     const isValid = Object.values(formErrors).every(error => error === '');
     if (isValid) {
       try {
-        const orders = carts.map(cart => ({
-          price: cart.totalPrice,
-          stock: cart.quantity,
-          status: 'pending',
-          quantity: cart.quantity,
-          id: cart.id
-        }));
-        await axios.post('https://retoolapi.dev/v5dw0Z/orders', orders);
-        // After successful submission, navigate to the confirmation page
-        navigate('/confirmation');
+        const formattedData = {
+          name: formData.name,
+          address: formData.address,
+          email: formData.email,
+          card_number: formData.card_number,
+          exp_date: formData.exp_date,
+          cvv: formData.cvv,
+          total_items: formData.total_items,
+          total_amount: formData.total_amount.toFixed(2) // Round to 2 decimal places
+        };
+        const response = await axios.post('http://localhost:8000/checkout/', formattedData);
+        if (response.status === 201) {
+          navigate('/');
+        } else {
+          console.error('Failed to submit order:', response.statusText);
+        }
       } catch (error) {
         console.error('Error submitting order:', error);
+        console.log('Response data:', error.response.data);
+        console.log('Response status:', error.response.status);
+        console.log('Response headers:', error.response.headers);
       }
     } else {
       console.log('Form has errors. Please fix them before submitting.');
     }
   };
-
+  
   return (
     <div className="container mx-auto py-8 checkout-container">
       <div className="checkout-section">
         <form onSubmit={handleSubmit} className="checkout-form">
-        <h2 className="checkout-heading">Checkout</h2>
+          <h2 className="checkout-heading">Checkout</h2>
           <div className="form-field">
             <FaUser className="form-icon" />
             <input type="text" id="name" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required className="input-field" />
@@ -114,13 +124,13 @@ const CheckoutPage = () => {
           </div>
           <div className="form-field">
             <FaCreditCard className="form-icon" />
-            <input type="text" id="cardNumber" name="cardNumber" placeholder="Card Number" value={formData.cardNumber} onChange={handleChange} required className="input-field" />
-            {formErrors.cardNumber && <span className="error-message">{formErrors.cardNumber}</span>}
+            <input type="text" id="card_number" name="card_number" placeholder="Card Number" value={formData.card_number} onChange={handleChange} required className="input-field" />
+            {formErrors.card_number && <span className="error-message">{formErrors.card_number}</span>}
           </div>
           <div className="form-field">
             <FaCreditCard className="form-icon" />
-            <input type="text" id="expDate" name="expDate" placeholder="Expiration Date" value={formData.expDate} onChange={handleChange} required className="input-field" />
-            {formErrors.expDate && <span className="error-message">{formErrors.expDate}</span>}
+            <input type="text" id="exp_date" name="exp_date" placeholder="Expiration Date" value={formData.exp_date} onChange={handleChange} required className="input-field" />
+            {formErrors.exp_date && <span className="error-message">{formErrors.exp_date}</span>}
           </div>
           <div className="form-field">
             <FaCreditCard className="form-icon" />
@@ -130,12 +140,12 @@ const CheckoutPage = () => {
           <button type="submit" className="checkout-button">Complete Purchase</button>
         </form>
       </div>
-      
+            
       <div className="order-summary-section">
         <div className="order-summary-container">
           <h3 className="order-summary-header">Order Summary</h3>
-          <p className="order-summary-total">Total Items: {itemsCount}</p>
-          <p className="order-summary-total">Total Amount: ${totalAmount.toFixed(2)}</p>
+          <p className="order-summary-total">Total Items: {formData.total_items}</p>
+          <p className="order-summary-total">Total Amount: ${formData.total_amount.toFixed(2)}</p>
           <h4 className="order-summary-heading">Items:</h4>
           <ul className="order-summary-list">
             {carts.map((cart, index) => (

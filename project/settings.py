@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'Categories',
     'rest_framework',
+    'payment',
 ]
 
 MIDDLEWARE = [
