@@ -23,10 +23,10 @@ import {
 import SlideBarBuyer from "./SlideBarBuyer";
 import "./dashboard.css";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { isLoggedIn, loginContext, logoutContext, roleContext, setRoleCustomer, setRoleSeller } = useAuth();
+
   const data = [
     {
       name: "Products",
@@ -141,7 +141,28 @@ const Dashboard = () => {
 
 /**end function users */
 
+  
+  
+  /** Redirection */
+    const { isLoggedIn, loginContext, logoutContext, roleContext, setRoleCustomer, setRoleSeller } = useAuth();
+    const navigate = useNavigate();
+  useEffect(() => {
+    if (sessionStorage.getItem("login") !== null) {
+      const user = JSON.parse(sessionStorage.getItem("login"));
+      redirectBasedOnRole(user.role);
+    }else{
+      navigate("/user");
+    }
+  }, []);
 
+  const redirectBasedOnRole = (role) => {
+    if (role === "customer") {
+      navigate("/");
+    } else if (role === "seller") {
+      navigate("/Dashboard");
+    }
+  };
+  /** End of Redirection */
 
   /** Count Function for Reviews  */
 
