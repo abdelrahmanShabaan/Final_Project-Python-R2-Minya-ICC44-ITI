@@ -21,7 +21,7 @@ import {
 } from "recharts";
 import SlideBarBuyer from "./SlideBarBuyer";
 import "./dashboard.css";
-
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const { isLoggedIn, loginContext, logoutContext, roleContext, setRoleCustomer, setRoleSeller } = useAuth();
@@ -73,6 +73,24 @@ const Dashboard = () => {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
   const OpenSidebar = () => {
     setOpenSidebarToggle(!openSidebarToggle);
+  };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (sessionStorage.getItem("login") !== null) {
+      const user = JSON.parse(sessionStorage.getItem("login"));
+      redirectBasedOnRole(user.role);
+    }else{
+      navigate("/user");
+    }
+  }, []);
+
+  const redirectBasedOnRole = (role) => {
+    if (role === "customer") {
+      navigate("/");
+    } else if (role === "seller") {
+      navigate("/Dashboard");
+    }
   };
 
   return (

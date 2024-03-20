@@ -28,7 +28,12 @@ const LoginSchema = yup.object().shape({
 
 const LoginComponent = () => {
   const navigate = useNavigate();
+  let locally = JSON.parse(localStorage.getItem("Account Storage") || "[]");
+  let sessionLogin = JSON.parse(sessionStorage.getItem("login") || "[]");
   const [isError, setIsError] = useState(false);
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [type, setType] = useState("signIn");
 
   const { handleSubmit, values, errors, handleBlur, touched, handleChange } =
     useFormik({
@@ -46,7 +51,7 @@ const LoginComponent = () => {
             const user = response.data[0];
             sessionStorage.setItem(
               "login",
-              JSON.stringify({ name: user.name, email: user.email })
+              JSON.stringify({ name: user.name, email: user.email , role : user.role })
             );
             setIsError(false);
             redirectBasedOnRole(user.role);
