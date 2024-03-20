@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from payment.views import CheckoutAPIView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('users.urls')),
     path('review/', include('reviews.urls')),
+    path('checkout/', CheckoutAPIView.as_view(), name='checkout'),
+
 ]

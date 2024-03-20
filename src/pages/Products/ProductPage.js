@@ -15,6 +15,8 @@ const ProductPage = () => {
   const products = useSelector(getAllProducts);
   const productStatus = useSelector(getAllProductsStatus);
   const [selectedCategory, setSelectedCategory] = useState('0');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
 
   useEffect(() => {
     dispatch(fetchAsyncProducts(1000));
@@ -22,6 +24,12 @@ const ProductPage = () => {
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
+  };
+
+  const handlePriceFilter = () => {
+    // Implement filtering logic based on minPrice and maxPrice
+    console.log("Minimum Price:", minPrice);
+    console.log("Maximum Price:", maxPrice);
   };
 
   const getProductsByCategory = () => {
@@ -65,6 +73,16 @@ const ProductPage = () => {
                   </li>
                 ))}
               </ul>
+
+              {/* Price Filter */}
+              <div className='price-filter'>
+                <div className='fs-17 text-uppercase fw-6 ls-1h'>Price Filter</div>
+                <div>
+                  <input type="number" placeholder="Min Price" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />
+                  <input type="number" placeholder="Max Price" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
+                  <button onClick={handlePriceFilter}>Apply</button>
+                </div>
+              </div>
             </aside>
 
             <div className='slider-wrapper' style={{ width: '100%', overflow: 'hidden' }}>
@@ -89,7 +107,7 @@ const ProductPage = () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
 export default ProductPage;

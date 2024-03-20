@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     # 'products',
     # New Commit
     'corsheaders',
+    'payment',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
