@@ -10,7 +10,12 @@ class Product(models.Model):
     brand = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to='products/thumbnails/')
-    images = models.ImageField(upload_to='products/images/')
+    def __str__(self):
+        return self.title 
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='products/images/')
 
     def __str__(self):
-        return self.title
+        return f"{self.product.title} Image"
