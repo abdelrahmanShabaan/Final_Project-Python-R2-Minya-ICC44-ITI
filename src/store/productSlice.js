@@ -63,12 +63,15 @@ export const fetchAsyncProductSingle = createAsyncThunk(
   "product-single/fetch",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${BASE_URL}products/${id}`);
+      const response = await axios.get(`${BASE_URL}products/${id}/`);
       console.log("Product fetched successfully", response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching product:", error);
-      return rejectWithValue(error.response.data);
+      // Handle the error here
+      return rejectWithValue(
+        error.response?.data || "Error fetching product details"
+      );
     }
   }
 );

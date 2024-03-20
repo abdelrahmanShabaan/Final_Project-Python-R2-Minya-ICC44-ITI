@@ -61,14 +61,18 @@ export const fetchAsyncCategories = createAsyncThunk(
 // Async thunk for fetching products of a specific category
 export const fetchAsyncProductsOfCategory = createAsyncThunk(
   "category-products/fetch",
-  async (category) => {
+  async (category, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${BASE_URL}category/${category}/`); // Adjust the endpoint as needed
-      console.log("Fetched products of category:", response.data); // Log to see what data is returned
-      return response.data.products; // Adjust if the API response structure is different
+      const response = await axios.get(
+        `${BASE_URL}products/?category=${encodeURIComponent(category)}`
+      ); // No trailing slash and encode URI component
+      console.log("Fetched products of category:", response.data);
+      return response.data;
     } catch (error) {
       console.error("Error fetching category products:", error);
-      throw error;
+      return rejectWithValue(
+        error.response?.data || "Error fetching category products"
+      );
     }
   }
 );
