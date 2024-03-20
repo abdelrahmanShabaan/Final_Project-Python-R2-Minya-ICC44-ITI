@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from '../../context/AuthContext'
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
@@ -22,15 +22,9 @@ import {
 import SlideBarBuyer from "./SlideBarBuyer";
 import "./dashboard.css";
 
+
 const Dashboard = () => {
-  const {
-    isLoggedIn,
-    loginContext,
-    logoutContext,
-    roleContext,
-    setRoleCustomer,
-    setRoleSeller,
-  } = useAuth();
+  const { isLoggedIn, loginContext, logoutContext, roleContext, setRoleCustomer, setRoleSeller } = useAuth();
   const data = [
     {
       name: "Page A",
@@ -102,7 +96,7 @@ const Dashboard = () => {
                   <h3>PRODUCTS</h3>
                   <BsFillArchiveFill className="card_icon" />
                 </div>
-                <h1>300</h1>
+                <h1>10</h1>
               </div>
               <div className="card">
                 <div className="card-inner">

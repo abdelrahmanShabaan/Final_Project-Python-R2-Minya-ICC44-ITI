@@ -6,11 +6,16 @@ import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
 
 function AddBuyerProduct() {
   const [formData, setFormData] = useState({
-    name: "",
-    brand: "",
+    title: "",
+    description: "",
     price: "",
+    discountPercentage: "",
+    rating: "",
+    stock: "",
+    brand: "",
     category: "",
-    inventory: "",
+    thumbnail: "",
+
   });
 
   const [errors, setErrors] = useState({});
@@ -20,7 +25,7 @@ function AddBuyerProduct() {
 
   useEffect(() => {
     axios
-      .get("https://api-generator.retool.com/u9XTxw/data")
+      .get("http://127.0.0.1:8000/products/")
       .then((response) => setProducts(response.data))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
@@ -28,39 +33,78 @@ function AddBuyerProduct() {
   const validateFormData = (data) => {
     const errors = {};
 
-    if (!data.name.trim()) {
-      errors.name = "Name is required";
-    }
-    if (!data.brand.trim()) {
-      errors.brand = "Brand is required";
-    }
-    if (!data.price.trim()) {
-      errors.price = "Price is required";
-    } else if (isNaN(data.price)) {
-      errors.price = "Price must be a valid number";
-    }
-    if (!data.inventory.trim()) {
-      errors.inventory = "Inventory is required";
-    }
 
+    const validateFormData = (data) => {
+      const errors = {};
+    
+      if (!data.title.trim()) {
+        errors.title = "Name is required";
+      }
+      if (!data.description.trim()) {
+        errors.description = "description is required";
+      }
+      if (!data.price.trim()) {
+        errors.price = "price is required";
+      }
+      if (!data.discountPercentage.trim()) {
+        errors.discountPercentage = "discountPercentage is required";
+      }
+      if (!data.rating.trim()) {
+        errors.rating = "rating is required";
+      }
+      if (!data.stock.trim()) {
+        errors.stock = "stock is required";
+      }
+      if (!data.brand.trim()) {
+        errors.brand = "brand is required";
+      }
+      if (!data.category.trim()) {
+        errors.category = "category is required";
+      }
+      if (!data.thumbnail) {
+        errors.thumbnail = "thumbnail is required";
+      }
+    
+      return errors;
+    };
+
+
+    
+  
+   
     return errors;
   };
-
   const handleAddProduct = (e) => {
     e.preventDefault(); // Prevent form submission
     const validationErrors = validateFormData(formData);
-
+  
     if (Object.keys(validationErrors).length === 0) {
+      const formDataToSend = new FormData();
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('description', formData.description);
+      formDataToSend.append('price', formData.price);
+      formDataToSend.append('discountPercentage', formData.discountPercentage);
+      formDataToSend.append('rating', formData.rating);
+      formDataToSend.append('stock', formData.stock);
+      formDataToSend.append('brand', formData.brand);
+      formDataToSend.append('category', formData.category);
+      formDataToSend.append('thumbnail', formData.thumbnail); // Append the image file to FormData
+  
       axios
-        .post("https://api-generator.retool.com/u9XTxw/data", formData)
+        .post("http://127.0.0.1:8000/products/", formDataToSend)
         .then((response) => {
           setProducts([...products, response.data]);
+          // Reset form data after successful submission
           setFormData({
-            name: "",
-            brand: "",
+            title: "",
+            description: "",
             price: "",
+            discountPercentage: "",
+            rating: "",
+            stock: "",
+            brand: "",
             category: "",
-            inventory: "",
+            thumbnail: "",
           });
           loadData();
           setShowSuccessMessage(true); // Set state to show success message
@@ -85,11 +129,12 @@ function AddBuyerProduct() {
       setErrors(validationErrors);
     }
   };
+  
 
   const loadData = async () => {
     try {
       const res = await axios.get(
-        "https://api-generator.retool.com/u9XTxw/data"
+        "http://127.0.0.1:8000/products/"
       );
       setProducts(res.data);
     } catch (error) {
@@ -108,6 +153,25 @@ function AddBuyerProduct() {
     setOpenSidebarToggle(!openSidebarToggle);
   };
 
+// Handle thumbonals images
+  const handleImageUpload = (file) => {
+    const reader = new FileReader();
+  
+    reader.onloadend = () => {
+      setFormData({
+        ...formData,
+        thumbnail: file, // Set the base64 encoded image data in formData
+      });
+    };
+  
+    if (file) {
+      reader.readAsDataURL(file); // Read the file as data URL
+    }
+  };
+
+
+
+
   return (
     <>
       <div className="grid-container">
@@ -115,32 +179,34 @@ function AddBuyerProduct() {
           openSidebarToggle={openSidebarToggle}
           OpenSidebar={OpenSidebar}
         />
-        <form className="formclss" onSubmit={handleAddProduct}>
+        <form className="formclss" onSubmit={handleAddProduct} encType="multipart/form-data">
           <h1 className="product-list-header">Add Products</h1>
           <label className="labels">
             Name:
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="title"
+              value={formData.title}
               onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
+                setFormData({ ...formData, title: e.target.value })
               }
             />
-            {displayError("name")}
+            {displayError("title")}
           </label>
+          
           <label className="labels">
-            Brand:
+            Description:
             <input
               type="text"
-              name="brand"
-              value={formData.brand}
+              name="category"
+              value={formData.description}
               onChange={(e) =>
-                setFormData({ ...formData, brand: e.target.value })
+                setFormData({ ...formData, description: e.target.value })
               }
             />
-            {displayError("brand")}
+            {displayError("description")}
           </label>
+
           <label className="labels">
             Price:
             <input
@@ -153,18 +219,87 @@ function AddBuyerProduct() {
             />
             {displayError("price")}
           </label>
+
           <label className="labels">
-            Inventory:
+          DiscountPercentage:
             <input
               type="text"
-              name="inventory"
-              value={formData.inventory}
+              name="discountPercentage"
+              value={formData.discountPercentage}
               onChange={(e) =>
-                setFormData({ ...formData, inventory: e.target.value })
+                setFormData({ ...formData, discountPercentage: e.target.value })
               }
             />
-            {displayError("inventory")}
+            {displayError("discountPercentage")}
           </label>
+
+          <label className="labels">
+           Rating:
+            <input
+              type="text"
+              name="rating"
+              value={formData.rating}
+              onChange={(e) =>
+                setFormData({ ...formData, rating: e.target.value })
+              }
+            />
+            {displayError("rating")}
+          </label>
+
+          <label className="labels">
+           Stock:
+            <input
+              type="text"
+              name="stock"
+              value={formData.stock}
+              onChange={(e) =>
+                setFormData({ ...formData, stock: e.target.value })
+              }
+            />
+            {displayError("stock")}
+          </label>
+
+
+
+          <label className="labels">
+            Brand:
+            <input
+              type="text"
+              name="brand"
+              value={formData.brand}
+              onChange={(e) =>
+                setFormData({ ...formData, brand: e.target.value })
+              }
+            />
+            {displayError("brand")}
+          </label>
+         
+          <label className="labels">
+            Category:
+            <input
+              type="text"
+              name="category"
+              value={formData.category}
+              onChange={(e) =>
+                setFormData({ ...formData, category: e.target.value })
+              }
+            />
+            {displayError("category")}
+          </label>
+
+         
+
+        <label className="labels">
+          Thumbnail:
+          <input
+            type="file"
+            name="thumbnail"
+            accept="image/*"
+            onChange={(e) => handleImageUpload(e.target.files[0])}
+          />
+          {displayError("thumbnail")}
+        </label>
+
           <button type="submit" className="add-product-button">
             Add Product
           </button>
