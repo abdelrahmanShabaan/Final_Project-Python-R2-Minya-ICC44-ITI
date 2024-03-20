@@ -89,6 +89,31 @@ function EditBuyerProducts() {
     }
   };
 
+
+  // const handleEditProduct = () => {
+  //   const validationErrors = validateFormData(formData);
+
+  //   if (Object.keys(validationErrors).length === 0) {
+  //     axios
+  //       .put(`https://api-generator.retool.com/u9XTxw/data/${id}`, formData)
+  //       .then((response) => {
+  //         setProduct(response.data);
+  //         navigate("/HomePanelBuyers");
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error updating product:", error);
+  //         setErrors({
+  //           server: "Error updating product. Please try again later.",
+  //         });
+  //       });
+  //   } else {
+  //     setErrors(validationErrors);
+  //   }
+  // };
+
+
+
+
   // Handle thumbnail images
   const handleImageUpload = (file) => {
     const reader = new FileReader();

@@ -106,7 +106,8 @@ const Product = ({ product }) => {
         <div className="product-item-img img-fluid">
           <img
             className="img-cover img-fluid"
-            src={product?.images[0]?.image}
+            // src={product?.images[0]?.image}
+            src={product?.thumbnail}
             alt={product.title}
           />
         </div>

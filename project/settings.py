@@ -41,11 +41,10 @@ INSTALLED_APPS = [
     'users',
     'reviews',
     'products',
-    # New Commit
-    'corsheaders',
+    'payment',
     'Categories',
     'rest_framework',
-    'payment',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -90,17 +89,26 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'easytrade',
+#         'USER': 'ramymedhat',
+#         'PASSWORD': '1234',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'easytrade',
-        'USER': 'ramymedhat',
-        'PASSWORD': '1234',
+        'USER': 'hassaneldash',
+        'PASSWORD': 'hassaneldash',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -143,14 +151,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-CORS_ALLOW_ALL_ORIGINS = True
-
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  
-    "http://127.0.0.1:3000",  
-]
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  
+#     "http://127.0.0.1:3000",  
+# ]
