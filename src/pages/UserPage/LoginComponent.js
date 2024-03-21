@@ -21,7 +21,7 @@ const LoginSchema = yup.object().shape({
     .max(20, "Password must be at most 20 characters")
     .matches(
       passwordRegex,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long"
+      "Password must contain at least one uppercase letter, lowercase letter, number, special character, and be at least 8 characters long"
     )
     .required("Must Fill this Field"),
 });
@@ -115,8 +115,7 @@ const LoginComponent = () => {
         {errors.email && touched.email && (
           <p className="error">{errors.email}</p>
         )}
-        
-        
+
         <Form.Control
           value={values.password}
           id="password"
@@ -124,11 +123,11 @@ const LoginComponent = () => {
           onBlur={handleBlur}
           placeholder="Please, enter your password"
           onChange={handleChange}
+          // className="user-box-login"
         />
-
-        
+        {/* <label>Password</label> */}
         <span
-          className="password-toggle-icon"
+          className="password-toggle-iconx"
           onClick={togglePasswordVisibility}
         >
           {showPassword ? (
@@ -138,19 +137,17 @@ const LoginComponent = () => {
           )}
         </span>
 
-
-
-        
-        <div className="user-box">
+        {/* <div className="user-box-login">
           <input
             type={showPassword ? "text" : "password"}
             name=""
             id="password"
+            // value={values.password}
             required
           />
           <label>Password</label>
           <span
-            className="password-toggle-icon"
+            className="password-toggle-iconx"
             onClick={togglePasswordVisibility}
           >
             {showPassword ? (
@@ -159,13 +156,17 @@ const LoginComponent = () => {
               <i class="fas fa-eye-slash" />
             )}
           </span>
-        </div>
+        </div> */}
+
         {errors.password && touched.password && (
-          <p className="error">{errors.password}</p>
+          <p className="error2">{errors.password}</p>
         )}
-        <a className="a" href="#">
+
+        <a className="a3" href="#">
           Forgot your password?
         </a>
+
+        <span className="span">By clicking " Login," you agree to our <a className="a1" href="http://">Terms of Use</a> and our <a className="a1" href="http://">Privacy Policy</a>.</span>
         {isError && <p className="error">Incorrect email or password</p>}
         <Button className="button my-3" variant="primary" type="submit">
           Login
