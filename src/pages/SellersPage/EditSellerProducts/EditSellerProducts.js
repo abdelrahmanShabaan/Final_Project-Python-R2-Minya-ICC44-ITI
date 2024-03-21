@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
 
-function EditBuyerProducts() {
+function EditSellerProducts() {
   const { id } = useParams();
 
   const [formData, setFormData] = useState({});
@@ -310,4 +310,4 @@ function EditBuyerProducts() {
   );
 }
 
-export default EditBuyerProducts;
+export default EditSellerProducts;

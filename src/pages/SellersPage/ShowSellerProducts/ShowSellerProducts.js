@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
-import "./ShowBuyerProducts.css";
+import "./ShowSellerProducts.css";
 
-function ShowBuyerProducts() {
+function ShowSellerProducts() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(5); // Change this to adjust the number of products per page
@@ -54,7 +54,7 @@ function ShowBuyerProducts() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleEditClick = (id) => {
-    navigate(`/EditBuyerProducts/${id}`);
+    navigate(`/EditSellerProducts/${id}`);
   };
 
   const deleteRev = async (id) => {
@@ -167,4 +167,4 @@ function ShowBuyerProducts() {
   );
 }
 
-export default ShowBuyerProducts;
+export default ShowSellerProducts;

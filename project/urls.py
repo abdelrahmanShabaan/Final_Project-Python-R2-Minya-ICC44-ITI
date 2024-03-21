@@ -41,7 +41,7 @@ urlpatterns = [
     path('review/', include('reviews.urls')),
     path('products/', csrf_exempt(ProductList.as_view()), name='product-list'),
     path('products/<int:pk>/', ProductDetail.as_view(), name='product-detail'),
-    path('category/', CategoryList.as_view(), name='category-list'),
+    path('categories/', CategoryList.as_view(), name='category-list'),
     path('checkout/', CheckoutAPIView.as_view(), name='checkout'),
     path('orders/', OrderList.as_view(), name='order-list'),
     path('orders/<int:pk>/', OrderDetail.as_view(), name='order-detail'),
