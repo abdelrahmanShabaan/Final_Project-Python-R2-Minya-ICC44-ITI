@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./CartPage.css";
 import { useSelector, useDispatch } from "react-redux";
 import { shopping_cart } from "../../utils/images";
@@ -22,6 +22,16 @@ const CartPage = () => {
   const { itemsCount, totalAmount } = useSelector((state) => state.cart);
   const itemsCounts = useSelector(getCartItemsCount);
   const navigate = useNavigate();
+  /** Redirection */
+  useEffect(() => {
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
+      if (user.role === "seller") {
+        navigate("/Dashboard");
+      }
+    }
+  }, []);
+  /** End of Redirection */
   const handleCheckout = () => {
     const queryParams = {
       itemsCount,
