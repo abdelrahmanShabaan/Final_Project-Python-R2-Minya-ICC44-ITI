@@ -28,7 +28,7 @@ export default function Rev(props) {
   }, []);
 
   useEffect(() => {
-    let sessionLogin = JSON.parse(sessionStorage.getItem("login") || "[]");
+    let sessionLogin = JSON.parse(localStorage.getItem("login") || "[]");
     setSessionLogin(sessionLogin);
     console.log(sessionLogin);
   }, []);
@@ -116,7 +116,7 @@ export default function Rev(props) {
               )}
             </div>
           </div>
-          {sessionStorage.getItem("login") !== null &&
+          {localStorage.getItem("login") !== null &&
             sessionLogin.name === rev.name && (
               <div className="rev-btns-container">
                 <button
@@ -127,7 +127,7 @@ export default function Rev(props) {
                 </button>
               </div>
             )}
-          {sessionStorage.getItem("login") !== null &&
+          {localStorage.getItem("login") !== null &&
             sessionLogin.name === rev.name && (
               <>
                 {editingReviewId === rev.id ? (

@@ -29,7 +29,7 @@ const LoginSchema = yup.object().shape({
 const LoginComponent = () => {
   const navigate = useNavigate();
   let locally = JSON.parse(localStorage.getItem("Account Storage") || "[]");
-  let sessionLogin = JSON.parse(sessionStorage.getItem("login") || "[]");
+  let sessionLogin = JSON.parse(localStorage.getItem("login") || "[]");
   const [isError, setIsError] = useState(false);
   const [isLoggedin, setIsLoggedin] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -49,10 +49,15 @@ const LoginComponent = () => {
           );
           if (response.data.length > 0) {
             const user = response.data[0];
-            sessionStorage.setItem(
+            localStorage.setItem(
               "login",
-              JSON.stringify({ name: user.name, email: user.email , role : user.role })
+              JSON.stringify({
+                name: user.name,
+                email: user.email,
+                role: user.role,
+              })
             );
+            localStorage.setItem("cart", "[]");
             setIsError(false);
             redirectBasedOnRole(user.role);
           } else {
@@ -66,8 +71,8 @@ const LoginComponent = () => {
     });
 
   useEffect(() => {
-    if (sessionStorage.getItem("login") !== null) {
-      const user = JSON.parse(sessionStorage.getItem("login"));
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
       redirectBasedOnRole(user.role);
     }
   }, []);
@@ -78,6 +83,12 @@ const LoginComponent = () => {
     } else if (role === "seller") {
       navigate("/Dashboard");
     }
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -104,14 +115,51 @@ const LoginComponent = () => {
         {errors.email && touched.email && (
           <p className="error">{errors.email}</p>
         )}
+        
+        
         <Form.Control
           value={values.password}
           id="password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           onBlur={handleBlur}
           placeholder="Please, enter your password"
           onChange={handleChange}
         />
+
+        
+        <span
+          className="password-toggle-icon"
+          onClick={togglePasswordVisibility}
+        >
+          {showPassword ? (
+            <i class="fas fa-eye" />
+          ) : (
+            <i class="fas fa-eye-slash" />
+          )}
+        </span>
+
+
+
+        
+        <div className="user-box">
+          <input
+            type={showPassword ? "text" : "password"}
+            name=""
+            id="password"
+            required
+          />
+          <label>Password</label>
+          <span
+            className="password-toggle-icon"
+            onClick={togglePasswordVisibility}
+          >
+            {showPassword ? (
+              <i class="fas fa-eye" />
+            ) : (
+              <i class="fas fa-eye-slash" />
+            )}
+          </span>
+        </div>
         {errors.password && touched.password && (
           <p className="error">{errors.password}</p>
         )}

@@ -24,6 +24,7 @@ import ShowBuyerProducts from "./pages/BuyersPage/Show Buyer Product/ShowBuyerPr
 import Dashboard from "./pages/BuyersPage/Dashboard/Dashboard";
 import AddBuyerProduct from "./pages/BuyersPage/Add Buyer Products/AddBuyerProduct";
 import EditBuyerProducts from "./pages/BuyersPage/Edit Buyer Products/EditBuyerProducts";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
               path="/EditBuyerProducts/:id"
               element={<EditBuyerProducts />}
             />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
 
           <Footer />

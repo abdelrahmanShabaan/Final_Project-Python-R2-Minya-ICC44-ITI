@@ -1,5 +1,5 @@
 .empty-cart {
-  min-height: 60vh !important;
+  min-height: 100vh !important;
 }
 .empty-cart img {
   width: 120px !important;
@@ -108,4 +108,5 @@
 .cart-modal-item-img {
   width: 60px !important;
   height: 60px !important;
+  object-fit: contain;
 }

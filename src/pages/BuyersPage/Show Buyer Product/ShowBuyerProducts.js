@@ -13,8 +13,8 @@ function ShowBuyerProducts() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (sessionStorage.getItem("login") !== null) {
-      const user = JSON.parse(sessionStorage.getItem("login"));
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
       redirectBasedOnRole(user.role);
     } else {
       navigate("/user");
@@ -52,7 +52,6 @@ function ShowBuyerProducts() {
   );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
 
   const handleEditClick = (id) => {
     navigate(`/EditBuyerProducts/${id}`);

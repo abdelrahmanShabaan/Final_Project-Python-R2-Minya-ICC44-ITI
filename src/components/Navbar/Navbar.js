@@ -22,7 +22,7 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isSidebarVisible, setSidebarVisible] = useState(false);
   const navigate = useNavigate();
-  const isUserLoggedIn = sessionStorage.getItem("login") === null;
+  const isUserLoggedIn = localStorage.getItem("login") === null;
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     navigate("/");
   };
 

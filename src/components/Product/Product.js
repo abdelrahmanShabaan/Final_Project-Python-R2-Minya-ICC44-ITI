@@ -118,7 +118,7 @@ const Product = ({ product }) => {
             <span className="fw-8">{product?.brand}</span>
           </div>
 
-          <div className="title py-2" style={{ height: "55px" }}>
+          <div className="titlex py-2" style={{ height: "55px" }}>
             {product?.title}
           </div>
 
