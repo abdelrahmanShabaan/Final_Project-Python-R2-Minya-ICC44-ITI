@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useEffect, useState } from "react";
 // react router v6
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
@@ -20,18 +21,41 @@ import SuccessPage from "./pages/CartPage/SuccessPage";
 import CancelPage from "./pages/CartPage/CancelPage";
 import CheckoutPage from "./pages/CartPage/CheckoutPage";
 import SellerOrderPage from "./pages/SellerOrderPage/SellerOrderPage";
-import ShowBuyerProducts from "./pages/BuyersPage/Show Buyer Product/ShowBuyerProducts";
-import Dashboard from "./pages/BuyersPage/Dashboard/Dashboard";
-import AddBuyerProduct from "./pages/BuyersPage/Add Buyer Products/AddBuyerProduct";
-import EditBuyerProducts from "./pages/BuyersPage/Edit Buyer Products/EditBuyerProducts";
+import ShowSellerProducts from "./pages/SellersPage/ShowSellerProducts/ShowSellerProducts";
+import Dashboard from "./pages/SellersPage/Dashboard/Dashboard";
+import AddBuyerProduct from "./pages/SellersPage/AddSellerProducts/AddSellerProducts";
+import EditSellerProducts from "./pages/SellersPage/EditSellerProducts/EditSellerProducts";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
-
+import HeaderSeller from "./components/HeaderSeller/HeaderSeller";
+import { useAuth } from "./pages/context/AuthContext";
 function App() {
+
+  const {
+    setIsLoggedInContext,
+    setRoleContext,
+    isLoggedInContext,
+    roleContext } = useAuth();
+
+  // const [userRole, setUserRole] = useState('');
+
+  // useEffect(() => {
+  //   const userRole = fetchUserRole();
+  //   setUserRole(userRole);
+  // }, []);
+
+  // function fetchUserRole() {
+  //   const user = JSON.parse(localStorage.getItem("login"));
+  //   if (user) {
+  //     return user.role;
+  //   }
+  //   return '';
+  // }
+
   return (
     <div className="App">
       <Provider store={store}>
         <BrowserRouter>
-          <Header />
+          {roleContext === 'seller' ? <HeaderSeller /> : <Header />}
           <Sidebar />
 
           <Routes>
@@ -48,12 +72,9 @@ function App() {
             <Route path="/CheckoutPage" element={<CheckoutPage />} />
             <Route path="/SellerOrderPage" element={<SellerOrderPage />} />
             <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/ShowBuyerProducts" element={<ShowBuyerProducts />} />
+            <Route path="/ShowSellerProducts" element={<ShowSellerProducts />} />
             <Route path="/AddBuyerProduct" element={<AddBuyerProduct />} />
-            <Route
-              path="/EditBuyerProducts/:id"
-              element={<EditBuyerProducts />}
-            />
+            <Route path="/EditSellerProducts/:id" element={<EditSellerProducts />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
 

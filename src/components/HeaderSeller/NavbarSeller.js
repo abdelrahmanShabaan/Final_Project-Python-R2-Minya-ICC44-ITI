@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.css";
+import "./NavbarSeller.css";
 import { Link, useNavigate } from "react-router-dom"; // Import Link and useNavigate
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebarOn, setSidebarOff } from "../../store/sidebarSlice";
@@ -11,10 +11,16 @@ import {
 } from "../../store/cartSlice";
 import CartModal from "../CartModal/CartModal";
 import { getFavoritesCount } from "../../store/actions/ToggleFav";
+import { useAuth } from "../../pages/context/AuthContext";
 
-
-const Navbar = () => {
+const NavbarSeller = () => {
   const dispatch = useDispatch();
+  const {
+    setIsLoggedInContext,
+    setRoleContext,
+    isLoggedInContext,
+    roleContext } = useAuth();
+
   const categories = useSelector(getAllCategories);
   const carts = useSelector(getAllCarts);
   const itemsCount = useSelector(getCartItemsCount);
@@ -23,7 +29,7 @@ const Navbar = () => {
   const [isSidebarVisible, setSidebarVisible] = useState(false);
   const navigate = useNavigate();
   const isUserLoggedIn = localStorage.getItem("login") === null;
-  // const user = JSON.parse(localStorage.getItem("login"));
+  const user = JSON.parse(localStorage.getItem("login"));
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -34,16 +40,10 @@ const Navbar = () => {
     }
   };
 
-  // const role = user.role
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleSearch(e);
-    }
-  };
 
   const handleLogout = () => {
     localStorage.clear();
+    setRoleContext("");
     navigate("/");
   };
 
@@ -102,37 +102,7 @@ const Navbar = () => {
               </div>
             </form>
           </div>
-
-          <ul className="navbar-nav flex align-center fs-12 fw-4 font-manrope">
-            <li className="nav-item">
-              <Link to="/ProductPage" className="nav-link">
-                Products
-              </Link>
-            </li>
-            {categories.slice(0, 11).map((category, idx) => (
-              <li className="nav-item no-wrap" key={idx}>
-                <Link
-                  to={`category/${category}`}
-                  className="nav-link text-capitalize"
-                >
-                  {category.replace("-", " ")}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        
-
-        
-        <div className="navbar-cart flex align-center">
-          <Link to="/cart" className="cart-btn">
-            <i className="fa-solid fa-cart-shopping"></i>
-            {itemsCount > 0 && (
-              <div className="cart-items-value">{itemsCount}</div>
-            )}
-            <CartModal carts={carts} />
-          </Link>
-        </div>
+          </div>
 
         {isUserLoggedIn && (
           <div className="navbar-cart flex align-center">
@@ -150,21 +120,9 @@ const Navbar = () => {
           </div>
         )}
 
-        {/* <div className="navbar-cart flex align-center">
-          <Link to="/wishlist" className="cart-btn">
-            <i class="fa-solid fa-hand-holding-heart"></i>
-          </Link> */}
-          <div className="navbar-cart flex align-center">
-          <Link to="/wishlist" className="cart-btn">
-            <i className="fa-solid fa-hand-holding-heart"></i>
-            {favoritesCount > 0 && (
-              <div className="cart-items-value">{favoritesCount}</div>
-            )}
-          </Link>
-        </div>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarSeller;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./AddBuyerProducts.css";
+import "./AddSellerProducts.css";
 import { useNavigate } from "react-router-dom";
 import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
 
@@ -117,7 +117,7 @@ function AddBuyerProduct() {
           setShowSuccessMessage(true); // Set state to show success message
           setTimeout(() => {
             setShowSuccessMessage(false);
-            navigate("/ShowBuyerProducts"); // Navigate after hiding the success message
+            navigate("/ShowSellerProducts"); // Navigate after hiding the success message
           }, 3000); // Hide success message after 5 seconds
         })
         .catch((error) => {

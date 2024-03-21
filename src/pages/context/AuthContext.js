@@ -6,24 +6,22 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [roleContext, setRole] = useState("customer");
+  const [isLoggedInContext, setIsLoggedInContext] = useState(false);
+  const [roleContext, setRoleContext] = useState("customer");
 
-  const loginContext = () => setIsLoggedIn(true);
-  const logoutContext = () => setIsLoggedIn(false);
+  // const loginContext = () => setIsLoggedIn(true);
+  // const logoutContext = () => setIsLoggedIn(false);
 
-  const setRoleCustomer = () => setRole("customer");
-  const setRoleSeller = () => setRole("seller");
+  // const setRoleCustomer = () => setRole("customer");
+  // const setRoleSeller = () => setRole("seller");
 
   return (
     <AuthContext.Provider
       value={{
-        isLoggedIn,
-        loginContext,
-        logoutContext,
+        setIsLoggedInContext,
+        setRoleContext,
+        isLoggedInContext,
         roleContext,
-        setRoleCustomer,
-        setRoleSeller,
       }}
     >
       {children}

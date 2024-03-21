@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
@@ -24,14 +23,23 @@ import SlideBarBuyer from "./SlideBarBuyer";
 import "./dashboard.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const Dashboard = () => {
+  const {
+    setIsLoggedInContext,
+    setRoleContext,
+    isLoggedInContext,
+    roleContext } = useAuth();
+
   const navigate = useNavigate();
   /** Redirection */
   useEffect(() => {
     if (localStorage.getItem("login") !== null) {
+      setIsLoggedInContext(true);
       const user = JSON.parse(localStorage.getItem("login"));
       if (user.role === "customer") {
+        setRoleContext("customer");
         navigate("/");
       }
     } else {

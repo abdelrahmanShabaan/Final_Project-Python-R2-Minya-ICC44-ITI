@@ -5,6 +5,8 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 
+
+
 const loginPat = /^[a-zA-Z0-9._]+@[a-z]{1,8}\.(com|eg|gov|edu)$/;
 const passwordRegex =
   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=])(?=.*[^\w\d\s]).{8,}$/;
@@ -28,12 +30,11 @@ const LoginSchema = yup.object().shape({
 
 const LoginComponent = () => {
   const navigate = useNavigate();
-  let locally = JSON.parse(localStorage.getItem("Account Storage") || "[]");
-  let sessionLogin = JSON.parse(localStorage.getItem("login") || "[]");
   const [isError, setIsError] = useState(false);
-  const [isLoggedin, setIsLoggedin] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [type, setType] = useState("signIn");
+
+
+  
+
 
   const { handleSubmit, values, errors, handleBlur, touched, handleChange } =
     useFormik({
@@ -59,7 +60,8 @@ const LoginComponent = () => {
             );
             localStorage.setItem("cart", "[]");
             setIsError(false);
-            redirectBasedOnRole(user.role);
+            // redirectBasedOnRole(user.role);
+            navigate("/");
           } else {
             setIsError(true);
           }
@@ -78,6 +80,14 @@ const LoginComponent = () => {
   }, []);
 
   const redirectBasedOnRole = (role) => {
+    if (role === "customer") {
+      navigate("/");
+    } else if (role === "seller") {
+      navigate("/Dashboard");
+    }
+  };
+
+  const redirectCounterRoleToUpdateNavbar = (role) => {
     if (role === "customer") {
       navigate("/");
     } else if (role === "seller") {

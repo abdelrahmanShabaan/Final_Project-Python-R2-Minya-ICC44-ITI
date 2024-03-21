@@ -32,7 +32,7 @@ function SlideBarBuyer({ openSidebarToggle, OpenSidebar }) {
             <BsGrid1X2Fill className="icon" /> Dashboard
           </li>
         </Link>
-        <Link to="/ShowBuyerProducts">
+        <Link to="/ShowSellerProducts">
           <li className="sidebar-list-item">
             <BsFillArchiveFill className="icon" /> Show Products
           </li>

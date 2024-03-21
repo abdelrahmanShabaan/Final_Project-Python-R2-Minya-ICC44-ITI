@@ -3,17 +3,8 @@ import "./UserComponent.css";
 import { Link, useNavigate } from "react-router-dom";
 import RegisterComponent from "./RegisterComponent";
 import LoginComponent from "./LoginComponent";
-import { useAuth } from "../context/AuthContext";
 
 const UserComponent = () => {
-  const {
-    isLoggedIn,
-    loginContext,
-    logoutContext,
-    roleContext,
-    setRoleCustomer,
-    setRoleSeller,
-  } = useAuth();
   const [type, setType] = useState("signIn");
   const navigate = useNavigate();
   const handleOnClick = (text) => {

@@ -9,6 +9,7 @@ import Loader from "../../components/Loader/Loader";
 import { STATUS } from '../../utils/status';
 import AboutUsSection from '../../components/About-us';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 // import ProductForm from '../../Buyer/ProductForm';
 
 
@@ -16,16 +17,30 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
   const navigate = useNavigate();
+
+  const {
+    setIsLoggedInContext,
+    setRoleContext,
+    isLoggedInContext,
+    roleContext } = useAuth();
+
+
   /** Redirection */
   useEffect(() => {
     if (localStorage.getItem("login") !== null) {
+      setIsLoggedInContext(true);
       const user = JSON.parse(localStorage.getItem("login"));
       if (user.role === "seller") {
+        setRoleContext("seller");
         navigate("/Dashboard");
+      } else {
+
       }
     }
   }, []);
   /** End of Redirection */
+
+
 
   useEffect(() => {
     dispatch(fetchAsyncProducts(1000));
