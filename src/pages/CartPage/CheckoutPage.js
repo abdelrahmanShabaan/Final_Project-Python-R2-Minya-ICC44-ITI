@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaCreditCard, FaRegEnvelope, FaHome, FaUser } from 'react-icons/fa';
 import axios from 'axios';
-import "./CheckoutPage.css"
+import "./CheckoutPage.css";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -18,6 +18,18 @@ const CheckoutPage = () => {
     total_items: 0,
     total_amount: 0
   });
+
+    /** Redirection */
+  useEffect(() => {
+    if (sessionStorage.getItem("login") !== null) {
+      const user = JSON.parse(sessionStorage.getItem("login"));
+      if (user.role === "seller") {
+        navigate("/Dashboard");
+      }
+    }else{
+      navigate("/user");
+    }
+  }, []);
 
   const [carts, setCarts] = useState([]);
   const [formErrors, setFormErrors] = useState({});

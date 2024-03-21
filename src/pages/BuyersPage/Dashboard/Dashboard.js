@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from "../../context/AuthContext";
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
@@ -26,7 +26,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-
   const data = [
     {
       name: "Products",
@@ -77,80 +76,78 @@ const Dashboard = () => {
     setOpenSidebarToggle(!openSidebarToggle);
   };
 
-
   /** Count Function for products  */
 
-    const [productCount, setProductCount] = useState(0);
-  
-    useEffect(() => {
-      const fetchProductCount = async () => {
-        try {
-          const response = await axios.get('http://127.0.0.1:8000/products/');
-          setProductCount(response.data.length);
-        } catch (error) {
-          console.error('Error fetching products:', error);
-        }
-      };
-  
-      fetchProductCount();
-    }, []);
+  const [productCount, setProductCount] = useState(0);
 
-
-  
-  /**end function count */
-
-
-  
-  /** Count Function for category  */
-
-  const [categoryCount, setCategoryCount] = useState(0);
-  
   useEffect(() => {
     const fetchProductCount = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/categories/');
-        setCategoryCount(response.data.length);
+        const response = await axios.get("http://127.0.0.1:8000/products/");
+        setProductCount(response.data.length);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     };
 
     fetchProductCount();
   }, []);
 
-/**end function category */
-  
+  /**end function count */
 
+  /** Count Function for category  */
+
+  const [categoryCount, setCategoryCount] = useState(0);
+
+  useEffect(() => {
+    const fetchProductCount = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/categories/");
+        setCategoryCount(response.data.length);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProductCount();
+  }, []);
+
+  /**end function category */
 
   /** Count Function for users  */
 
   const [usersCount, setUsersCount] = useState(0);
-  
+
   useEffect(() => {
     const fetchProductCount = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/users/');
+        const response = await axios.get("http://127.0.0.1:8000/users/");
         setUsersCount(response.data.length);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     };
 
     fetchProductCount();
   }, []);
 
-/**end function users */
+  /**end function users */
 
-  
-  
   /** Redirection */
-    const { isLoggedIn, loginContext, logoutContext, roleContext, setRoleCustomer, setRoleSeller } = useAuth();
-    const navigate = useNavigate();
+  const {
+    isLoggedIn,
+    loginContext,
+    logoutContext,
+    roleContext,
+    setRoleCustomer,
+    setRoleSeller,
+  } = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
     if (sessionStorage.getItem("login") !== null) {
       const user = JSON.parse(sessionStorage.getItem("login"));
       redirectBasedOnRole(user.role);
-    }else{
+    } else {
       navigate("/user");
     }
   }, []);
@@ -158,8 +155,6 @@ const Dashboard = () => {
   const redirectBasedOnRole = (role) => {
     if (role === "customer") {
       navigate("/");
-    } else if (role === "seller") {
-      navigate("/Dashboard");
     }
   };
   /** End of Redirection */
@@ -167,21 +162,21 @@ const Dashboard = () => {
   /** Count Function for Reviews  */
 
   const [reviewCount, setReviewsCount] = useState(0);
-  
+
   useEffect(() => {
     const fetchProductCount = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/review/');
+        const response = await axios.get("http://127.0.0.1:8000/review/");
         setReviewsCount(response.data.length);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     };
 
     fetchProductCount();
   }, []);
 
-/**end function Reviews */
+  /**end function Reviews */
 
   return (
     <>

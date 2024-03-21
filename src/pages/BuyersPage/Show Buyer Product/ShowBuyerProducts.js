@@ -9,6 +9,25 @@ function ShowBuyerProducts() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(5); // Change this to adjust the number of products per page
 
+  /** Redirection */
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (sessionStorage.getItem("login") !== null) {
+      const user = JSON.parse(sessionStorage.getItem("login"));
+      redirectBasedOnRole(user.role);
+    } else {
+      navigate("/user");
+    }
+  }, []);
+
+  const redirectBasedOnRole = (role) => {
+    if (role === "customer") {
+      navigate("/");
+    }
+  };
+  /** End of Redirection */
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -34,7 +53,6 @@ function ShowBuyerProducts() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleEditClick = (id) => {
     navigate(`/EditBuyerProducts/${id}`);

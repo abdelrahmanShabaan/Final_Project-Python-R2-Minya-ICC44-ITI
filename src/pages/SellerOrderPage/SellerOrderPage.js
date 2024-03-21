@@ -3,10 +3,29 @@ import axios from "axios";
 import Product from "../../components/Product/Product";
 import Loader from "../../components/Loader/Loader";
 import "./SellerOrderPage.css"; // Create a CSS file for SellerOrderPage styles
+import { useNavigate } from "react-router-dom";
 
 const SellerOrderPage = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  /** Redirection */
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (sessionStorage.getItem("login") !== null) {
+      const user = JSON.parse(sessionStorage.getItem("login"));
+      redirectBasedOnRole(user.role);
+    } else {
+      navigate("/user");
+    }
+  }, []);
+
+  const redirectBasedOnRole = (role) => {
+    if (role === "customer") {
+      navigate("/");
+    }
+  };
+  /** End of Redirection */
 
   useEffect(() => {
     fetchOrders();

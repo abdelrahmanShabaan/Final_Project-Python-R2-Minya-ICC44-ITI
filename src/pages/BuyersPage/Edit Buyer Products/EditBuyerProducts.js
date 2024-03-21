@@ -11,6 +11,19 @@ function EditBuyerProducts() {
   const [product, setProduct] = useState({});
   const navigate = useNavigate();
 
+  /** Redirection */
+  useEffect(() => {
+    if (sessionStorage.getItem("login") !== null) {
+      const user = JSON.parse(sessionStorage.getItem("login"));
+      if (user.role === "customer") {
+        navigate("/");
+      }
+    } else {
+      navigate("/user");
+    }
+  }, []);
+  /** End of Redirection */
+
   /**----------------- Vaildation FormData ----------------**/
   const validateFormData = (data) => {
     const errors = {};
@@ -18,39 +31,38 @@ function EditBuyerProducts() {
     if (!data.title || data.title.trim() === "") {
       errors.title = "Name is required";
     }
-  
+
     if (!data.description || data.description.trim() === "") {
       errors.description = "Description is required";
     }
-  
+
     if (!data.price || isNaN(data.price)) {
       errors.price = "Price must be a valid number";
     }
-  
+
     if (!data.discountPercentage || isNaN(data.discountPercentage)) {
       errors.discountPercentage = "Discount percentage must be a valid number";
     }
-  
+
     if (!data.rating || isNaN(data.rating)) {
       errors.rating = "Rating must be a valid number";
     }
-  
+
     if (!data.stock || isNaN(data.stock)) {
       errors.stock = "Stock must be a valid number";
     }
-  
+
     if (!data.brand || data.brand.trim() === "") {
       errors.brand = "Brand is required";
     }
-  
+
     if (!data.category || data.category.trim() === "") {
       errors.category = "Category is required";
     }
-  
+
     return errors;
   };
 
-  
   const handleEditProduct = () => {
     const validationErrors = validateFormData(formData);
 
@@ -72,18 +84,17 @@ function EditBuyerProducts() {
     }
   };
 
-
   // const handleEditProduct = () => {
   //   const validationErrors = validateFormData(formData);
-  
+
   //   if (Object.keys(validationErrors).length === 0) {
   //     const formattedData = {
   //       ...formData,
-  //       rating: parseFloat(formData.rating), 
-  //       stock: parseInt(formData.stock), 
+  //       rating: parseFloat(formData.rating),
+  //       stock: parseInt(formData.stock),
   //       discountPercentage: parseFloat(formData.discountPercentage),
   //     };
-  
+
   // axios.patch(`http://127.0.0.1:8000/products/${id}/`, formattedData)
   //       .then((response) => {
   //         setProduct(response.data);
@@ -99,9 +110,6 @@ function EditBuyerProducts() {
   //     setErrors(validationErrors);
   //   }
   // };
-
-  
-
 
   useEffect(() => {
     const getProduct = async () => {
@@ -126,10 +134,9 @@ function EditBuyerProducts() {
 
   const displayError = (field) => {
     return errors[field] ? (
-      <div className="error-message" >{errors[field]}</div>
+      <div className="error-message">{errors[field]}</div>
     ) : null;
   };
-
 
   // Handle thumbnail images
   const handleImageUpload = (file) => {
@@ -156,7 +163,6 @@ function EditBuyerProducts() {
         />
 
         <form className="formclss">
-       
           <label>
             Name:
             <input
@@ -173,7 +179,7 @@ function EditBuyerProducts() {
           <br />
 
           <label>
-          Description:
+            Description:
             <input
               type="text"
               name="description"
@@ -188,7 +194,7 @@ function EditBuyerProducts() {
           <br />
 
           <label>
-          Price:
+            Price:
             <input
               type="text"
               name="price"
@@ -203,7 +209,7 @@ function EditBuyerProducts() {
           <br />
 
           <label>
-          DiscountPercentage:
+            DiscountPercentage:
             <input
               type="text"
               name="discountPercentage"
@@ -218,7 +224,7 @@ function EditBuyerProducts() {
           <br />
 
           <label>
-          Rating:
+            Rating:
             <input
               type="text"
               name="rating"
@@ -232,9 +238,8 @@ function EditBuyerProducts() {
           </label>
           <br />
 
-
           <label>
-          Stock:
+            Stock:
             <input
               type="text"
               name="stock"
@@ -249,7 +254,7 @@ function EditBuyerProducts() {
           <br />
 
           <label>
-          Brand:
+            Brand:
             <input
               type="text"
               name="brand"
@@ -263,9 +268,8 @@ function EditBuyerProducts() {
           </label>
           <br />
 
-
           <label>
-          Category:
+            Category:
             <input
               type="text"
               name="category"
@@ -280,19 +284,18 @@ function EditBuyerProducts() {
           <br />
 
           <label>
-          Thumbnail:
-          <input
-            type="file"
-            name="thumbnail"
-            placeholder={product.thumbnail}
-            // value={formData.thumbnail}
-            accept="image/*"
-            onChange={(e) =>
-               handleImageUpload(e.target.files[0])}
-          />
-          {displayError("thumbnail")}
-        </label>
-         
+            Thumbnail:
+            <input
+              type="file"
+              name="thumbnail"
+              placeholder={product.thumbnail}
+              // value={formData.thumbnail}
+              accept="image/*"
+              onChange={(e) => handleImageUpload(e.target.files[0])}
+            />
+            {displayError("thumbnail")}
+          </label>
+
           <br />
           <button
             type="button"
