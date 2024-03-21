@@ -139,7 +139,7 @@ const CheckoutPage = () => {
       <div className="checkout-section">
         <form onSubmit={handleSubmit} className="checkout-form">
           <h2 className="checkout-heading">Checkout</h2>
-          <div className="form-field">
+          {/* <div className="form-field">
             <FaUser className="form-icon" />
             <input
               type="text"
@@ -152,17 +152,18 @@ const CheckoutPage = () => {
               className="input-field"
               disabled
             />
+
+          </div> */}
+
+          <div className="user-box">
+            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+            <label><i class="fa-regular fa-user"/> Username</label>
             {formErrors.name && (
               <span className="error-message">{formErrors.name}</span>
             )}
           </div>
 
-          <div className="user-box">
-            <input type="text" name="" required />
-            <label>Username</label>
-          </div>
-
-          <div className="user-box">
+          {/* <div className="user-box">
             <input
               type={showPassword ? "text" : "password"}
               name=""
@@ -173,9 +174,9 @@ const CheckoutPage = () => {
             <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
               {showPassword ? <i class="fas fa-eye"/> : <i class="fas fa-eye-slash"/>}
             </span>
-          </div>
+          </div> */}
 
-          <div className="form-field">
+          {/* <div className="form-field">
             <FaRegEnvelope className="form-icon" />
             <input
               type="email"
@@ -188,11 +189,18 @@ const CheckoutPage = () => {
               className="input-field"
               disabled
             />
+          </div> */}
+
+          <div className="user-box">
+            <input type="text" name="email" value={formData.email} onChange={handleChange} required />
+            <label><i class="fa-regular fa-envelope"/> email</label>
             {formErrors.email && (
               <span className="error-message">{formErrors.email}</span>
             )}
           </div>
-          <div className="form-field">
+
+          
+          {/* <div className="form-field">
             <FaHome className="form-icon" />
             <input
               type="text"
@@ -204,11 +212,18 @@ const CheckoutPage = () => {
               required
               className="input-field"
             />
+
+          </div> */}
+
+          <div className="user-box">
+            <input type="text" name="address" value={formData.address} onChange={handleChange} required />
+            <label><i class="fa-solid fa-house-user"/> Address</label>
             {formErrors.address && (
               <span className="error-message">{formErrors.address}</span>
             )}
           </div>
-          <div className="form-field">
+
+          {/* <div className="form-field">
             <FaCreditCard className="form-icon" />
             <input
               type="text"
@@ -220,11 +235,18 @@ const CheckoutPage = () => {
               required
               className="input-field"
             />
+
+          </div> */}
+
+          <div className="user-box">
+            <input type="text" name="card_number" value={formData.card_number} onChange={handleChange} required />
+            <label><i class="fa-regular fa-credit-card"/> Card Number</label>
             {formErrors.card_number && (
               <span className="error-message">{formErrors.card_number}</span>
             )}
           </div>
-          <div className="form-field">
+
+          {/* <div className="form-field">
             <FaCreditCard className="form-icon" />
             <input
               type="text"
@@ -236,11 +258,22 @@ const CheckoutPage = () => {
               required
               className="input-field"
             />
+
+          </div> */}
+
+
+          <div className="user-box">
+            <input type="text" name="exp_date" value={formData.exp_date} onChange={handleChange} required />
+            <label><i class="fa-solid fa-credit-card"/> Expiration Date</label>
             {formErrors.exp_date && (
               <span className="error-message">{formErrors.exp_date}</span>
             )}
           </div>
-          <div className="form-field">
+
+
+
+          
+          {/* <div className="form-field">
             <FaCreditCard className="form-icon" />
             <input
               type="text"
@@ -252,11 +285,18 @@ const CheckoutPage = () => {
               required
               className="input-field"
             />
+          </div> */}
+
+
+          <div className="user-box">
+            <input type="text" name="cvv" value={formData.cvv} onChange={handleChange} required />
+            <label><i class="fa-solid fa-credit-card"/> CVV</label>
             {formErrors.cvv && (
               <span className="error-message">{formErrors.cvv}</span>
             )}
           </div>
-          <button type="submit" className="checkout-button">
+
+          <button type="submit" className="checkout-button" onChange={handleChange}>
             Complete Purchase
           </button>
         </form>
