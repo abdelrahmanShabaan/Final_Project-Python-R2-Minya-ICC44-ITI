@@ -269,7 +269,7 @@ const CheckoutPage = () => {
             Total Items: {formData.total_items}
           </p>
           <p className="order-summary-total">
-            Total Amount: ${formData.total_amount.toFixed(2)}
+            Total Amount: EGP {formData.total_amount.toFixed(2)}
           </p>
           <h4 className="order-summary-heading">Items:</h4>
           <ul className="order-summary-list">
@@ -277,7 +277,7 @@ const CheckoutPage = () => {
               <li key={index} className="order-summary-item">
                 <span className="order-summary-item-text">{cart.title}</span>
                 <span className="order-summary-item-price">
-                  ${cart.totalPrice.toFixed(2)}
+                EGP {cart.totalPrice.toFixed(2)}
                 </span>
               </li>
             ))}

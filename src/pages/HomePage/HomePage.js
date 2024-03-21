@@ -8,12 +8,24 @@ import { fetchAsyncProducts, getAllProducts, getAllProductsStatus } from '../../
 import Loader from "../../components/Loader/Loader";
 import { STATUS } from '../../utils/status';
 import AboutUsSection from '../../components/About-us';
+import { useNavigate } from "react-router-dom";
 // import ProductForm from '../../Buyer/ProductForm';
 
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
+  const navigate = useNavigate();
+  /** Redirection */
+  useEffect(() => {
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
+      if (user.role === "seller") {
+        navigate("/Dashboard");
+      }
+    }
+  }, []);
+  /** End of Redirection */
 
   useEffect(() => {
     dispatch(fetchAsyncProducts(1000));

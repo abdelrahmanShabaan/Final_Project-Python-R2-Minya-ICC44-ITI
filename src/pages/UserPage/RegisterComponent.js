@@ -20,7 +20,7 @@ const ValidSchema = yup.object().shape({
     .max(20, "Password must be at most 20 characters")
     .matches(
       passwordRegex,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long"
+      "Password must contain at least a uppercase letter, a lowercase letter, a number, a special character, and be at least 8 characters long"
     )
     .required("Must Fill this Field"),
   name: yup
@@ -67,6 +67,12 @@ function RegisterComponent() {
       },
     });
 
+  const [showRegPassword, setRegShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setRegShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
     <>
       <div className="form-containerx sign-up-containerx">
@@ -111,7 +117,7 @@ function RegisterComponent() {
             <p className="error">{errors.email}</p>
           )}
           <input
-            type="password"
+            type={showRegPassword ? "text" : "password"}
             className="input"
             name="password"
             value={values.password}
@@ -120,8 +126,19 @@ function RegisterComponent() {
             placeholder="Please, enter your password"
             class={errors.password && touched.password ? "input-error" : ""}
           />
+          <span
+            className="password-toggle-iconx"
+            onClick={togglePasswordVisibility}
+          >
+            {showRegPassword ? (
+              <i class="fas fa-eye" />
+            ) : (
+              <i class="fas fa-eye-slash" />
+            )}
+          </span>
+
           {errors.password && touched.password && (
-            <p className="error">{errors.password}</p>
+            <p className="error1">{errors.password}</p>
           )}
           <select
             className="input"
