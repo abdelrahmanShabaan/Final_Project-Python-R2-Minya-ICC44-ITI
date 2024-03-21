@@ -42,7 +42,7 @@ function Popup({ isOpen, onClose }) {
   };
 
   useEffect(() => {
-    let sessionLogin = JSON.parse(sessionStorage.getItem("login") || "[]");
+    let sessionLogin = JSON.parse(localStorage.getItem("login") || "[]");
     setSessionLogin(sessionLogin);
     console.log(sessionLogin);
     loadData();

@@ -13,6 +13,8 @@ import {
   getCartTotal,
   getCartItemsCount,
 } from "../../store/cartSlice";
+import DeleteButton from "../../components/DeleteButton/DeleteButton";
+import GalaxyButton from "../../components/GalaxyButton/GalaxyButton";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -159,6 +161,9 @@ const CartPage = () => {
           </div>
 
           <div className="cart-cfoot flex align-start justify-between py-3 bg-white">
+            <div onClick={() => dispatch(clearCart())}>
+              <DeleteButton />
+            </div>
             <div className="cart-cfoot-l">
               <button
                 type="button"
@@ -169,8 +174,10 @@ const CartPage = () => {
                 <span className="mx-1">Clear Cart</span>
               </button>
             </div>
+            <DeleteButton/>
+            
 
-            <div className="cart-cfoot-r flex flex-column justify-end">
+            <div className="cart-cfoot-r flex flex-column justify-end" >
               <div className="total-txt flex align-center justify-end">
                 <div className="font-manrope fw-5">
                   Total ({itemsCounts}) items:{" "}
@@ -180,13 +187,16 @@ const CartPage = () => {
                 </span>
               </div>
 
-              <button
+              {/* <button
                 type="button"
                 className="checkout-btn text-white bg-orange fs-16"
-                onClick={handleCheckout}
+                
               >
                 Check Out
-              </button>
+              </button> */}
+              <div onClick={handleCheckout}>
+                <GalaxyButton/>
+              </div>
             </div>
           </div>
         </div>

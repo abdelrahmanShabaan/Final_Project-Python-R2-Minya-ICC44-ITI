@@ -58,28 +58,28 @@ function AboutUsSection() {
                             <div className="grid-item">
                                 <i className="fas fa-gem fa-3x text-primary"></i>
                                 <h4>Quality Products</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut quam ac erat vehicula fermentum.</p>
+                                <p>Discover local excellence: curated collection, quality products, direct from artisans.</p>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="grid-item">
                                 <i className="fas fa-shipping-fast fa-3x text-primary"></i>
                                 <h4>Fast Delivery</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut quam ac erat vehicula fermentum.</p>
+                                <p>Swift shipping: local brands, doorstep delivery, hassle-free shopping experience.</p>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="grid-item">
                                 <i className="fas fa-lock fa-3x text-primary"></i>
                                 <h4>Secure Payments</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut quam ac erat vehicula fermentum.</p>
+                                <p>Shop confidently: encrypted transactions, trusted payment gateways, secure checkout.</p>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="grid-item">
                                 <i className="fas fa-headset fa-3x text-primary"></i>
                                 <h4>24/7 Customer Support</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut quam ac erat vehicula fermentum.</p>
+                                <p>Always available: expert assistance, round-the-clock, resolving queries promptly.</p>
                             </div>
                         </div>
                     </div>

@@ -13,8 +13,8 @@ function EditBuyerProducts() {
 
   /** Redirection */
   useEffect(() => {
-    if (sessionStorage.getItem("login") !== null) {
-      const user = JSON.parse(sessionStorage.getItem("login"));
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
       if (user.role === "customer") {
         navigate("/");
       }

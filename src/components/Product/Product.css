@@ -31,7 +31,7 @@
 .product-item-img {
   height: 60%; 
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   overflow: hidden; 
@@ -59,14 +59,14 @@
   font-weight: 500;
 }
 
-.product-item-info .title {
+.product-item-info .titlex {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 0.5rem;
   position: relative; 
 }
 
-.product-item-info .title:after {
+.product-item-info .titlex:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -91,4 +91,5 @@
 .product-item-info .discount {
   font-size: 12px;
   color: #FF9900;
+  margin-left: 5px;
 }

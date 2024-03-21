@@ -82,7 +82,7 @@ const ProductDetailsPage = () => {
   }, [cartMessageStatus, dispatch]);
 
   useEffect(() => {
-    let sessionLogin = JSON.parse(sessionStorage.getItem("login") || "[]");
+    let sessionLogin = JSON.parse(localStorage.getItem("login") || "[]");
     setSessionLogin(sessionLogin);
     console.log(sessionLogin);
   }, []);
@@ -316,7 +316,7 @@ const ProductDetailsPage = () => {
                   <button type="button" className="your-store-buy-now-btn mx-3">
                     <span className="your-store-buy-now-text">Buy Now</span>
                   </button>
-                  {sessionStorage.getItem("login") !== null && (
+                  {localStorage.getItem("login") !== null && (
                     <button
                       type="button"
                       className="your-popup-btn"

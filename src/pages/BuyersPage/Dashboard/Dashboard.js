@@ -26,6 +26,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  /** Redirection */
+  useEffect(() => {
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
+      if (user.role === "customer") {
+        navigate("/");
+      }
+    } else {
+      navigate("/user");
+    }
+  }, []);
+  /** End of Redirection */
   const data = [
     {
       name: "Products",
@@ -132,32 +145,6 @@ const Dashboard = () => {
   }, []);
 
   /**end function users */
-
-  /** Redirection */
-  const {
-    isLoggedIn,
-    loginContext,
-    logoutContext,
-    roleContext,
-    setRoleCustomer,
-    setRoleSeller,
-  } = useAuth();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (sessionStorage.getItem("login") !== null) {
-      const user = JSON.parse(sessionStorage.getItem("login"));
-      redirectBasedOnRole(user.role);
-    } else {
-      navigate("/user");
-    }
-  }, []);
-
-  const redirectBasedOnRole = (role) => {
-    if (role === "customer") {
-      navigate("/");
-    }
-  };
-  /** End of Redirection */
 
   /** Count Function for Reviews  */
 
