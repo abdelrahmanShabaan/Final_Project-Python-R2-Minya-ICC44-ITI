@@ -49,8 +49,8 @@ export const fetchAsyncCategories = createAsyncThunk(
   "categories/fetch",
   async () => {
     try {
-      const response = await axios.get(`${BASE_URL}categories/`);
-      return response.data;
+      const response = await axios.get(`${BASE_URL}categories/`); // Ensure the endpoint is correct
+      return response.data; // With Axios, you directly use response.data
     } catch (error) {
       console.error("Error fetching categories:", error);
       throw error;
@@ -65,7 +65,7 @@ export const fetchAsyncProductsOfCategory = createAsyncThunk(
     try {
       const response = await axios.get(
         `${BASE_URL}products/?category=${encodeURIComponent(category)}`
-      );
+      ); // No trailing slash and encode URI component
       console.log("Fetched products of category:", response.data);
       return response.data;
     } catch (error) {

@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
 from Categories.views import CategoryList
-from products.views import ProductDetail, ProductList,ProductViewSet , search_products, filter_products
+from products.views import ProductDetail, ProductList,ProductViewSet
 from project import settings
 from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
@@ -27,7 +27,6 @@ from reviews.views import ReviewList, ReviewDetail, ReviewViewSet
 from users.views import UserViewSet
 from payment.views import CheckoutAPIView
 from order.views import OrderList, OrderDetail, OrderViewSet
-
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
@@ -46,6 +45,4 @@ urlpatterns = [
     path('checkout/', CheckoutAPIView.as_view(), name='checkout'),
     path('orders/', OrderList.as_view(), name='order-list'),
     path('orders/<int:pk>/', OrderDetail.as_view(), name='order-detail'),
-    path('search/', search_products, name='search-products'),
-    path('filter/', filter_products, name='filter-products'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
