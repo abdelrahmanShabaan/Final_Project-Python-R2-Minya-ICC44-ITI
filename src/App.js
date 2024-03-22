@@ -28,6 +28,7 @@ import EditSellerProducts from "./pages/SellersPage/EditSellerProducts/EditSelle
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import HeaderSeller from "./components/HeaderSeller/HeaderSeller";
 import { useAuth } from "./pages/context/AuthContext";
+import VerificationPage from "./pages/VerificationPage/VerificationPage";
 function App() {
 
   const {
@@ -64,6 +65,7 @@ function App() {
             <Route path="/category/:category" element={<CategoryProduct />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/user" element={<UserComponent />} />
+            <Route path="/VerificationPage" element={<VerificationPage />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/search/:searchTerm" element={<Search />} />
             <Route path="/ProductPage" element={<ProductPage />} />
