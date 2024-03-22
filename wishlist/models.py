@@ -1,5 +1,7 @@
+from decimal import Decimal
 from django.db import models
 from django.contrib.auth.models import User
+from cart.models import CartItem
 from products.models import Product
 from django.conf import settings
 
