@@ -1,0 +1,29 @@
+/* TermsAndConditions.css */
+
+.terms-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+.terms-list {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #555;
+}
+
+p {
+  color: #777;
+  line-height: 1.6;
+}
