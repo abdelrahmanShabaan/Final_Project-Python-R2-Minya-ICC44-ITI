@@ -29,6 +29,8 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import HeaderSeller from "./components/HeaderSeller/HeaderSeller";
 import { useAuth } from "./pages/context/AuthContext";
 import VerificationPage from "./pages/VerificationPage/VerificationPage";
+import Terms from "./pages/Terms/Terms"
+import NewFooter from "./components/NewFooter/NewFooter"
 function App() {
 
   const {
@@ -64,6 +66,7 @@ function App() {
             <Route path="/product/:id" element={<ProductSingle />} />
             <Route path="/category/:category" element={<CategoryProduct />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="/user" element={<UserComponent />} />
             <Route path="/VerificationPage" element={<VerificationPage />} />
             <Route path="/wishlist" element={<Wishlist />} />
@@ -81,6 +84,7 @@ function App() {
           </Routes>
 
           <Footer />
+          {/* <NewFooter /> */}
         </BrowserRouter>
       </Provider>
     </div>
