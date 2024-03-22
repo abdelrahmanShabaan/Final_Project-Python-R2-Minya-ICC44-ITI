@@ -23,9 +23,7 @@ export default function Rev(props) {
     }
   };
 
-  useEffect(() => {
-    loadData();
-  }, []);
+
 
   useEffect(() => {
     let sessionLogin = JSON.parse(localStorage.getItem("login") || "[]");
@@ -84,6 +82,10 @@ export default function Rev(props) {
     setReviewToEdit(review);
     setShowPopup(true);
   };
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const indexOfLastReview = currentPage * reviewsPerPage;
   const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
