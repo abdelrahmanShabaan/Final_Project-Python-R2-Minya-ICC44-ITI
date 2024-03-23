@@ -181,21 +181,6 @@ const CheckoutPage = () => {
             Checkout
           </h2>
           <br />
-          {/* <div className="form-field">
-            <FaUser className="form-icon" />
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="input-field"
-              disabled
-            />
-
-          </div> */}
 
           <div className="user-box">
             <input
