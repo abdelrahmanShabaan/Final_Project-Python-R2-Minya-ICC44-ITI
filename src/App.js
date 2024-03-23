@@ -31,6 +31,7 @@ import { useAuth } from "./pages/context/AuthContext";
 import VerificationPage from "./pages/VerificationPage/VerificationPage";
 import Terms from "./pages/Terms/Terms"
 import NewFooter from "./components/NewFooter/NewFooter"
+import ShowSellerCategories from "./pages/SellersPage/ShowSellerCategories/ShowSellerCategories";
 function App() {
 
   const {
@@ -78,6 +79,7 @@ function App() {
             <Route path="/SellerOrderPage" element={<SellerOrderPage />} />
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/ShowSellerProducts" element={<ShowSellerProducts />} />
+            <Route path="/ShowSellerCategories" element={<ShowSellerCategories />} />
             <Route path="/AddBuyerProduct" element={<AddBuyerProduct />} />
             <Route path="/EditSellerProducts/:id" element={<EditSellerProducts />} />
             <Route path="*" element={<PageNotFound />} />

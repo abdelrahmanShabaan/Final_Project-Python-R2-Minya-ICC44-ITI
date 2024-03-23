@@ -1,94 +1,65 @@
-.edit-container {
-max-width: 600px;
-margin: 20px auto;
-padding: 20px;
-border: 1px solid #ddd;
-border-radius: 8px;
-}
-
-.edit-heading {
-margin-bottom: 20px;
-}
-
-.edit-form {
-display: flex;
-flex-direction: column;
-}
-
-.edit-label {
-margin-bottom: 10px;
-}
-
-.edit-input {
-width: 100%;
-padding: 8px;
-margin-bottom: 15px;
-border: 1px solid #ddd;
-border-radius: 4px;
-}
-
-.edit-button {
-padding: 10px;
-background-color: #007bff;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-
-.edit-button:hover {
-background-color: #0056b3;
+/* Custom CSS for the form */
+.custom-form-seller-edit {
+width: 60%;
+margin: 0 auto; /* Centers the form horizontally */
+padding: 20px; /* Adds some spacing around the form elements */
+max-height: 800px; /* Set maximum height for the form */
+overflow-y: scroll; /* Enable vertical scrolling if needed */
 }
 
 
-.formclss {
-width: 90%;
-grid-area: main; /* Add this to make the product list take the available space in the grid layout */
-margin: 20px;
-height: fit-content;
-padding: 20px;
-border: 1px solid #ccc;
-border-radius: 5px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-display: left;
+/* Style for input fields with less height */
+.custom-form-seller-edit input[type="text"] {
+width: calc(100% - 20px); /* Adjust width to accommodate padding */
+padding: 6px;
 margin-bottom: 8px;
+box-sizing: border-box; /* Ensures padding and border are included in width */
 }
 
-input {
-width: 100%;
-padding: 8px;
-margin-bottom: 10px;
-box-sizing: border-box;
+/* Style for input fields with more height */
+.custom-form-seller-edit input[type="text"].more-height {
+height: 100px; /* Set a specific height for these inputs */
+padding: 10px;
+margin-bottom: 12px;
+resize: vertical; /* Allow vertical resizing */
 }
 
-button {
-background-color: #07950c;
+/* Style for labels */
+.custom-form-seller-edit label {
+display: block;
 color: #fff;
-padding: 10px 15px;
+margin-bottom: 5px;
+}
+
+/* Style for the "Update Product" button */
+.custom-form-seller-edit .edit-product-button {
+display: block;
+width: 100%;
+padding: 10px;
+background-color: #336fe7; /* Example button color */
+color: #fff;
 border: none;
 border-radius: 5px;
 cursor: pointer;
+margin-top: 15px;
+}
+.edit-product-button:hover {
+    background-color: #275ecc;
+    }
+
+/* Style for error messages */
+.custom-form-seller-edit .error-message {
+color: red;
+font-size: 12px;
 }
 
-button:hover {
-background-color: #45a049;
+/* Style for the image container */
+.custom-form-seller-edit .image-container {
+margin-top: 20px;
 }
 
-.popuppp {
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color: rgba(0, 0, 0, 0.8);
-color: white;
-padding: 20px;
-border-radius: 5px;
-z-index: 9999;
-}
-
-.popuppp-content {
-text-align: center;
+/* Style for the image */
+.custom-form-seller-edit img {
+display: block;
+margin-bottom: 10px;
 }

@@ -1,0 +1,30 @@
+
+/* Pagination */
+.pagination {
+display: flex;
+gap: 5px;
+margin-top: 20px;
+}
+
+.pagination button {
+padding: 5px 10px;
+border: 1px solid #ccc;
+background-color: #fff;
+cursor: pointer;
+}
+
+.pagination button.active {
+background-color: #031221;
+color: #fff;
+}
+
+.pagination button:hover {
+background-color: rgb(159, 172, 186);
+color: #fff;
+}
+
+/* Additional border-radius for table */
+.product-list-container-buyer .table-wrapper {
+border-radius: 10px;
+overflow: hidden;
+}
