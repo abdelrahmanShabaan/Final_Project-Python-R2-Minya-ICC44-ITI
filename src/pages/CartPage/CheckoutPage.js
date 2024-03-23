@@ -181,21 +181,6 @@ const CheckoutPage = () => {
             Checkout
           </h2>
           <br />
-          {/* <div className="form-field">
-            <FaUser className="form-icon" />
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="input-field"
-              disabled
-            />
-
-          </div> */}
 
           <div className="user-box">
             <input
@@ -213,18 +198,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="user-box">
-            <input
-              type={showPassword ? "text" : "password"}
-              name=""
-              id="password"
-              required
-            />
-            <label>Password</label>
-            <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
-              {showPassword ? <i class="fas fa-eye"/> : <i class="fas fa-eye-slash"/>}
-            </span>
-          </div> */}
 
           {/* <div className="form-field">
             <FaRegEnvelope className="form-icon" />
