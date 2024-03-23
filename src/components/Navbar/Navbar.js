@@ -134,6 +134,22 @@ const Navbar = () => {
           </Link>
         </div>
 
+
+{/* Abdelrahman editions */}
+
+        {/* <div className="navbar-cart flex align-center">
+          <i className="fa-solid fa-user"></i>
+        </div> */}
+
+<div className="navbar-cart flex align-center">
+            <Link to="/user/accountsettings" className="cart-btn">
+              <i className="fa-solid fa-user"></i>
+            </Link>
+          </div>
+    
+
+{/* End Abdelrahman Edition */}
+
         {isUserLoggedIn && (
           <div className="navbar-cart flex align-center">
             <Link to="/user" className="cart-btn">

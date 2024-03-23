@@ -91,8 +91,7 @@ function AddSellerProducts() {
       formDataToSend.append("category", formData.category);
       formDataToSend.append("thumbnail", formData.thumbnail); // Append the image file to FormData
 
-      axios
-        .post("http://127.0.0.1:8000/products/", formDataToSend)
+      axios.post("http://127.0.0.1:8000/products/", formDataToSend)
         .then((response) => {
           setProducts([...products, response.data]);
           // Reset form data after successful submission
@@ -185,6 +184,7 @@ function AddSellerProducts() {
             <input
               type="text"
               name="title"
+              placeholder="enter product name"
               value={formData.title}
               onChange={(e) =>
                 setFormData({ ...formData, title: e.target.value })
@@ -197,7 +197,8 @@ function AddSellerProducts() {
             Description:
             <input
               type="text"
-              name="category"
+              name="description"
+              placeholder="enter product description"
               value={formData.description}
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })
@@ -211,6 +212,7 @@ function AddSellerProducts() {
             <input
               type="text"
               name="price"
+              placeholder="enter product price"
               value={formData.price}
               onChange={(e) =>
                 setFormData({ ...formData, price: e.target.value })
@@ -224,6 +226,7 @@ function AddSellerProducts() {
             <input
               type="text"
               name="discountPercentage"
+              placeholder="enter product discountPercentage"
               value={formData.discountPercentage}
               onChange={(e) =>
                 setFormData({ ...formData, discountPercentage: e.target.value })
@@ -237,6 +240,7 @@ function AddSellerProducts() {
             <input
               type="text"
               name="rating"
+              placeholder="enter product rating"
               value={formData.rating}
               onChange={(e) =>
                 setFormData({ ...formData, rating: e.target.value })
@@ -250,6 +254,7 @@ function AddSellerProducts() {
             <input
               type="text"
               name="stock"
+              placeholder="enter product stock"
               value={formData.stock}
               onChange={(e) =>
                 setFormData({ ...formData, stock: e.target.value })
@@ -263,6 +268,7 @@ function AddSellerProducts() {
             <input
               type="text"
               name="brand"
+              placeholder="enter product brand"
               value={formData.brand}
               onChange={(e) =>
                 setFormData({ ...formData, brand: e.target.value })
@@ -276,6 +282,7 @@ function AddSellerProducts() {
             <input
               type="text"
               name="category"
+              placeholder="enter product category"
               value={formData.category}
               onChange={(e) =>
                 setFormData({ ...formData, category: e.target.value })
