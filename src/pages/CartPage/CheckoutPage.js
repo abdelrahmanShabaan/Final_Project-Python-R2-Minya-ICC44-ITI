@@ -261,21 +261,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="card_number"
-              name="card_number"
-              placeholder="Card Number"
-              value={formData.card_number}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
-
           <div className="user-box">
             <input
               type="text"
@@ -291,21 +276,6 @@ const CheckoutPage = () => {
               <span className="error-message">{formErrors.card_number}</span>
             )}
           </div>
-
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="exp_date"
-              name="exp_date"
-              placeholder="Expiration Date"
-              value={formData.exp_date}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
 
           <div className="user-box">
             <input
@@ -323,19 +293,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="cvv"
-              name="cvv"
-              placeholder="CVV"
-              value={formData.cvv}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-          </div> */}
 
           <div className="user-box">
             <input
