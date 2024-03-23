@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.2.0",
     "@reduxjs/toolkit": "^1.9.0",
     "axios": "^1.6.7",
     "formik": "^2.4.5",

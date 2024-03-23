@@ -380,3 +380,32 @@ a span:nth-child(4) {
 .password-toggle-icon i:hover {
   color: #000;
 }
+/* new popup */
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 9999;
+  }
+
+.success-popup p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.visa-logo-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.visa-logo {
+  width: 270px; 
+  height: 70px; 
+}
