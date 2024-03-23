@@ -181,21 +181,6 @@ const CheckoutPage = () => {
             Checkout
           </h2>
           <br />
-          {/* <div className="form-field">
-            <FaUser className="form-icon" />
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="input-field"
-              disabled
-            />
-
-          </div> */}
 
           <div className="user-box">
             <input
@@ -213,34 +198,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="user-box">
-            <input
-              type={showPassword ? "text" : "password"}
-              name=""
-              id="password"
-              required
-            />
-            <label>Password</label>
-            <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
-              {showPassword ? <i class="fas fa-eye"/> : <i class="fas fa-eye-slash"/>}
-            </span>
-          </div> */}
-
-          {/* <div className="form-field">
-            <FaRegEnvelope className="form-icon" />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="input-field"
-              disabled
-            />
-          </div> */}
-
           <div className="user-box">
             <input
               type="text"
@@ -256,21 +213,6 @@ const CheckoutPage = () => {
               <span className="error-message">{formErrors.email}</span>
             )}
           </div>
-
-          {/* <div className="form-field">
-            <FaHome className="form-icon" />
-            <input
-              type="text"
-              id="address"
-              name="address"
-              placeholder="Address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
 
           <div className="user-box">
             <input
@@ -288,21 +230,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="card_number"
-              name="card_number"
-              placeholder="Card Number"
-              value={formData.card_number}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
-
           <div className="user-box">
             <input
               type="text"
@@ -318,21 +245,6 @@ const CheckoutPage = () => {
               <span className="error-message">{formErrors.card_number}</span>
             )}
           </div>
-
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="exp_date"
-              name="exp_date"
-              placeholder="Expiration Date"
-              value={formData.exp_date}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
 
           <div className="user-box">
             <input
@@ -350,19 +262,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="cvv"
-              name="cvv"
-              placeholder="CVV"
-              value={formData.cvv}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-          </div> */}
 
           <div className="user-box">
             <input

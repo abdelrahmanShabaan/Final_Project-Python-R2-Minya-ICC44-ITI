@@ -15,7 +15,13 @@ const SellerOrderPage = () => {
     if (localStorage.getItem("login") === null) {
       navigate("/user");
     }
-  }, [navigate]);
+  }, []);
+
+  const redirectBasedOnRole = (role) => {
+    if (role === "customer") {
+      navigate("/");
+    }
+  };
 
   useEffect(() => {
     fetchOrders();
@@ -121,6 +127,7 @@ const SellerOrderPage = () => {
       </div>
     </main>
   );
+  
 };
 
 export default SellerOrderPage;
