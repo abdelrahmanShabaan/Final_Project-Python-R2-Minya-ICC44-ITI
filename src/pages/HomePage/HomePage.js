@@ -10,7 +10,6 @@ import { STATUS } from '../../utils/status';
 import AboutUsSection from '../../components/About-us';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-// import ProductForm from '../../Buyer/ProductForm';
 
 
 const HomePage = () => {

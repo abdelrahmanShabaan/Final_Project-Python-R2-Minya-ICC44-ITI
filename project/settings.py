@@ -109,16 +109,16 @@ WSGI_APPLICATION = "project.wsgi.application"
 # }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'easytrade',
-#         'USER': 'ramymedhat',
-#         'PASSWORD': '1234',
-#          'HOST': 'localhost',
-#          'PORT': '5432',
-#      }
-#  }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'easytrade',
+        'USER': 'postgres',
+        'PASSWORD': 'Manar123arabi',
+         'HOST': 'localhost',
+          'PORT': '5432',
+      }
+  }
 
 #  DATABASES = {
 #      'default': {
@@ -131,16 +131,16 @@ WSGI_APPLICATION = "project.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "easytrade",
-        "USER": "hassaneldash",
-        "PASSWORD": "hassaneldash",
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "easytrade",
+#         "USER": "hassaneldash",
+#         "PASSWORD": "hassaneldash",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
