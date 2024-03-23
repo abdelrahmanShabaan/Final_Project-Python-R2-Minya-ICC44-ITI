@@ -13,6 +13,11 @@ const WishlistPage = () => {
     localStorage.removeItem("favorites");
   };
 
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavorites(storedFavorites);
+  }, [favorites]);
+
   return (
     <main>
       <div className="main-content bg-whitesmoke">
