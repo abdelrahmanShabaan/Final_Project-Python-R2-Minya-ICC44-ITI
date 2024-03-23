@@ -126,24 +126,25 @@ const ProductDetailsPage = () => {
   };
 
   const togglePopup = () => {
-    setShowPopup((prev) => !prev); // Toggle the value of showPopup
+    setShowPopup((prev) => !prev);
   };
 
+  
   const handleClosePopup = () => {
-    setShowPopup(false); // Set showPopup to false when the close button is clicked
+    setShowPopup(false); 
   };
 
   function renderStars(rating) {
     const maxStars = 5;
-    const roundedRating = Math.round(rating * 2) / 2; // Round to nearest half star
+    const roundedRating = Math.round(rating * 2) / 2; 
 
     const stars = [];
 
     for (let i = 1; i <= maxStars; i++) {
       if (i <= roundedRating) {
-        stars.push(<span key={i}>&#9733;</span>); // Unicode star character
+        stars.push(<span key={i}>&#9733;</span>); 
       } else {
-        stars.push(<span key={i}>&#9734;</span>); // Unicode empty star character
+        stars.push(<span key={i}>&#9734;</span>); 
       }
     }
 
