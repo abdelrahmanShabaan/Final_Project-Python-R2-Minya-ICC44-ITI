@@ -8,6 +8,7 @@ import {
   BsListCheck,
   BsMenuButtonWideFill,
   BsFillGearFill,
+  BsStarFill,
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -42,7 +43,7 @@ function SlideBarBuyer({ openSidebarToggle, OpenSidebar }) {
             <BsListCheck className="icon" /> Show Categories
           </li>
         </Link>
-        <Link to="/AddBuyerProduct">
+        <Link to="/AddSellerProducts">
           <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
             <BsFillGrid3X3GapFill className="icon" /> Add New Products
           </li>
@@ -52,14 +53,9 @@ function SlideBarBuyer({ openSidebarToggle, OpenSidebar }) {
             <BsPeopleFill className="icon" /> Orders
           </li>
         </Link>
-        <Link to="#">
+        <Link to="/ShowSellerReviews">
           <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
-            <BsMenuButtonWideFill className="icon" /> Reports
-          </li>
-        </Link>
-        <Link to="#">
-          <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
-            <BsFillGearFill className="icon" /> Setting
+            <BsStarFill className="icon" /> Reviews
           </li>
         </Link>
       </ul>
