@@ -300,23 +300,6 @@ const CheckoutPage = () => {
           </div>
 
 
-
-
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="cvv"
-              name="cvv"
-              placeholder="CVV"
-              value={formData.cvv}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-          </div> */}
-
-
           <div className="user-box">
             <input type="text" name="cvv" value={formData.cvv} onChange={handleChange} required />
             <label><i class="fa-solid fa-credit-card" /> CVV</label>
