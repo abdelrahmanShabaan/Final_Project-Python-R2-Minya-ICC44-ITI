@@ -112,7 +112,7 @@ const CheckoutPage = () => {
             status: "pending",
             product: cart.id,
           };
-          await axios.post("http://127.0.0.1:8000/orders/", orderAPI);
+          await axios.post("https://retoolapi.dev/3DPp5R/orders", orderAPI);
         }
 
         const formattedData = {
@@ -426,7 +426,7 @@ const CheckoutPage = () => {
         <div className="order-summary-container">
           <h3 className="order-summary-header">Order Summary</h3>
           <p className="order-summary-total">
-            Total Items: {formData.total_items}
+            Number of Products: {formData.total_items}
           </p>
           <p className="order-summary-total">
             Total Amount: EGP {formData.total_amount.toFixed(2)}
