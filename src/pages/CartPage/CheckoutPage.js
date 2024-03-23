@@ -275,21 +275,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="exp_date"
-              name="exp_date"
-              placeholder="Expiration Date"
-              value={formData.exp_date}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
-
 
           <div className="user-box">
             <input type="text" name="exp_date" value={formData.exp_date} onChange={handleChange} required />
