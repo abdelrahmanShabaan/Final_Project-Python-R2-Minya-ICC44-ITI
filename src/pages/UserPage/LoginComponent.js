@@ -53,6 +53,7 @@ const LoginComponent = () => {
             localStorage.setItem(
               "login",
               JSON.stringify({
+                id : user.id,
                 name: user.name,
                 email: user.email,
                 role: user.role,

@@ -27,12 +27,14 @@ from reviews.views import ReviewList, ReviewDetail, ReviewViewSet
 from users.views import UserViewSet
 from payment.views import CheckoutAPIView
 from order.views import OrderList, OrderDetail, OrderViewSet
+from wishlist.views import WishlistViewSet
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'reviews', ReviewViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'orders', OrderViewSet)
+router.register(r'wishlist', WishlistViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

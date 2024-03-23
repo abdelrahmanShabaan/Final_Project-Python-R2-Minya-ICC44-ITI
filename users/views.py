@@ -171,34 +171,34 @@ class UserViewSet(viewsets.ModelViewSet):
 # #     return redirect("signin")
 
 
-# class VerifyEmail(View):
-    def get(self, request):
-        logged_in = request.session.get("user_email")
-        if not logged_in:
-            return redirect("signin")
-        form = EmailVerificationForm()
+# # class VerifyEmail(View):
+#     def get(self, request):
+#         logged_in = request.session.get("user_email")
+#         if not logged_in:
+#             return redirect("signin")
+#         form = EmailVerificationForm()
 
-        return render(request, "registration/verify_email.html", {"form": form})
+#         return render(request, "registration/verify_email.html", {"form": form})
 
-    def post(self, request):
-        form = EmailVerificationForm(request.POST)
-        email = request.session.get("user_email")
-        if not email:
-            return redirect("signin")
-        if form.is_valid():
-            code = form.cleaned_data["code"]
-            user = MyUser.objects.get(email=email)
-            userEmailVerification = UserEmailVerification.objects.get(email=email)
+#     def post(self, request):
+#         form = EmailVerificationForm(request.POST)
+#         email = request.session.get("user_email")
+#         if not email:
+#             return redirect("signin")
+#         if form.is_valid():
+#             code = form.cleaned_data["code"]
+#             user = MyUser.objects.get(email=email)
+#             userEmailVerification = UserEmailVerification.objects.get(email=email)
 
-            expireTime = userEmailVerification.expireTime
-            if timezone.now() > expireTime:
-                form.add_error(None, "Code expired, a new code was sent to your email!")
-                userEmailVerification.generateCode()
-                userEmailVerification.sendCode()
-            if code == userEmailVerification.code:
-                user.isEmailVerified = True
-                user.save()
-                return redirect("home")
-            else:
-                form.add_error(None, "Invalid code")
-        return render(request, "registration/verify_email.html", {"form": form})
+#             expireTime = userEmailVerification.expireTime
+#             if timezone.now() > expireTime:
+#                 form.add_error(None, "Code expired, a new code was sent to your email!")
+#                 userEmailVerification.generateCode()
+#                 userEmailVerification.sendCode()
+#             if code == userEmailVerification.code:
+#                 user.isEmailVerified = True
+#                 user.save()
+#                 return redirect("home")
+#             else:
+#                 form.add_error(None, "Invalid code")
+#         return render(request, "registration/verify_email.html", {"form": form})
