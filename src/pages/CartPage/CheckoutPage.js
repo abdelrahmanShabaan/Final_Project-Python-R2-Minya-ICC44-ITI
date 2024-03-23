@@ -198,18 +198,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="user-box">
-            <input
-              type={showPassword ? "text" : "password"}
-              name=""
-              id="password"
-              required
-            />
-            <label>Password</label>
-            <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
-              {showPassword ? <i class="fas fa-eye"/> : <i class="fas fa-eye-slash"/>}
-            </span>
-          </div> */}
 
           {/* <div className="form-field">
             <FaRegEnvelope className="form-icon" />
