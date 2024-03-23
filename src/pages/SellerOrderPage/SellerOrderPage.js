@@ -37,7 +37,7 @@ const SellerOrderPage = () => {
       const updatedOrders = await Promise.all(
         response.data.map(async (order) => {
           const productResponse = await axios.get(
-            `http://127.0.0.1:8000/orders/${order.productid}`
+            `http://127.0.0.1:8000/orders/${order.product}`
           );
           const productDetails = productResponse.data;
           return { ...order, productDetails };
