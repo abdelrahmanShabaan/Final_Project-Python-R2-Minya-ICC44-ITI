@@ -35,6 +35,7 @@ function ShowSellerProducts() {
           // "https://api-generator.retool.com/u9XTxw/data"
           "http://127.0.0.1:8000/products/"
         );
+        console.log(response.data)
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);

@@ -1,0 +1,32 @@
+.product-itemx {
+display: flex;
+align-items: center;
+flex-direction: column;
+border-radius: 8px;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+padding: 20px;
+}
+
+.product-itemx h4 {
+margin-top: 0;
+margin-bottom: 10px;
+}
+
+.order-actionsx {
+display: flex;
+gap: 10px;
+}
+
+.order-actionsx button {
+background-color: #007bff;
+color: #ffffff;
+border: none;
+border-radius: 4px;
+padding: 8px 16px;
+cursor: pointer;
+}
+
+.order-actionsx button:hover {
+background-color: #0056b3;
+
+}
