@@ -275,21 +275,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="exp_date"
-              name="exp_date"
-              placeholder="Expiration Date"
-              value={formData.exp_date}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
-
 
           <div className="user-box">
             <input type="text" name="exp_date" value={formData.exp_date} onChange={handleChange} required />
@@ -298,23 +283,6 @@ const CheckoutPage = () => {
               <span className="error-message">{formErrors.exp_date}</span>
             )}
           </div>
-
-
-
-
-          {/* <div className="form-field">
-            <FaCreditCard className="form-icon" />
-            <input
-              type="text"
-              id="cvv"
-              name="cvv"
-              placeholder="CVV"
-              value={formData.cvv}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-          </div> */}
 
 
           <div className="user-box">
