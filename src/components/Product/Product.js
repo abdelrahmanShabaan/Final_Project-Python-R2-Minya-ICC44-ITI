@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,9 +9,17 @@ import {
 import "./Product.css";
 
 const Product = ({ product }) => {
-  const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorites);
+  // const dispatch = useDispatch();
+  // const favorites = useSelector((state) => state.favorites);
   const [isHovered, setIsHovered] = useState(false);
+    const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || []
+  );
+
+  useEffect(() => {
+    localStorage.getItem("favorites");
+  }, [favorites]);
+
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -21,6 +29,20 @@ const Product = ({ product }) => {
     setIsHovered(false);
   };
 
+  // const isMovieInFavorites = () => {
+  //   return favorites.some((favMovie) => favMovie.id === product?.id);
+  // };
+
+  // const handleToggleFavorites = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   if (isMovieInFavorites()) {
+  //     dispatch(removeFromFavorites(product?.id));
+  //   } else {
+  //     dispatch(addToFavorites(product));
+  //   }
+  // };
+
   const isMovieInFavorites = () => {
     return favorites.some((favMovie) => favMovie.id === product?.id);
   };
@@ -29,10 +51,22 @@ const Product = ({ product }) => {
     e.preventDefault();
     e.stopPropagation();
     if (isMovieInFavorites()) {
-      dispatch(removeFromFavorites(product?.id));
+      removeFromFavorites(product);
     } else {
-      dispatch(addToFavorites(product));
+      addToFavorites(product);
     }
+  };
+
+  const addToFavorites = (product) => {
+    const updatedFavorites = [...favorites, product];
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+
+  const removeFromFavorites = (product) => {
+    const updatedFavorites = favorites.filter((fav) => fav.id !== product.id);
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
 
   function renderStars(rating) {
@@ -56,19 +90,30 @@ const Product = ({ product }) => {
     <Link to={`/product/${product?.id}`} key={product?.id}>
       <div className="product-item bg-white">
         <div className="category">{product?.category}</div>
+
         {/* <button
           className="badge"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           onClick={handleToggleFavorites}
         >
           {isMovieInFavorites() ? (
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/754px-Star_full.svg.png"
+              src={
+                isHovered
+                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/2048px-Empty_Star.svg.png"
+                  : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/754px-Star_full.svg.png"
+              }
               alt="Filled Star"
               height={24}
             />
           ) : (
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/2048px-Empty_Star.svg.png"
+              src={
+                isHovered
+                  ? "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Star_full.svg/754px-Star_full.svg.png"
+                  : "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/2048px-Empty_Star.svg.png"
+              }
               alt="Empty Star"
               height={24}
             />

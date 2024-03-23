@@ -33,14 +33,10 @@ const HomePage = () => {
       if (user.role === "seller") {
         setRoleContext("seller");
         navigate("/Dashboard");
-      } else {
-
       }
     }
   }, []);
   /** End of Redirection */
-
-
 
   useEffect(() => {
     dispatch(fetchAsyncProducts(1000));
