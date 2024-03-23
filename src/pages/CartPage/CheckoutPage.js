@@ -198,22 +198,6 @@ const CheckoutPage = () => {
             )}
           </div>
 
-
-          {/* <div className="form-field">
-            <FaRegEnvelope className="form-icon" />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="input-field"
-              disabled
-            />
-          </div> */}
-
           <div className="user-box">
             <input
               type="text"
@@ -229,21 +213,6 @@ const CheckoutPage = () => {
               <span className="error-message">{formErrors.email}</span>
             )}
           </div>
-
-          {/* <div className="form-field">
-            <FaHome className="form-icon" />
-            <input
-              type="text"
-              id="address"
-              name="address"
-              placeholder="Address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-              className="input-field"
-            />
-
-          </div> */}
 
           <div className="user-box">
             <input

@@ -27,7 +27,6 @@ const ProductPage = () => {
   };
 
   const handlePriceFilter = () => {
-    // Implement filtering logic based on minPrice and maxPrice
     console.log("Minimum Price:", minPrice);
     console.log("Maximum Price:", maxPrice);
   };
@@ -63,7 +62,6 @@ const ProductPage = () => {
       <div className='main-content bg-whitesmoke'>
         <div className='container'>
           <div className='categories py-5'>
-            {/* Sidebar */}
             <aside className="sidebar">
               <div className='cat-title fs-17 text-uppercase fw-6 ls-1h'>All Categories</div>
               <ul className='cat-list'>
