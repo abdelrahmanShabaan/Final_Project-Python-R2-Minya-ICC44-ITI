@@ -25,7 +25,6 @@ const SellerOrderPage = () => {
       navigate("/");
     }
   };
-  /** End of Redirection */
 
   useEffect(() => {
     fetchOrders();
@@ -134,6 +133,7 @@ const SellerOrderPage = () => {
       </div>
     </main>
   );
+  
 };
 
 export default SellerOrderPage;

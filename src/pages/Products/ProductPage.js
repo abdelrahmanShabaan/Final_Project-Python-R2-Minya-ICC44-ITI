@@ -74,7 +74,6 @@ const ProductPage = () => {
                 ))}
               </ul>
 
-              {/* Price Filter */}
               <div className='price-filter'>
                 <div className='fs-17 text-uppercase fw-6 ls-1h'>Price Filter</div>
                 <div>
