@@ -158,6 +158,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -203,3 +207,87 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'finalprojectiti1@gmail.com'
 EMAIL_HOST_PASSWORD = 'syekitjuskzsapyy'
 EMAIL_USE_TLS = True
+
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "EasyTrade.",
+    "site_header": "EasyTrade.",
+    "site_brand": "EasyTrade.",
+    "site_icon": "fas fa-shopping-cart",
+    "site_logo": "logo.svg",
+    "welcome_sign": "Welcome to EasyTrade",
+    "copyright": "EasyTrade.",
+    "related_modal_active": True,
+    "user_avatar": None,
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"app": "cart", "label": "cart"},
+        {"app": "Categories", "label": "Categories"},
+        {"app": "payment", "label": "payment"},
+        {"app": "products", "label": "products"},
+        {"app": "reviews", "label": "reviews"},
+        {"app": "users", "label": "users"},
+        {"app": "wishlist", "label": "wishlist"},
+
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user-tie",
+        "users.User": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "admin.LogEntry": "fas fa-file",
+        "payment.Order": "fas fa-home",
+        "requests_api.Request": "fas fa-bell",
+        "Categories.Category": "fas fa-layer-group",
+        "cart.CartItem": "fas fa-star",
+        "users.User": "fas fa-user",
+        "order.Order": "fas fa-shopping-cart",
+        "products.Product": "fas fa-box-open",    
+        "reviews.Review": "fas fa-comments",        
+    
+
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-arrow-circle-right",
+    "custom_js": None,
+    "show_ui_builder": False,
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "auth.group": "vertical_tabs",
+    },
+}
+# JAZZMIN_UI_TWEAKS = {
+#     "navbar_small_text": False,
+#     "footer_small_text": False,
+#     "body_small_text": False,
+#     "brand_small_text": False,
+#     "brand_colour": "navbar-info",
+#     "accent": "accent-teal",
+#     "navbar": "navbar-dark",
+#     "no_navbar_border": True,
+#     "navbar_fixed": False,
+#     "layout_boxed": False,
+#     "footer_fixed": False,
+#     "sidebar_fixed": False,
+#     "sidebar": "sidebar-dark-info",
+#     "sidebar_nav_small_text": False,
+#     "sidebar_disable_expand": False,
+#     "sidebar_nav_child_indent": False,
+#     "sidebar_nav_compact_style": False,
+#     "sidebar_nav_legacy_style": False,
+#     "sidebar_nav_flat_style": False,
+#     "theme": "lux",
+#     "dark_mode_theme": None,
+#     "button_classes": {
+#         "primary": "btn-primary",
+#         "secondary": "btn-secondary",
+#         "info": "btn-info",
+#         "warning": "btn-warning",
+#         "danger": "btn-danger",
+#         "success": "btn-success",
+#     },
+# }
