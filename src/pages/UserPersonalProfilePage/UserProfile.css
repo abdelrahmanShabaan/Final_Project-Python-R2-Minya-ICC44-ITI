@@ -3,7 +3,7 @@ display: flex;
 flex-direction: column;
 width: 100%;
 margin: 0 auto; /* Centers the form horizontally */
-padding: 20px; /* Adds some spacing around the form elements */
+padding: 10px; /* Adds some spacing around the form elements */
 max-height: max-content;
 }
 
@@ -12,7 +12,7 @@ max-height: max-content;
 display: flex;
 width: 100%;
 justify-content: center;
-margin-top: 10vh;
+margin-top: 4vh;
 margin-bottom: 15vh;
 gap: 20px;
 }
