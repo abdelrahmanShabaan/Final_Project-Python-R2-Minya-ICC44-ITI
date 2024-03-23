@@ -5,7 +5,6 @@ import axios from "axios";
 import "./CheckoutPage.css";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-
 const CheckoutPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -78,22 +77,19 @@ const CheckoutPage = () => {
           : "";
         break;
       case "card_number":
-        errors.card_number =
-          !/^4[0-9]{12}(?:[0-9]{3})?$/.test(value)
-            ? "Visa card number is invalid"
-            : "";
+        errors.card_number = !/^4[0-9]{12}(?:[0-9]{3})?$/.test(value)
+          ? "Visa card number is invalid"
+          : "";
         break;
       case "exp_date":
-        errors.exp_date =
-          !/^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(value)
-            ? "Expiration date must be in MM/YY format"
-            : "";
+        errors.exp_date = !/^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(value)
+          ? "Expiration date must be in MM/YY format"
+          : "";
         break;
       case "cvv":
-        errors.cvv =
-          !/^[0-9]{3,4}$/.test(value)
-            ? "CVV must be 3 or 4 digits long"
-            : "";
+        errors.cvv = !/^[0-9]{3,4}$/.test(value)
+          ? "CVV must be 3 or 4 digits long"
+          : "";
         break;
       default:
         break;
@@ -106,6 +102,19 @@ const CheckoutPage = () => {
     const isValid = Object.values(formErrors).every((error) => error === "");
     if (isValid) {
       try {
+        // Post each product individually
+        for (const cart of carts) {
+          const orderAPI = {
+            name: formData.name,
+            quantity: cart.quantity,
+            stock : cart.stock,
+            totalPrice : cart.totalPrice,
+            status: "pending",
+            product: cart.id,
+          };
+          await axios.post("http://127.0.0.1:8000/orders/", orderAPI);
+        }
+
         const formattedData = {
           name: formData.name,
           address: formData.address,
@@ -120,6 +129,7 @@ const CheckoutPage = () => {
           "http://localhost:8000/checkout/",
           formattedData
         );
+
         if (response.status === 201) {
           setSuccessPopup(true);
           setTimeout(() => {
@@ -166,8 +176,10 @@ const CheckoutPage = () => {
           <div className="visa-logo-container">
             <img src="/visa_logo.webp" alt="Visa Logo" className="visa-logo" />
           </div>
-          <h2 className="checkout-heading" style={{ textAlign: "center" }}>Checkout</h2>
-          <br/>
+          <h2 className="checkout-heading" style={{ textAlign: "center" }}>
+            Checkout
+          </h2>
+          <br />
           {/* <div className="form-field">
             <FaUser className="form-icon" />
             <input
@@ -185,8 +197,16 @@ const CheckoutPage = () => {
           </div> */}
 
           <div className="user-box">
-            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
-            <label><i class="fa-regular fa-user" /> Username</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <label>
+              <i class="fa-regular fa-user" /> Username
+            </label>
             {formErrors.name && (
               <span className="error-message">{formErrors.name}</span>
             )}
@@ -221,13 +241,20 @@ const CheckoutPage = () => {
           </div> */}
 
           <div className="user-box">
-            <input type="text" name="email" value={formData.email} onChange={handleChange} required />
-            <label><i class="fa-regular fa-envelope" /> email</label>
+            <input
+              type="text"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label>
+              <i class="fa-regular fa-envelope" /> email
+            </label>
             {formErrors.email && (
               <span className="error-message">{formErrors.email}</span>
             )}
           </div>
-
 
           {/* <div className="form-field">
             <FaHome className="form-icon" />
@@ -245,8 +272,16 @@ const CheckoutPage = () => {
           </div> */}
 
           <div className="user-box">
-            <input type="text" name="address" value={formData.address} onChange={handleChange} required />
-            <label><i class="fa-solid fa-house-user" /> Address</label>
+            <input
+              type="text"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
+            <label>
+              <i class="fa-solid fa-house-user" /> Address
+            </label>
             {formErrors.address && (
               <span className="error-message">{formErrors.address}</span>
             )}
@@ -268,8 +303,16 @@ const CheckoutPage = () => {
           </div> */}
 
           <div className="user-box">
-            <input type="text" name="card_number" value={formData.card_number} onChange={handleChange} required />
-            <label><i class="fa-regular fa-credit-card" /> Card Number</label>
+            <input
+              type="text"
+              name="card_number"
+              value={formData.card_number}
+              onChange={handleChange}
+              required
+            />
+            <label>
+              <i class="fa-regular fa-credit-card" /> Card Number
+            </label>
             {formErrors.card_number && (
               <span className="error-message">{formErrors.card_number}</span>
             )}
@@ -290,17 +333,21 @@ const CheckoutPage = () => {
 
           </div> */}
 
-
           <div className="user-box">
-            <input type="text" name="exp_date" value={formData.exp_date} onChange={handleChange} required />
-            <label><i class="fa-solid fa-credit-card" /> Expiration Date</label>
+            <input
+              type="text"
+              name="exp_date"
+              value={formData.exp_date}
+              onChange={handleChange}
+              required
+            />
+            <label>
+              <i class="fa-solid fa-credit-card" /> Expiration Date
+            </label>
             {formErrors.exp_date && (
               <span className="error-message">{formErrors.exp_date}</span>
             )}
           </div>
-
-
-
 
           {/* <div className="form-field">
             <FaCreditCard className="form-icon" />
@@ -316,25 +363,41 @@ const CheckoutPage = () => {
             />
           </div> */}
 
-
           <div className="user-box">
-            <input type="text" name="cvv" value={formData.cvv} onChange={handleChange} required />
-            <label><i class="fa-solid fa-credit-card" /> CVV</label>
+            <input
+              type="text"
+              name="cvv"
+              value={formData.cvv}
+              onChange={handleChange}
+              required
+            />
+            <label>
+              <i class="fa-solid fa-credit-card" /> CVV
+            </label>
             {formErrors.cvv && (
               <span className="error-message">{formErrors.cvv}</span>
             )}
           </div>
           {!successPopup && (
-            <button type="submit" className="checkout-button" onChange={handleChange}>
+            <button
+              type="submit"
+              className="checkout-button"
+              onChange={handleChange}
+            >
               Complete Purchase
             </button>
           )}
           {/* PayPal button */}
-          <div style={{ textAlign: 'center' }}>
-            <h3 style={{ display: 'inline-block' }}>OR pay with PayPal</h3>
+          <div style={{ textAlign: "center" }}>
+            <h3 style={{ display: "inline-block" }}>OR pay with PayPal</h3>
             <br />
           </div>
-          <PayPalScriptProvider options={{ "client-id": "AaJ0sclxIvEaW4XhNi5KDRhqZkX3Yg9P-ZEQ7vSJKTqvRnmoTgh5L0rpdN3y6FQRBqCx0DPhO9ZazR7W" }}>
+          <PayPalScriptProvider
+            options={{
+              "client-id":
+                "AaJ0sclxIvEaW4XhNi5KDRhqZkX3Yg9P-ZEQ7vSJKTqvRnmoTgh5L0rpdN3y6FQRBqCx0DPhO9ZazR7W",
+            }}
+          >
             <PayPalButtons
               style={{ layout: "horizontal" }}
               createOrder={(data, actions) => {
