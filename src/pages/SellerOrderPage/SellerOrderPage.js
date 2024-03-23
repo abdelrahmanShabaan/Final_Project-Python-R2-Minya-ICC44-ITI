@@ -11,8 +11,12 @@ const SellerOrderPage = () => {
 
   const navigate = useNavigate();
 
+  /** Redirection */
   useEffect(() => {
-    if (localStorage.getItem("login") === null) {
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
+      redirectBasedOnRole(user.role);
+    } else {
       navigate("/user");
     }
   }, []);
@@ -22,6 +26,7 @@ const SellerOrderPage = () => {
       navigate("/");
     }
   };
+  /** End of Redirection */
 
   useEffect(() => {
     fetchOrders();
