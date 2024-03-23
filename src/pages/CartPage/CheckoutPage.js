@@ -135,6 +135,7 @@ const CheckoutPage = () => {
           setTimeout(() => {
             navigate("/");
             clearCart(); // Clear the cart after successful payment
+            localStorage.removeItem('cart');
           }, 5000); // Redirect to home after 5 seconds
         } else {
           console.error("Failed to submit order:", response.statusText);

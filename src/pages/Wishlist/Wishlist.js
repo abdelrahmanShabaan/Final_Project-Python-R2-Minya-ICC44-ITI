@@ -4,7 +4,14 @@ import Loader from "../../components/Loader/Loader";
 import "./Wishlist.css";
 
 const WishlistPage = () => {
-  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || []
+  );
+
+  const removeAllFavorites = () => {
+    setFavorites([]);
+    localStorage.removeItem("favorites");
+  };
 
   return (
     <main>
