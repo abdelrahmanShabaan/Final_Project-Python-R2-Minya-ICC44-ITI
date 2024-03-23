@@ -41,8 +41,8 @@ function EditSellerProducts() {
         );
         setProduct(response.data);
         setFormData(response.data);
-        console.log("get data");
-        console.log(response.data);
+        // console.log("get data");
+        // console.log(response.data);
         // save image source
         setthumbnail(response.data.thumbnail)
       } catch (error) {

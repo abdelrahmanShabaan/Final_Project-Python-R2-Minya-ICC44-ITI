@@ -48,7 +48,7 @@ function SlideBarBuyer({ openSidebarToggle, OpenSidebar }) {
             <BsFillGrid3X3GapFill className="icon" /> Add New Products
           </li>
         </Link>
-        <Link to="/SellerOrderPage">
+        <Link to="/ShowSellerOrders">
           <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
             <BsPeopleFill className="icon" /> Orders
           </li>
