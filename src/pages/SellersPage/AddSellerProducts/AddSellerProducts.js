@@ -4,7 +4,7 @@ import "./AddSellerProducts.css";
 import { useNavigate } from "react-router-dom";
 import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
 
-function AddBuyerProduct() {
+function AddSellerProducts() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -45,9 +45,6 @@ function AddBuyerProduct() {
   const validateFormData = (data) => {
     const errors = {};
 
-    const validateFormData = (data) => {
-      const errors = {};
-
       if (!data.title.trim()) {
         errors.title = "Name is required";
       }
@@ -75,9 +72,6 @@ function AddBuyerProduct() {
       if (!data.thumbnail) {
         errors.thumbnail = "thumbnail is required";
       }
-
-      return errors;
-    };
 
     return errors;
   };
@@ -185,7 +179,7 @@ function AddBuyerProduct() {
           onSubmit={handleAddProduct}
           encType="multipart/form-data"
         >
-          <h1 className="product-list-header">Add Products</h1>
+          <h1 className="product-list-header">Add New Product</h1>
           <label className="labels">
             Name:
             <input
@@ -317,4 +311,4 @@ function AddBuyerProduct() {
   );
 }
 
-export default AddBuyerProduct;
+export default AddSellerProducts;

@@ -8,6 +8,7 @@ import {
   BsListCheck,
   BsMenuButtonWideFill,
   BsFillGearFill,
+  BsStarFill,
 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -28,38 +29,33 @@ function SlideBarBuyer({ openSidebarToggle, OpenSidebar }) {
 
       <ul className="sidebar-list">
         <Link to="/Dashboard" >
-          <li className="sidebar-list-item">
+          <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
             <BsGrid1X2Fill className="icon" /> Dashboard
           </li>
         </Link>
         <Link to="/ShowSellerProducts">
-          <li className="sidebar-list-item">
-            <BsFillArchiveFill className="icon" /> Show Products
+          <li style={{ color: '#FFFFFF' }} className="sidebar-list-item">
+            <BsFillArchiveFill className="icon" /> Show All Products
           </li>
         </Link>
-        <Link to="/AddBuyerProduct">
-          <li className="sidebar-list-item">
-            <BsFillGrid3X3GapFill className="icon" /> Add Products
+        <Link to="/ShowSellerCategories">
+          <li  style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
+            <BsListCheck className="icon" /> Show Categories
           </li>
         </Link>
-        <Link to="/SellerOrderPage">
-          <li className="sidebar-list-item">
+        <Link to="/AddSellerProducts">
+          <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
+            <BsFillGrid3X3GapFill className="icon" /> Add New Products
+          </li>
+        </Link>
+        <Link to="/ShowSellerOrders">
+          <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
             <BsPeopleFill className="icon" /> Orders
           </li>
         </Link>
-        <Link to="#">
-          <li className="sidebar-list-item">
-            <BsListCheck className="icon" /> Inventory
-          </li>
-        </Link>
-        <Link to="#">
-          <li className="sidebar-list-item">
-            <BsMenuButtonWideFill className="icon" /> Reports
-          </li>
-        </Link>
-        <Link to="#">
-          <li className="sidebar-list-item">
-            <BsFillGearFill className="icon" /> Setting
+        <Link to="/ShowSellerReviews">
+          <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
+            <BsStarFill className="icon" /> Reviews
           </li>
         </Link>
       </ul>

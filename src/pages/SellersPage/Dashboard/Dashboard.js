@@ -22,7 +22,7 @@ import {
 import SlideBarBuyer from "./SlideBarBuyer";
 import "./dashboard.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Dashboard = () => {
@@ -47,6 +47,9 @@ const Dashboard = () => {
     }
   }, []);
   /** End of Redirection */
+  
+  
+  
   const data = [
     {
       name: "Products",
@@ -189,35 +192,46 @@ const Dashboard = () => {
             </div>
 
             <div className="main-cards">
+
               <div className="card">
+              <Link to="/ShowSellerProducts">
                 <div className="card-inner">
                   <h3>PRODUCTS</h3>
                   <BsFillArchiveFill className="card_icon" />
                 </div>
-                <h1>{productCount}</h1>
+                <h1 style={{color: "#FFFFFF"}}>{productCount}</h1>
+                </Link>
               </div>
+
               <div className="card">
+              <Link to="/ShowSellerCategories">
                 <div className="card-inner">
                   <h3>CATEGORIES</h3>
                   <BsFillGrid3X3GapFill className="card_icon" />
                 </div>
-                <h1>{categoryCount}</h1>
+                <h1 style={{color: "#FFFFFF"}}>{categoryCount}</h1>
+                </Link>
               </div>
+
               <div className="card">
                 <div className="card-inner">
                   <h3>CUSTOMERS</h3>
                   <BsPeopleFill className="card_icon" />
                 </div>
-                <h1>{usersCount}</h1>
+                <h1 style={{color: "#FFFFFF"}}>{usersCount}</h1>
               </div>
               <div className="card">
+              <Link to="/ShowSellerReviews">
                 <div className="card-inner">
                   <h3>Reviews</h3>
                   <BsStarFill className="card_icon" />
                 </div>
-                <h1>{reviewCount}</h1>
+                <h1 style={{color: "#FFFFFF"}}>{reviewCount}</h1>
+                </Link>
               </div>
             </div>
+
+
 
             <div className="charts">
               <ResponsiveContainer width="100%" height="100%">
@@ -269,6 +283,12 @@ const Dashboard = () => {
                 </LineChart>
               </ResponsiveContainer>
             </div>
+
+
+
+
+
+
           </main>
         </div>
       </div>

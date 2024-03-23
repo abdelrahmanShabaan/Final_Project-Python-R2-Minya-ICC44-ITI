@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
-import "./ShowSellerProducts.css";
+import "./ShowSellerCategories.css";
 
-function ShowSellerProducts() {
-  const [products, setProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(5); // Change this to adjust the number of products per page
 
+function ShowSellerCategories() {
+
+    
   /** Redirection */
-
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("login") !== null) {
@@ -28,35 +26,47 @@ function ShowSellerProducts() {
   };
   /** End of Redirection */
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(
-          // "https://api-generator.retool.com/u9XTxw/data"
-          "http://127.0.0.1:8000/products/"
-        );
-        console.log(response.data)
-        setProducts(response.data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
 
-    fetchProducts();
-  }, []);
 
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
+  // save categories in useState
+  const [categories, setCategories] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [categoriesPerPage] = useState(5); // Change this to adjust the number of categories per page
+  const [categoryPerPage] = useState(5); // Change this to adjust the number of products per page
+  const indexOfLastProduct = currentPage * categoryPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - categoryPerPage;
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const totalPages = Math.ceil(categories.length / categoriesPerPage);
+  const currentcategories = categories.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+
+
+useEffect(() => {
+    const fetchcategories = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/categories/"
+        );
+        setCategories(response.data);
+        console.log(response.data)
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchcategories();
+  }, []);
+
+ 
   const handleEditClick = (id) => {
-    navigate(`/EditSellerProducts/${id}`);
+    Navigate(`/EditSellercategories/${id}`);
   };
+
+  
 
   const deleteRev = async (id) => {
     const confirmDelete = window.confirm(
@@ -66,7 +76,7 @@ function ShowSellerProducts() {
       try {
         await axios.delete(
           // `https://api-generator.retool.com/u9XTxw/data/${id}`
-          `http://127.0.0.1:8000/products/${id}/`
+          `http://127.0.0.1:8000/categories/${id}/`
         );
         loadData();
         console.log("Delete successful");
@@ -76,19 +86,19 @@ function ShowSellerProducts() {
     }
   };
 
-  const loadData = async () => {
+
+  
+const loadData = async () => {
     try {
       const res = await axios.get(
-        // "https://api-generator.retool.com/u9XTxw/data"
-        "http://127.0.0.1:8000/products/"
+        "http://127.0.0.1:8000/categories/"
       );
-      setProducts(res.data);
+      setCategories(res.data);
     } catch (error) {
       console.error("Error loading data:", error);
     }
   };
 
-  const totalPages = Math.ceil(products.length / productsPerPage);
 
   return (
     <>
@@ -96,38 +106,30 @@ function ShowSellerProducts() {
         <SlideBarBuyer />
 
         <div className="product-list-container-buyer">
-          <h1 className="buyerheader">Product List</h1>
+          <h1 className="buyerheader">Categories List</h1>
           <div className="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Brand</th>
-                  <th>Price</th>
-                  <th>Category</th>
-                  <th>stock</th>
+                  <th>Category Name</th>
                   <th>Active</th>
                 </tr>
               </thead>
               <tbody>
-                {currentProducts.map((product) => (
-                  <tr key={product.id}>
-                    <td>{product.title}</td>
-                    <td>{product.brand}</td>
-                    <td>{product.price}</td>
-                    <td>{product.category}</td>
-                    <td>{product.stock}</td>
+                {currentcategories.map((categories) => (
+                  <tr key={categories.id}>
+                    <td>{categories}</td>
                     <td>
-                      <button
+                    <button
                         className="primarys-btn"
-                        onClick={() => handleEditClick(product.id)}
+                        onClick={() => handleEditClick(categories.id)}
                       >
                         {" "}
                         Edit{" "}
                       </button>
                       <button
                         className="dangerssq-btn"
-                        onClick={() => deleteRev(product.id)}
+                        onClick={() => deleteRev(categories.id)}
                       >
                         {" "}
                         Delete{" "}
@@ -138,8 +140,8 @@ function ShowSellerProducts() {
               </tbody>
             </table>
           </div>
-          {/* Pagination */}
-          <div className="pagination">
+           {/* Pagination */}
+           <div className="pagination">
             <button
               disabled={currentPage === 1}
               onClick={() => paginate(currentPage - 1)}
@@ -166,6 +168,6 @@ function ShowSellerProducts() {
       </div>
     </>
   );
-}
 
-export default ShowSellerProducts;
+
+}export default ShowSellerCategories;
