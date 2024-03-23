@@ -4,7 +4,7 @@ import "./AddSellerProducts.css";
 import { useNavigate } from "react-router-dom";
 import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
 
-function AddBuyerProduct() {
+function AddSellerProducts() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -311,4 +311,4 @@ function AddBuyerProduct() {
   );
 }
 
-export default AddBuyerProduct;
+export default AddSellerProducts;

@@ -31,7 +31,9 @@ import { useAuth } from "./pages/context/AuthContext";
 import VerificationPage from "./pages/VerificationPage/VerificationPage";
 import Terms from "./pages/Terms/Terms"
 import NewFooter from "./components/NewFooter/NewFooter"
+import ShowSellerReviews from "./pages/SellersPage/ShowSellerReviews/ShowSellerReviews";
 import ShowSellerCategories from "./pages/SellersPage/ShowSellerCategories/ShowSellerCategories";
+import AddSellerProducts from "./pages/SellersPage/AddSellerProducts/AddSellerProducts";
 function App() {
 
   const {
@@ -78,9 +80,10 @@ function App() {
             <Route path="/CheckoutPage" element={<CheckoutPage />} />
             <Route path="/SellerOrderPage" element={<SellerOrderPage />} />
             <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/ShowSellerProducts" element={<ShowSellerProducts />} />
             <Route path="/ShowSellerCategories" element={<ShowSellerCategories />} />
-            <Route path="/AddBuyerProduct" element={<AddBuyerProduct />} />
+            <Route path="/ShowSellerProducts" element={<ShowSellerProducts />} />
+            <Route path="/ShowSellerReviews" element={<ShowSellerReviews />} />
+            <Route path="/AddSellerProducts" element={<AddSellerProducts />} />
             <Route path="/EditSellerProducts/:id" element={<EditSellerProducts />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
