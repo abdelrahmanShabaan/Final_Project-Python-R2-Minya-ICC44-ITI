@@ -214,7 +214,7 @@ JAZZMIN_SETTINGS = {
     "site_title": "EasyTrade.",
     "site_header": "EasyTrade.",
     "site_brand": "EasyTrade.",
-    "site_icon": "fas fa-shopping-cart",
+    "site_icon": "logo.svg",
     "site_logo": "logo.svg",
     "welcome_sign": "Welcome to EasyTrade",
     "copyright": "EasyTrade.",
