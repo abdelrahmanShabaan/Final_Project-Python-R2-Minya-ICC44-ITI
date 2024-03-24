@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     "order",
     "rest_framework",
     "django_filters",
-    # 'sellers',
 ]
 
 # CORS_ORIGIN_WHITELIST = [
