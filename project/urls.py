@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
-from Categories.views import CategoryList
+from Categories import views
+from Categories.views import CategoryViewSet
 from products.views import ProductDetail, ProductList,ProductViewSet
 from project import settings
 from django.conf.urls.static import static
@@ -29,12 +30,16 @@ from payment.views import CheckoutAPIView
 from order.views import OrderList, OrderDetail, OrderViewSet
 from wishlist.views import WishlistViewSet
 
+
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'reviews', ReviewViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'orders', OrderViewSet)
 router.register(r'wishlist', WishlistViewSet)
+router.register(r'Categories', CategoryViewSet)
+# router.register(r'sellers', SellerProductSet)
+
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -43,8 +48,10 @@ urlpatterns = [
     path('review/', include('reviews.urls')),
     path('products/', csrf_exempt(ProductList.as_view()), name='product-list'),
     path('products/<int:pk>/', ProductDetail.as_view(), name='product-detail'),
-    path('categories/', CategoryList.as_view(), name='category-list'),
+    path('categories/', views.category_list, name='category-list'),
     path('checkout/', CheckoutAPIView.as_view(), name='checkout'),
     path('orders/', OrderList.as_view(), name='order-list'),
     path('orders/<int:pk>/', OrderDetail.as_view(), name='order-detail'),
+    # path('sellers/', SellerListView.as_view(), name='sellers-list'),
+    # path('sellers/<int:seller_id>/products/', SellerProductList.as_view(), name='seller-product-list'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
