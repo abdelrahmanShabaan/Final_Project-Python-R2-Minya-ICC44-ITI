@@ -12,23 +12,6 @@ import { formatPrice } from "../../../utils/helpers";
 function ShowSellerOrders() {
 
 
-  const [products, setProducts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(5); // Change this to adjust the number of products per page
-
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-
-  const totalPages = Math.ceil(products.length / productsPerPage);
-
-    
   /** Redirection */
   const navigate = useNavigate();
   useEffect(() => {
@@ -136,6 +119,22 @@ function ShowSellerOrders() {
   // }
 
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cartsPerPage] = useState(5); // Change this to adjust the number of products per page
+
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const indexOfLastCarts= currentPage * cartsPerPage;
+  const indexOfFirstCarts = indexOfLastCarts- cartsPerPage;
+  const currentCarts = carts.slice(
+    indexOfFirstCarts,
+    indexOfLastCarts
+  );
+
+  const totalPages = Math.ceil(carts.length / cartsPerPage);
+
+    
 
 
 return (
@@ -160,7 +159,7 @@ return (
           </thead>
           <tbody>
             {/* {currentProducts.map((product) => ( */}
-              {carts.map((cart, idx) => (
+              {currentCarts.map((cart, idx) => (
               // <tr key={product.id}>
               <tr key={cart?.id}>
                 {/* <td>{product.title}</td> */}
@@ -169,6 +168,7 @@ return (
                       src={cart?.thumbnail}
                       alt=""
                       className="cart-modal-item-img"
+                      style={{ display: 'block', margin: 'auto' }}
                     /></td>
                 <td>{cart?.title}</td>
                 <td>{formatPrice(cart?.discountedPrice)}</td>
