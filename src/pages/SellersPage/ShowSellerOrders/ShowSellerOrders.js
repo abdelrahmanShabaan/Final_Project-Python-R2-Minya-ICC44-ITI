@@ -3,146 +3,225 @@ import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import SlideBarBuyer from "../Dashboard/SlideBarBuyer";
 import "./ShowSellerOrders.css";
-import Loader from "../../../components/Loader/Loader";
-import Product from "../../../components/Product/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCarts, getCartItemsCount } from "../../../store/cartSlice";
+import { shopping_cart } from "../../../utils/images";
+import { formatPrice } from "../../../utils/helpers";
 
 
 function ShowSellerOrders() {
 
-    const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
+
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(5); // Change this to adjust the number of products per page
+
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  const totalPages = Math.ceil(products.length / productsPerPage);
+
+    
+  /** Redirection */
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
+      redirectBasedOnRole(user.role);
+    } else {
+      navigate("/user");
+    }
+  }, []);
+
+  const redirectBasedOnRole = (role) => {
+    if (role === "customer") {
+      navigate("/");
+    }
+  };
+  /** End of Redirection */
+
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         // "https://api-generator.retool.com/u9XTxw/data"
+  //         "http://127.0.0.1:8000/products/"
+  //       );
+  //       console.log(response.data)
+  //       setProducts(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching products:", error);
+  //     }
+  //   };
+
+  //   fetchProducts();
+  // }, []);
+
+ 
+  // const handleEditClick = (id) => {
+  //   navigate(`/EditSellerProducts/${id}`);
+  // };
+
+  // const deleteRev = async (id) => {
+  //   const confirmDelete = window.confirm(
+  //     "Are you sure you want to delete this product?"
+  //   );
+  //   if (confirmDelete) {
+  //     try {
+  //       await axios.delete(
+  //         // `https://api-generator.retool.com/u9XTxw/data/${id}`
+  //         `http://127.0.0.1:8000/products/${id}/`
+  //       );
+  //       loadData();
+  //       console.log("Delete successful");
+  //     } catch (error) {
+  //       console.error("Error deleting review:", error);
+  //     }
+  //   }
+  // };
+
+  // const loadData = async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       // "https://api-generator.retool.com/u9XTxw/data"
+  //       "http://127.0.0.1:8000/products/"
+  //     );
+  //     setProducts(res.data);
+  //   } catch (error) {
+  //     console.error("Error loading data:", error);
+  //   }
+  // };
+
+
   
-    /** Redirection */
-    const navigate = useNavigate();
-    useEffect(() => {
-      if (localStorage.getItem("login") !== null) {
-        const user = JSON.parse(localStorage.getItem("login"));
-        redirectBasedOnRole(user.role);
-      } else {
-        navigate("/user");
-      }
-    }, []);
-  
-    const redirectBasedOnRole = (role) => {
-      if (role === "customer") {
-        navigate("/");
-      }
+  const dispatch = useDispatch();
+  const carts = useSelector(getAllCarts);
+  const { itemsCount, totalAmount } = useSelector((state) => state.cart);
+  const itemsCounts = useSelector(getCartItemsCount);
+  const navigaters = useNavigate();
+
+
+
+  const handleCheckout = () => {
+    const queryParams = {
+      itemsCount,
+      totalAmount,
+      carts: encodeURIComponent(JSON.stringify(carts)),
     };
-    /** End of Redirection */
-  
-    useEffect(() => {
-      fetchOrders();
-    }, []);
-  
-    const fetchOrders = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:8000/orders/");
-        const updatedOrders = await Promise.all(
-          response.data.map(async (order) => {
-            const productResponse = await axios.get(
-              `http://127.0.0.1:8000/orders/${order.productid}`
-            );
-            const productDetails = productResponse.data;
-            return { ...order, productDetails };
-          })
-        );
-        setOrders(updatedOrders);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-      }
-    };
-  
-    const handleChangeStatus = async (orderId, newStatus) => {
-      try {
-        const response = await axios.patch(
-          `https://retoolapi.dev/v5dw0Z/orders/${orderId}`,
-          { status: newStatus }
-        );
-        const updatedOrders = orders.map((order) => {
-          if (order.id === orderId) {
-            return { ...order, status: newStatus };
-          }
-          return order;
-        });
-        setOrders(updatedOrders);
-        console.log("Order status updated:", response.data);
-  
-        if (newStatus === "accepted") {
-          const orderToUpdate = updatedOrders.find(
-            (order) => order.id === orderId
-          );
-          const newStock = orderToUpdate.stock - orderToUpdate.quantity;
-          await axios.patch(`https://retoolapi.dev/v5dw0Z/orders/${orderId}`, {
-            stock: newStock,
-          });
-          console.log("Stock updated for accepted order:", orderId);
-        }
-      } catch (error) {
-        console.error("Error updating order status:", error);
-      }
-    };
+
+    const queryString = new URLSearchParams(queryParams).toString();
+    navigate(`/CheckoutPage?${queryString}`);
+  };
+
+  // if (carts.length === 0) {
+  //   return (
+  //     <div className="container my-5">
+  //       <div className="empty-cart flex justify-center align-center flex-column font-manrope">
+  //         <img src={shopping_cart} alt="" />
+  //         <span className="fw-6 fs-15 text-gray">
+  //           Your shopping cart is empty.
+  //         </span>
+  //         {/* <Link to="/" className="shopping-btn bg-orange text-white fw-5">
+  //           Go shopping Now
+  //         </Link> */}
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+
 
 
 return (
-    <>
-      <div className="grid-container">
-        <SlideBarBuyer />
+  <>
+  <div className="grid-containerwa">
+    <SlideBarBuyer />
 
-        <div className="main-content">
-        <div className="contsainer">
-          <div className="categories py-5">
-            <div className="categories-item">
-              <div className="title-md">
-                <h3 style={{ color: "white" }}>Orders</h3>
-              </div>
-              {loading ? (
-                <Loader />
-              ) : (
-                <div className="product-list">
-                  {orders.length > 0 ? (
-                    orders.map((order) => (
-                      <div className="product-itemx" key={order.id}>
-                        <h4>Order ID: {order.id}</h4>
-                        <Product product={order.productDetails} />
-                        <p>
-                          <strong>Status:</strong> {order.status}
-                        </p>
-                        <div className="order-actionsx">
-                          {order.status === "pending" && (
-                            <>
-                              <button
-                                onClick={() =>
-                                  handleChangeStatus(order.id, "accepted")
-                                }
-                              >
-                                Accept
-                              </button>
-                              <button
-                                onClick={() =>
-                                  handleChangeStatus(order.id, "rejected")
-                                }
-                              >
-                                Reject
-                              </button>
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <p>No orders found.</p>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+    <div className="product-list-container-buyer">
+      <h1 className="buyerheader">Ordering List</h1>
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Image</th>
+              <th>Product</th>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* {currentProducts.map((product) => ( */}
+              {carts.map((cart, idx) => (
+              // <tr key={product.id}>
+              <tr key={cart?.id}>
+                {/* <td>{product.title}</td> */}
+                <td>{idx + 1}</td>
+                <td><img
+                      src={cart?.thumbnail}
+                      alt=""
+                      className="cart-modal-item-img"
+                    /></td>
+                <td>{cart?.title}</td>
+                <td>{formatPrice(cart?.discountedPrice)}</td>
+                <td>{cart?.quantity}</td>
+                <td>{formatPrice(cart?.totalPrice)}</td>
+                <td>
+                  <button
+                    className="primarys-btn"
+                    // onClick={() => handleEditClick(product.id)}
+                  >
+                    {" "}
+                    Accept{" "}
+                  </button>
+                  <button
+                    className="dangerssq-btn"
+                    // onClick={() => deleteRev(product.id)}
+                  >
+                    {" "}
+                    Reject{" "}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-
-      
+      {/* Pagination */}
+      <div className="pagination">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => paginate(currentPage - 1)}
+        >
+          {"<"}
+        </button>
+        {[...Array(totalPages > 3 ? 3 : totalPages)].map((_, index) => (
+          <button
+            key={index}
+            className={currentPage === index + 1 ? "active" : "inactive"}
+            onClick={() => paginate(index + 1)}
+          >
+            {currentPage > 2 ? index + currentPage - 2 : index + 1}
+          </button>
+        ))}
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => paginate(currentPage + 1)}
+        >
+          {">"}
+        </button>
       </div>
-    </>
+    </div>
+  </div>
+</>
   );
 
 
