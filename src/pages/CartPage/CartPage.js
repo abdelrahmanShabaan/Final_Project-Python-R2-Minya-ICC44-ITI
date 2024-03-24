@@ -17,11 +17,13 @@ import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import GalaxyButton from "../../components/GalaxyButton/GalaxyButton";
 
 const CartPage = () => {
+
   const dispatch = useDispatch();
   const carts = useSelector(getAllCarts);
   const { itemsCount, totalAmount } = useSelector((state) => state.cart);
   const itemsCounts = useSelector(getCartItemsCount);
   const navigate = useNavigate();
+
   /** Redirection */
   useEffect(() => {
     if (localStorage.getItem("login") !== null) {
@@ -32,6 +34,8 @@ const CartPage = () => {
     }
   }, []);
   /** End of Redirection */
+
+
   const handleCheckout = () => {
     const queryParams = {
       itemsCount,
