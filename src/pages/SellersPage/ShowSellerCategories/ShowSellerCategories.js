@@ -112,14 +112,14 @@ const loadData = async () => {
               <thead>
                 <tr>
                   <th>Category Name</th>
-                  <th>Active</th>
+                  {/* <th>Active</th> */}
                 </tr>
               </thead>
               <tbody>
                 {currentcategories.map((categories) => (
                   <tr key={categories.id}>
                     <td>{categories}</td>
-                    <td>
+                    {/* <td>
                     <button
                         className="primarys-btn"
                         onClick={() => handleEditClick(categories.id)}
@@ -134,7 +134,7 @@ const loadData = async () => {
                         {" "}
                         Delete{" "}
                       </button>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>

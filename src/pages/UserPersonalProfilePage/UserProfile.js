@@ -14,6 +14,25 @@ const UserProfile = () => {
     const {activepage} = useParams()
 
     
+  /** Redirection */
+  const navigate_login = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("login") !== null) {
+      const user = JSON.parse(localStorage.getItem("login"));
+      redirectBasedOnRole(user.role);
+    } else {
+      navigate_login("/user");
+    }
+  }, []);
+
+  const redirectBasedOnRole = (role) => {
+    if (role === "seller") {
+      navigate_login("/");
+    }
+  };
+  /** End of Redirection */
+
+    
   const navigate = useNavigate();
   const location = useLocation();
 
