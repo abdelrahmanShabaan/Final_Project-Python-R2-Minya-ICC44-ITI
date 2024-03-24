@@ -12,7 +12,6 @@ import {
 import CartModal from "../CartModal/CartModal";
 import { getFavoritesCount } from "../../store/actions/ToggleFav";
 
-
 const Navbar = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
@@ -121,9 +120,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        
 
-        
         <div className="navbar-cart flex align-center">
           <Link to="/cart" className="cart-btn">
             <i className="fa-solid fa-cart-shopping"></i>
@@ -134,21 +131,19 @@ const Navbar = () => {
           </Link>
         </div>
 
-
-{/* Abdelrahman editions */}
+        {/* Abdelrahman editions */}
 
         {/* <div className="navbar-cart flex align-center">
           <i className="fa-solid fa-user"></i>
         </div> */}
-
-<div className="navbar-cart flex align-center">
+        {!isUserLoggedIn && (
+          <div className="navbar-cart flex align-center">
             <Link to="/user/accountsettings" className="cart-btn">
-              <i className="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user-gear"></i>
             </Link>
           </div>
-    
-
-{/* End Abdelrahman Edition */}
+        )}
+        {/* End Abdelrahman Edition */}
 
         {isUserLoggedIn && (
           <div className="navbar-cart flex align-center">
@@ -170,7 +165,7 @@ const Navbar = () => {
           <Link to="/wishlist" className="cart-btn">
             <i class="fa-solid fa-hand-holding-heart"></i>
           </Link> */}
-          <div className="navbar-cart flex align-center">
+        <div className="navbar-cart flex align-center">
           <Link to="/wishlist" className="cart-btn">
             <i className="fa-solid fa-hand-holding-heart"></i>
             {favoritesCount > 0 && (
