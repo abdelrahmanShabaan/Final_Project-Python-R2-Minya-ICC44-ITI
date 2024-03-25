@@ -1,0 +1,65 @@
+/* Custom CSS for the form */
+.custom-form-seller-edit {
+width: 60%;
+margin: 0 auto; /* Centers the form horizontally */
+padding: 20px; /* Adds some spacing around the form elements */
+max-height: 800px; /* Set maximum height for the form */
+overflow-y: scroll; /* Enable vertical scrolling if needed */
+}
+
+
+/* Style for input fields with less height */
+.custom-form-seller-edit input[type="text"] {
+width: calc(100% - 20px); /* Adjust width to accommodate padding */
+padding: 6px;
+margin-bottom: 8px;
+box-sizing: border-box; /* Ensures padding and border are included in width */
+}
+
+/* Style for input fields with more height */
+.custom-form-seller-edit input[type="text"].more-height {
+height: 100px; /* Set a specific height for these inputs */
+padding: 10px;
+margin-bottom: 12px;
+resize: vertical; /* Allow vertical resizing */
+}
+
+/* Style for labels */
+.custom-form-seller-edit label {
+display: block;
+color: #fff;
+margin-bottom: 5px;
+}
+
+/* Style for the "Update Product" button */
+.custom-form-seller-edit .edit-product-button {
+display: block;
+width: 100%;
+padding: 10px;
+background-color: #336fe7; /* Example button color */
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-top: 15px;
+}
+.edit-product-button:hover {
+    background-color: #275ecc;
+    }
+
+/* Style for error messages */
+.custom-form-seller-edit .error-message {
+color: red;
+font-size: 12px;
+}
+
+/* Style for the image container */
+.custom-form-seller-edit .image-container {
+margin-top: 20px;
+}
+
+/* Style for the image */
+.custom-form-seller-edit img {
+display: block;
+margin-bottom: 10px;
+}

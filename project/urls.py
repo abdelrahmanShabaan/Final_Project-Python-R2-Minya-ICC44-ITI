@@ -28,6 +28,8 @@ from users.views import UserViewSet
 from payment.views import CheckoutAPIView
 from order.views import OrderList, OrderDetail, OrderViewSet
 from wishlist.views import WishlistViewSet
+# Seller configration
+from seller.views import  SellerDetail, SellerList, SellerViewSet
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
@@ -36,13 +38,23 @@ router.register(r'users', UserViewSet)
 router.register(r'orders', OrderViewSet)
 router.register(r'wishlist', WishlistViewSet)
 
+# Seller configration
+router.register(r'sellers', SellerViewSet)
+
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('user/', include('users.urls')),
     path('review/', include('reviews.urls')),
+    
     path('products/', csrf_exempt(ProductList.as_view()), name='product-list'),
     path('products/<int:pk>/', ProductDetail.as_view(), name='product-detail'),
+    #seller configration
+    path('sellers/', csrf_exempt(SellerList.as_view()), name='seller-list'),
+    path('sellers/<int:pk>/', SellerDetail.as_view(), name='seller-detail'),
+
+    
+    
     path('categories/', CategoryList.as_view(), name='category-list'),
     path('checkout/', CheckoutAPIView.as_view(), name='checkout'),
     path('orders/', OrderList.as_view(), name='order-list'),

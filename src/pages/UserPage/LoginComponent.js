@@ -33,10 +33,8 @@ const LoginComponent = () => {
   const [isError, setIsError] = useState(false);
 
 
-  
 
-
-  const { handleSubmit, values, errors, handleBlur, touched, handleChange } =
+const { handleSubmit, values, errors, handleBlur, touched, handleChange } =
     useFormik({
       initialValues: {
         email: "",
@@ -44,12 +42,19 @@ const LoginComponent = () => {
       },
       validationSchema: LoginSchema,
       onSubmit: async (values) => {
-        try {
-          const response = await axios.get(
+
+           const response1 = await axios.get(
             `http://127.0.0.1:8000/user/?email=${values.email}&password=${values.password}`
           );
-          if (response.data.length > 0) {
-            const user = response.data[0];
+
+          const response2 = await axios.get(
+            `http://127.0.0.1:8000/sellers/?email=${values.email}&password=${values.password}`
+          );
+
+          try {
+          if (response1.data.length > 0) {
+          
+            const user = response1.data[0];
             localStorage.setItem(
               "login",
               JSON.stringify({
@@ -59,26 +64,44 @@ const LoginComponent = () => {
                 role: user.role,
               })
             );
+            
             localStorage.setItem("cart", "[]");
             setIsError(false);
             // redirectBasedOnRole(user.role);
             navigate("/");
-          } else {
-            setIsError(true);
-          }
-        } catch (error) {
+          
+
+              }else if (response2.data.length > 0) {
+                const sellers = response2.data[0];
+                localStorage.setItem(
+                  "login",
+                  JSON.stringify({
+                    id : sellers.id,
+                    name: sellers.name,
+                    email: sellers.email,
+                    role: sellers.role,
+                  })
+                );
+
+                navigate("/Dashboard");
+                setIsError(false);
+
+              }
+
+          } catch (error) {
           console.error("Error logging in:", error);
           setIsError(true);
         }
+        
       },
     });
 
-  useEffect(() => {
-    if (localStorage.getItem("login") !== null) {
-      const user = JSON.parse(localStorage.getItem("login"));
-      redirectBasedOnRole(user.role);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("login") !== null) {
+  //     const user = JSON.parse(localStorage.getItem("login"));
+  //     redirectBasedOnRole(user.role);
+  //   }
+  // }, []);
 
   const redirectBasedOnRole = (role) => {
     if (role === "customer") {

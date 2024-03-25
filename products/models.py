@@ -1,5 +1,4 @@
 from django.db import models
-
 class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -10,8 +9,11 @@ class Product(models.Model):
     brand = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to='products/thumbnails/')
+  
     def __str__(self):
         return self.title 
+    
+        
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)

@@ -36,6 +36,7 @@ import ShowSellerCategories from "./pages/SellersPage/ShowSellerCategories/ShowS
 import AddSellerProducts from "./pages/SellersPage/AddSellerProducts/AddSellerProducts";
 import ShowSellerOrders from "./pages/SellersPage/ShowSellerOrders/ShowSellerOrders";
 import UserProfile from "./pages/UserPersonalProfilePage/UserProfile";
+import EditSellerCategories from "./pages/SellersPage/EditSellerCategories/EditSellerCategories";
 function App() {
 
   const {
@@ -88,6 +89,7 @@ function App() {
             <Route path="/ShowSellerOrders" element={<ShowSellerOrders />} />
             <Route path="/AddSellerProducts" element={<AddSellerProducts />} />
             <Route path="/EditSellerProducts/:id" element={<EditSellerProducts />} />
+            <Route path="/EditSellerCategories/:id" element={<EditSellerCategories />} />
             <Route path='/user/:activepage' element={<UserProfile/>} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

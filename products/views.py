@@ -41,3 +41,4 @@ def filter_products(request):
     queryset = Product.objects.all()
     serializer = ProductSerializer(queryset, many=True)
     return Response(serializer.data)
+
