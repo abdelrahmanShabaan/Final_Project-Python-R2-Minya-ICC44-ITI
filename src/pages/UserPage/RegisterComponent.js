@@ -51,8 +51,22 @@ function RegisterComponent() {
           console.log(values);
           return;
         }
-
+       
         try {
+
+        // Abdelrahman add seller condition
+        if (values.role === 'seller'){
+          const response = await axios.post(
+            "http://127.0.0.1:8000/sellers/",
+            values
+          );
+          console.log("Seller registered:", response.data);
+          setType("signIn");
+          resetForm();
+       
+        }else if (values.role === 'customer'){
+
+          // Abdelrahman add User condition
           const response = await axios.post(
             "http://127.0.0.1:8000/user/",
             values
@@ -60,10 +74,14 @@ function RegisterComponent() {
           console.log("User registered:", response.data);
           setType("signIn");
           resetForm();
-        } catch (error) {
-          console.error("Error registering user:", error);
-          setIsError(true);
         }
+      
+        
+      } catch (error) {
+        console.error("Error registering user:", error);
+        console.log("Error response data:", error.response.data); // Log the response data
+        setIsError(true);
+      }
       },
     });
 

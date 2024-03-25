@@ -38,11 +38,11 @@ function SlideBarBuyer({ openSidebarToggle, OpenSidebar }) {
             <BsFillArchiveFill className="icon" /> Show All Products
           </li>
         </Link>
-        <Link to="/ShowSellerCategories">
+        {/* <Link to="/ShowSellerCategories">
           <li  style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
             <BsListCheck className="icon" /> Show Categories
           </li>
-        </Link>
+        </Link> */}
         <Link to="/AddSellerProducts">
           <li style={{ color: '#FFFFFF' }}  className="sidebar-list-item">
             <BsFillGrid3X3GapFill className="icon" /> Add New Products

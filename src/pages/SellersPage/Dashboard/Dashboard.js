@@ -103,24 +103,46 @@ const Dashboard = () => {
     setOpenSidebarToggle(!openSidebarToggle);
   };
 
-  /** Count Function for products  */
 
+
+  /**========================= Count Function for products  ==============================*/
+  
+  const [formData, setFormData] = useState({
+    id: null, // Initialize ID to null
+    // other form data fields
+  });
   const [productCount, setProductCount] = useState(0);
 
+
   useEffect(() => {
-    const fetchProductCount = async () => {
+    const fetchProductCount = async (id) => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/products/");
-        setProductCount(response.data.length);
+        const response = await axios.get(`http://127.0.0.1:8000/sellers/${id}/`);
+        console.log(response.data.products.length);
+        setProductCount(response.data.products.length);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
-
-    fetchProductCount();
+    if (localStorage.getItem("login") !== null) {
+      const seller = JSON.parse(localStorage.getItem("login"));
+      // Extract ID from the seller object
+      const { id } = seller;
+      // Update the form data with the ID
+      setFormData((prevData) => ({
+        ...prevData,
+        id: id,
+      }));
+      // Fetch products using the extracted ID
+      fetchProductCount(id);
+    }
   }, []);
 
   /**end function count */
+
+
+
+
 
   /** Count Function for category  */
 
@@ -286,11 +308,6 @@ const Dashboard = () => {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-
-
-
-
-
 
           </main>
         </div>

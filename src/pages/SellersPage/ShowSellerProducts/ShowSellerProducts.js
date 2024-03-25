@@ -28,22 +28,42 @@ function ShowSellerProducts() {
   };
   /** End of Redirection */
 
+
+
+/** ------------------------------------ start handel my seller data (abdelrahman shaaban) ------------------------ */
+
+  const [formData, setFormData] = useState({
+    id: null, // Initialize ID to null
+    // other form data fields
+  });
+
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProducts = async (id) => {
       try {
-        const response = await axios.get(
-          // "https://api-generator.retool.com/u9XTxw/data"
-          "http://127.0.0.1:8000/products/"
-        );
-        console.log(response.data)
-        setProducts(response.data);
+        const response = await axios.get(`http://127.0.0.1:8000/sellers/${id}/`);
+        console.log(response.data.products);
+        setProducts(response.data.products);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
 
-    fetchProducts();
+    if (localStorage.getItem("login") !== null) {
+      const seller = JSON.parse(localStorage.getItem("login"));
+      // Extract ID from the seller object
+      const { id } = seller;
+      // Update the form data with the ID
+      setFormData((prevData) => ({
+        ...prevData,
+        id: id,
+      }));
+      // Fetch products using the extracted ID
+      fetchProducts(id);
+    }
   }, []);
+
+  /** ------------------------------------ end handel my seller data (abdelrahman shaaban) ------------------------ */
+
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -54,40 +74,59 @@ function ShowSellerProducts() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const handleEditClick = (id) => {
-    navigate(`/EditSellerProducts/${id}`);
-  };
+// /**===========================================Edit ================================ */
 
-  const deleteRev = async (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this product?"
-    );
-    if (confirmDelete) {
-      try {
-        await axios.delete(
-          // `https://api-generator.retool.com/u9XTxw/data/${id}`
-          `http://127.0.0.1:8000/products/${id}/`
-        );
-        loadData();
-        console.log("Delete successful");
-      } catch (error) {
-        console.error("Error deleting review:", error);
-      }
-    }
-  };
+const handleEditClick = (id) => {
+  navigate(`/EditSellerProducts/${id}/`);
+};
 
-  const loadData = async () => {
+// /**===========================================Finish Edit ================================ */
+
+  
+/**-------------------------------------------- New Get to edit and delete ------------------------ */
+
+const [producttow, setProductsTwo] = useState([]);
+
+useEffect(() => {
+  const fetchProductsTwo = async () => {
     try {
-      const res = await axios.get(
-        // "https://api-generator.retool.com/u9XTxw/data"
+      const response = await axios.get(
         "http://127.0.0.1:8000/products/"
       );
-      setProducts(res.data);
+      setProductsTwo(response.data);
+      // console.log(response.data)
     } catch (error) {
-      console.error("Error loading data:", error);
+      console.error("Error fetching All products:", error);
     }
   };
 
+  fetchProductsTwo();
+}, []);
+
+
+  
+const deleteRev = async (id) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this product?"
+  );
+  if (confirmDelete) {
+    try {
+      await axios.delete(
+        // `https://api-generator.retool.com/u9XTxw/data/${id}`
+        `http://127.0.0.1:8000/products/${id}/`
+      );
+      console.log("Delete successful");
+    } catch (error) {
+      console.error("Error deleting review:", error);
+    }
+  }
+};
+
+
+  
+
+/**-----------------------------------------------------------------Finish Edit and delete ----------------------------------------*/
+   
   const totalPages = Math.ceil(products.length / productsPerPage);
 
   return (
@@ -110,24 +149,24 @@ function ShowSellerProducts() {
                 </tr>
               </thead>
               <tbody>
-                {currentProducts.map((product) => (
-                  <tr key={product.id}>
-                    <td>{product.title}</td>
-                    <td>{product.brand}</td>
-                    <td>{product.price}</td>
-                    <td>{product.category}</td>
-                    <td>{product.stock}</td>
+                {currentProducts.map((products) => (
+                  <tr key={products.id}>
+                    <td>{products.title}</td>
+                    <td>{products.brand}</td>
+                    <td>{products.price}</td>
+                    <td>{products.category}</td>
+                    <td>{products.stock}</td>
                     <td>
                       <button
                         className="primarys-btn"
-                        onClick={() => handleEditClick(product.id)}
+                        onClick={() => handleEditClick(products.id)}
                       >
                         {" "}
                         Edit{" "}
                       </button>
                       <button
                         className="dangerssq-btn"
-                        onClick={() => deleteRev(product.id)}
+                        onClick={() => deleteRev(products.id)}
                       >
                         {" "}
                         Delete{" "}
