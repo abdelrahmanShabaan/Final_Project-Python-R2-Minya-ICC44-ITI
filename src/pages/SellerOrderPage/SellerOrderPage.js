@@ -9,8 +9,9 @@ const SellerOrderPage = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  /** Redirection */
   const navigate = useNavigate();
+
+  /** Redirection */
   useEffect(() => {
     if (localStorage.getItem("login") !== null) {
       const user = JSON.parse(localStorage.getItem("login"));
@@ -33,13 +34,21 @@ const SellerOrderPage = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/orders/");
+      const response = await axios.get("https://retoolapi.dev/3DPp5R/orders/");
       const updatedOrders = await Promise.all(
         response.data.map(async (order) => {
           const productResponse = await axios.get(
-            `http://127.0.0.1:8000/orders/${order.product}`
+            `http://127.0.0.1:8000/products/${order.productid}/`
           );
           const productDetails = productResponse.data;
+
+          // Decrease stock
+          const newStock = productDetails.stock - order.quantity;
+          await axios.patch(
+            `http://127.0.0.1:8000/products/${order.productid}/`,
+            { stock: newStock }
+          );
+
           return { ...order, productDetails };
         })
       );
@@ -53,7 +62,7 @@ const SellerOrderPage = () => {
   const handleChangeStatus = async (orderId, newStatus) => {
     try {
       const response = await axios.patch(
-        `https://retoolapi.dev/v5dw0Z/orders/${orderId}`,
+        `https://retoolapi.dev/3DPp5R/orders/${orderId}/`,
         { status: newStatus }
       );
       const updatedOrders = orders.map((order) => {
@@ -64,17 +73,6 @@ const SellerOrderPage = () => {
       });
       setOrders(updatedOrders);
       console.log("Order status updated:", response.data);
-
-      if (newStatus === "accepted") {
-        const orderToUpdate = updatedOrders.find(
-          (order) => order.id === orderId
-        );
-        const newStock = orderToUpdate.stock - orderToUpdate.quantity;
-        await axios.patch(`https://retoolapi.dev/v5dw0Z/orders/${orderId}`, {
-          stock: newStock,
-        });
-        console.log("Stock updated for accepted order:", orderId);
-      }
     } catch (error) {
       console.error("Error updating order status:", error);
     }
@@ -134,6 +132,7 @@ const SellerOrderPage = () => {
       </div>
     </main>
   );
+  
 };
 
 export default SellerOrderPage;
